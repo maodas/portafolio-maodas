@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "year": "2023 - Presente",
+    "title": "Certificación AWS Solutions Architect",
+    "description": "Arquitectura de soluciones en la nube, diseño de sistemas escalables y seguros.",
+    "institution": "Amazon Web Services",
+    "color": "blue"
+  },
+  {
+    "id": 2,
+    "year": "2021 - 2022",
+    "title": "Especialización en Data Science",
+    "description": "Machine Learning, análisis estadístico, visualización de datos y Python avanzado.",
+    "institution": "Platzi / Coursera",
+    "color": "purple"
+  },
+  {
+    "id": 3,
+    "year": "2018 - 2020",
+    "title": "Ingeniería en Sistemas",
+    "description": "Fundamentos de computación, desarrollo de software, bases de datos y redes.",
+    "institution": "Universidad de San Carlos",
+    "color": "green"
+  }
+]
