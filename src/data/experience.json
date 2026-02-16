@@ -1,0 +1,59 @@
+[
+  {
+    "id": 1,
+    "position": "Coordinador de Proyectos Digitales",
+    "company": "IOM Guatemala - RRP",
+    "companyUrl": "https://techcorp.com",
+    "location": "Guatemala (Remoto)",
+    "startDate": "2024-01",
+    "endDate": null,
+    "type": "Tiempo completo",
+    "current": true,
+    "description": "Liderando el desarrollo de soluciones digitales para clientes empresariales, coordinando equipos multidisciplinarios de desarrollo y asegurando la entrega exitosa de proyectos.",
+    "achievements": [
+      "Lideré equipo de 8 desarrolladores en la entrega de 5 proyectos importantes",
+      "Implementé metodologías ágiles que redujeron tiempos de entrega en 30%",
+      "Coordiné migración de sistemas legacy a arquitectura cloud moderna"
+    ],
+    "technologies": ["React", "Node.js", "TypeScript", "AWS", "PostgreSQL", "Docker"],
+    "color": "blue"
+  },
+  {
+    "id": 2,
+    "position": "Desarrollador Full Stack Senior",
+    "company": "Innovatech",
+    "companyUrl": "https://innovatech.com",
+    "location": "Guatemala",
+    "startDate": "2022-01",
+    "endDate": "2024-01",
+    "type": "Tiempo completo",
+    "current": false,
+    "description": "Desarrollo de aplicaciones web escalables y mantenibles para clientes del sector financiero y retail.",
+    "achievements": [
+      "Desarrollé dashboard en tiempo real procesando 1M+ registros",
+      "Reduje tiempos de carga en 60% con optimizaciones de base de datos",
+      "Implementé CI/CD que automatizó despliegues a producción"
+    ],
+    "technologies": ["React", "Node.js", "MongoDB", "Redis", "Docker", "Kubernetes"],
+    "color": "purple"
+  },
+  {
+    "id": 3,
+    "position": "Analista de Datos Junior",
+    "company": "DataMetrics",
+    "companyUrl": "https://datametrics.com",
+    "location": "Guatemala",
+    "startDate": "2020-06",
+    "endDate": "2022-01",
+    "type": "Prácticas",
+    "current": false,
+    "description": "Análisis de datos operativos y creación de reportes para la toma de decisiones.",
+    "achievements": [
+      "Automaticé reportes semanales ahorrando 10+ horas mensuales",
+      "Creé dashboards interactivos para visualización de KPIs",
+      "Participé en migración de datos a nueva plataforma"
+    ],
+    "technologies": ["Python", "SQL", "Pandas", "Tableau", "Excel"],
+    "color": "pink"
+  }
+]
