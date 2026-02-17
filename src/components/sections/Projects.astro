@@ -1,0 +1,587 @@
+---
+// ================= SECCIÓN PORTAFOLIO / PROYECTOS =================
+// Propósito: Mostrar proyectos destacados con filtros y detalles
+// Versión: Corregida - Manejo de categorías mejorado
+---
+
+<div class="max-w-7xl mx-auto">
+  
+  <!-- Encabezado de la sección -->
+  <div class="text-center mb-16">
+    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+      Proyectos <span class="text-blue-600 dark:text-blue-400">Destacados</span>
+    </h2>
+    <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
+    <p class="text-xl text-gray-600 dark:text-gray-300 mt-6 max-w-3xl mx-auto">
+      Una selección de mis proyectos más relevantes, donde aplico tecnologías modernas
+      para resolver problemas reales.
+    </p>
+  </div>
+
+  <!-- Filtros de categorías -->
+  <div class="flex flex-wrap justify-center gap-3 mb-12">
+    <button class="filter-btn active px-6 py-3 bg-blue-600 text-white rounded-xl font-medium transition-all duration-300 hover:shadow-lg" data-filter="all">
+      Todos
+    </button>
+    <button class="filter-btn px-6 py-3 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-xl font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300" data-filter="web">
+      Web Apps
+    </button>
+    <button class="filter-btn px-6 py-3 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-xl font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300" data-filter="data">
+      Data Analytics
+    </button>
+    <button class="filter-btn px-6 py-3 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-xl font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300" data-filter="mobile">
+      Mobile Apps
+    </button>
+    <button class="filter-btn px-6 py-3 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-xl font-medium hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300" data-filter="automation">
+      Automatización
+    </button>
+  </div>
+
+  <!-- Grid de proyectos -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    
+    <!-- Proyecto 1 - Sistema de Gestión de Vehículos -->
+    <div class="project-card group relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-700" data-category="web">
+      
+      <!-- Badge de estado -->
+      <div class="absolute top-4 right-4 z-10 px-3 py-1 bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300 rounded-full text-sm font-medium">
+        En Desarrollo
+      </div>
+
+      <!-- Imagen del proyecto (placeholder) -->
+      <div class="h-48 bg-gradient-to-br from-blue-500 to-purple-600 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <svg class="w-16 h-16 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Contenido -->
+      <div class="p-6">
+        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+          Sistema de Gestión de Vehículos
+        </h3>
+        
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+          Plataforma completa para solicitud y administración de vehículos institucionales con flujo de aprobaciones.
+        </p>
+
+        <!-- Tecnologías -->
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs rounded-md">React</span>
+          <span class="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-xs rounded-md">Node.js</span>
+          <span class="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs rounded-md">PostgreSQL</span>
+          <span class="px-2 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 text-xs rounded-md">Express</span>
+          <span class="px-2 py-1 bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 text-xs rounded-md">Tailwind</span>
+        </div>
+
+        <!-- Características rápidas -->
+        <div class="mb-4">
+          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-2">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Solicitudes con aprobación multinivel
+          </div>
+          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-2">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Calendario de disponibilidad
+          </div>
+          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Reportes automáticos en PDF
+          </div>
+        </div>
+
+        <!-- Enlaces -->
+        <div class="flex gap-3 mt-4">
+          <a href="#" class="flex-1 px-4 py-2 bg-gray-900 dark:bg-gray-700 text-white text-center text-sm rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors">
+            Código
+          </a>
+          <a href="#" class="flex-1 px-4 py-2 bg-blue-600 text-white text-center text-sm rounded-lg hover:bg-blue-700 transition-colors">
+            Demo
+          </a>
+          <button class="px-3 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Proyecto 2 - Dashboard Analítico -->
+    <div class="project-card group relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-700" data-category="data">
+      
+      <!-- Badge de estado -->
+      <div class="absolute top-4 right-4 z-10 px-3 py-1 bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300 rounded-full text-sm font-medium">
+        Completado
+      </div>
+
+      <!-- Imagen del proyecto -->
+      <div class="h-48 bg-gradient-to-br from-purple-500 to-pink-600 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <svg class="w-16 h-16 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Contenido -->
+      <div class="p-6">
+        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+          Dashboard de Análisis de Datos
+        </h3>
+        
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+          Visualización interactiva de métricas empresariales en tiempo real con múltiples fuentes de datos.
+        </p>
+
+        <!-- Tecnologías -->
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs rounded-md">Python</span>
+          <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs rounded-md">FastAPI</span>
+          <span class="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-xs rounded-md">React</span>
+          <span class="px-2 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 text-xs rounded-md">D3.js</span>
+          <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs rounded-md">Docker</span>
+        </div>
+
+        <!-- Características -->
+        <div class="mb-4">
+          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-2">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Gráficos interactivos con D3.js
+          </div>
+          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-2">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Actualización en tiempo real
+          </div>
+          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Exportación a Excel/PDF
+          </div>
+        </div>
+
+        <!-- Enlaces -->
+        <div class="flex gap-3 mt-4">
+          <a href="#" class="flex-1 px-4 py-2 bg-gray-900 dark:bg-gray-700 text-white text-center text-sm rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors">
+            Código
+          </a>
+          <a href="#" class="flex-1 px-4 py-2 bg-purple-600 text-white text-center text-sm rounded-lg hover:bg-purple-700 transition-colors">
+            Demo
+          </a>
+          <button class="px-3 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Proyecto 3 - App de Tareas con IA -->
+    <div class="project-card group relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-700" data-category="mobile">
+      
+      <!-- Badge de estado -->
+      <div class="absolute top-4 right-4 z-10 px-3 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 rounded-full text-sm font-medium">
+        Beta
+      </div>
+
+      <!-- Imagen del proyecto -->
+      <div class="h-48 bg-gradient-to-br from-green-500 to-teal-600 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <svg class="w-16 h-16 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Contenido -->
+      <div class="p-6">
+        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+          TaskFlow AI
+        </h3>
+        
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+          Aplicación de gestión de tareas con asistente de IA que prioriza y sugiere acciones.
+        </p>
+
+        <!-- Tecnologías -->
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-xs rounded-md">React Native</span>
+          <span class="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs rounded-md">Python</span>
+          <span class="px-2 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 text-xs rounded-md">Flask</span>
+          <span class="px-2 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 text-xs rounded-md">TensorFlow</span>
+          <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs rounded-md">MongoDB</span>
+        </div>
+
+        <!-- Características -->
+        <div class="mb-4">
+          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-2">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Priorización automática con ML
+          </div>
+          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-2">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Sugerencias de productividad
+          </div>
+          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Sincronización multiplataforma
+          </div>
+        </div>
+
+        <!-- Enlaces -->
+        <div class="flex gap-3 mt-4">
+          <a href="#" class="flex-1 px-4 py-2 bg-gray-900 dark:bg-gray-700 text-white text-center text-sm rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors">
+            Código
+          </a>
+          <a href="#" class="flex-1 px-4 py-2 bg-green-600 text-white text-center text-sm rounded-lg hover:bg-green-700 transition-colors">
+            Demo
+          </a>
+          <button class="px-3 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Proyecto 4 - Automatización de Reportes -->
+    <div class="project-card group relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-700" data-category="automation">
+      
+      <!-- Badge de estado -->
+      <div class="absolute top-4 right-4 z-10 px-3 py-1 bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300 rounded-full text-sm font-medium">
+        Completado
+      </div>
+
+      <!-- Imagen del proyecto -->
+      <div class="h-48 bg-gradient-to-br from-orange-500 to-red-600 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <svg class="w-16 h-16 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Contenido -->
+      <div class="p-6">
+        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
+          AutoReport System
+        </h3>
+        
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+          Sistema automatizado de generación y distribución de reportes periódicos desde múltiples fuentes.
+        </p>
+
+        <!-- Tecnologías -->
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="px-2 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 text-xs rounded-md">Python</span>
+          <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs rounded-md">Airflow</span>
+          <span class="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-xs rounded-md">PostgreSQL</span>
+          <span class="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs rounded-md">Redis</span>
+          <span class="px-2 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 text-xs rounded-md">Celery</span>
+        </div>
+
+        <!-- Características -->
+        <div class="mb-4">
+          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-2">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Programación de reportes
+          </div>
+          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-2">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Múltiples formatos (PDF, Excel, CSV)
+          </div>
+          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Envío por email automático
+          </div>
+        </div>
+
+        <!-- Enlaces -->
+        <div class="flex gap-3 mt-4">
+          <a href="#" class="flex-1 px-4 py-2 bg-gray-900 dark:bg-gray-700 text-white text-center text-sm rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors">
+            Código
+          </a>
+          <a href="#" class="flex-1 px-4 py-2 bg-orange-600 text-white text-center text-sm rounded-lg hover:bg-orange-700 transition-colors">
+            Demo
+          </a>
+          <button class="px-3 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Proyecto 5 - E-commerce Platform -->
+    <div class="project-card group relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-700" data-category="web">
+      
+      <!-- Badge de estado -->
+      <div class="absolute top-4 right-4 z-10 px-3 py-1 bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300 rounded-full text-sm font-medium">
+        Completado
+      </div>
+
+      <!-- Imagen del proyecto -->
+      <div class="h-48 bg-gradient-to-br from-pink-500 to-rose-600 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <svg class="w-16 h-16 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Contenido -->
+      <div class="p-6">
+        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">
+          E-commerce Platform
+        </h3>
+        
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+          Plataforma completa de comercio electrónico con carrito de compras, pagos y panel de administración.
+        </p>
+
+        <!-- Tecnologías -->
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="px-2 py-1 bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 text-xs rounded-md">Next.js</span>
+          <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs rounded-md">TypeScript</span>
+          <span class="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-xs rounded-md">Prisma</span>
+          <span class="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs rounded-md">Stripe</span>
+          <span class="px-2 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 text-xs rounded-md">Tailwind</span>
+        </div>
+
+        <!-- Características -->
+        <div class="mb-4">
+          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-2">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Carrito de compras persistente
+          </div>
+          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-2">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Pasarela de pagos integrada
+          </div>
+          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Panel admin con métricas
+          </div>
+        </div>
+
+        <!-- Enlaces -->
+        <div class="flex gap-3 mt-4">
+          <a href="#" class="flex-1 px-4 py-2 bg-gray-900 dark:bg-gray-700 text-white text-center text-sm rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors">
+            Código
+          </a>
+          <a href="#" class="flex-1 px-4 py-2 bg-pink-600 text-white text-center text-sm rounded-lg hover:bg-pink-700 transition-colors">
+            Demo
+          </a>
+          <button class="px-3 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Proyecto 6 - API de Servicios -->
+    <div class="project-card group relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-700" data-category="automation">
+      
+      <!-- Badge de estado -->
+      <div class="absolute top-4 right-4 z-10 px-3 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 rounded-full text-sm font-medium">
+        En Desarrollo
+      </div>
+
+      <!-- Imagen del proyecto -->
+      <div class="h-48 bg-gradient-to-br from-indigo-500 to-blue-600 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <svg class="w-16 h-16 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Contenido -->
+      <div class="p-6">
+        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+          Microservices API Gateway
+        </h3>
+        
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+          API Gateway para orquestar múltiples microservicios con autenticación y rate limiting.
+        </p>
+
+        <!-- Tecnologías -->
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="px-2 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-xs rounded-md">Node.js</span>
+          <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs rounded-md">Express</span>
+          <span class="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-xs rounded-md">Redis</span>
+          <span class="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs rounded-md">JWT</span>
+          <span class="px-2 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 text-xs rounded-md">Docker</span>
+        </div>
+
+        <!-- Características -->
+        <div class="mb-4">
+          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-2">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Autenticación centralizada
+          </div>
+          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-2">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Rate limiting por usuario
+          </div>
+          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            Logs y monitoreo
+          </div>
+        </div>
+
+        <!-- Enlaces -->
+        <div class="flex gap-3 mt-4">
+          <a href="#" class="flex-1 px-4 py-2 bg-gray-900 dark:bg-gray-700 text-white text-center text-sm rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors">
+            Código
+          </a>
+          <a href="#" class="flex-1 px-4 py-2 bg-indigo-600 text-white text-center text-sm rounded-lg hover:bg-indigo-700 transition-colors">
+            Demo
+          </a>
+          <button class="px-3 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Botón Ver todos los proyectos -->
+  <div class="text-center mt-16">
+    <a 
+      href="/portfolio" 
+      class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
+    >
+      <span>Ver todos los proyectos</span>
+      <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+      </svg>
+    </a>
+  </div>
+
+</div>
+
+<script>
+  // Filtrado de proyectos por categoría - VERSIÓN CORREGIDA
+  document.addEventListener('DOMContentLoaded', function() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projects = document.querySelectorAll('.project-card');
+    
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        // Remover clase active de todos los botones
+        filterBtns.forEach(b => {
+          b.classList.remove('bg-blue-600', 'text-white');
+          b.classList.add('bg-gray-100', 'dark:bg-gray-800', 'text-gray-700', 'dark:text-gray-300');
+        });
+        
+        // Agregar clase active al botón clickeado
+        this.classList.remove('bg-gray-100', 'dark:bg-gray-800', 'text-gray-700', 'dark:text-gray-300');
+        this.classList.add('bg-blue-600', 'text-white');
+        
+        const filter = this.dataset.filter;
+        
+        projects.forEach(project => {
+          if (filter === 'all') {
+            // Mostrar todos los proyectos
+            project.style.display = 'block';
+          } else {
+            // Obtener la categoría del proyecto (puede ser una sola o múltiple)
+            const projectCategory = project.dataset.category;
+            
+            // Verificar si la categoría del proyecto coincide con el filtro
+            if (projectCategory === filter) {
+              project.style.display = 'block';
+            } else {
+              project.style.display = 'none';
+            }
+          }
+        });
+      });
+    });
+  });
+</script>
+
+<style>
+  /* Animaciones para las tarjetas */
+  .project-card {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+  
+  .project-card:nth-child(1) { animation-delay: 0.1s; }
+  .project-card:nth-child(2) { animation-delay: 0.2s; }
+  .project-card:nth-child(3) { animation-delay: 0.3s; }
+  .project-card:nth-child(4) { animation-delay: 0.4s; }
+  .project-card:nth-child(5) { animation-delay: 0.5s; }
+  .project-card:nth-child(6) { animation-delay: 0.6s; }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Transición suave para el filtrado */
+  .project-card {
+    transition: opacity 0.3s ease;
+  }
+</style>

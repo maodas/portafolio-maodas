@@ -1,0 +1,67 @@
+---
+// ================= PÁGINA PRINCIPAL COMPLETA =================
+// Propósito: Landing page con todas las secciones del portafolio
+// Incluye: Hero, Sobre Mí, Experiencia, Proyectos, Habilidades, Contacto
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/sections/Hero.astro';
+import About from '../components/sections/About.astro';
+import Experience from '../components/sections/Experience.astro';
+import Projects from '../components/sections/Projects.astro';
+import Skills from '../components/sections/Skills.astro';
+import Contact from '../components/sections/Contact.astro';
+
+// SEO de la página principal
+const pageTitle = 'Mao Das | Desarrollador Full Stack & Analista de Datos';
+const pageDescription = 'Portafolio personal de Mao Das - Desarrollador Full Stack y Analista de Datos. Proyectos, experiencia profesional, habilidades técnicas y blog sobre tecnología.';
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  
+  <!-- ===== SECCIÓN 1: HERO (INTRODUCCIÓN) ===== -->
+  <!-- Propósito: Presentación principal con animaciones -->
+  <section id="hero" class="relative overflow-hidden">
+    <Hero />
+  </section>
+
+  <!-- ===== SECCIÓN 2: SOBRE MÍ ===== -->
+  <!-- Propósito: Información personal, biografía, intereses -->
+  <section id="about" class="py-20 bg-gray-50 dark:bg-gray-800/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <About />
+    </div>
+  </section>
+
+  <!-- ===== SECCIÓN 3: EXPERIENCIA LABORAL ===== -->
+  <!-- Propósito: Trayectoria profesional, logros y tecnologías -->
+  <section id="experience" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Experience />
+    </div>
+  </section>
+
+  <!-- ===== SECCIÓN 4: PROYECTOS DESTACADOS ===== -->
+  <!-- Propósito: Muestra de proyectos principales con filtros -->
+  <section id="projects" class="py-20 bg-gray-50 dark:bg-gray-800/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Projects />
+    </div>
+  </section>
+
+  <!-- ===== SECCIÓN 5: HABILIDADES TÉCNICAS ===== -->
+  <!-- Propósito: Skills técnicas y blandas con niveles -->
+  <section id="skills" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Skills />
+    </div>
+  </section>
+
+  <!-- ===== SECCIÓN 6: CONTACTO ===== -->
+  <!-- Propósito: Formulario de contacto y redes sociales -->
+  <section id="contact" class="py-20 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Contact />
+    </div>
+  </section>
+
+</BaseLayout>

@@ -1,0 +1,40 @@
+[
+  {
+    "id": 1,
+    "title": "Sistema de Gestión de Vehículos",
+    "description": "Plataforma completa para solicitud y administración de vehículos institucionales",
+    "longDescription": "Sistema desarrollado para una empresa de logística que permite a los empleados solicitar vehículos, aprobaciones por gerentes, asignación de conductores y seguimiento de mantenimiento.",
+    "technologies": ["React", "Node.js", "PostgreSQL", "Express", "Tailwind CSS"],
+    "status": "En Desarrollo",
+    "statusColor": "yellow",
+    "github": "https://github.com/tuusuario/vehicle-system",
+    "demo": null,
+    "image": "/projects/vehicle-system.jpg",
+    "features": [
+      "Solicitudes con aprobación multinivel",
+      "Calendario interactivo de disponibilidad",
+      "Reportes automáticos en PDF",
+      "Notificaciones por email"
+    ],
+    "category": "fullstack"
+  },
+  {
+    "id": 2,
+    "title": "Dashboard de Análisis de Datos",
+    "description": "Visualización interactiva de métricas empresariales",
+    "longDescription": "Dashboard construido para el área de ventas que consume datos de múltiples fuentes y presenta KPIs en tiempo real.",
+    "technologies": ["Python", "FastAPI", "React", "D3.js", "Pandas"],
+    "status": "Completado",
+    "statusColor": "green",
+    "github": "https://github.com/tuusuario/data-dashboard",
+    "demo": "https://dashboard.maodas.online",
+    "image": "/projects/dashboard.jpg",
+    "features": [
+      "Gráficos interactivos con D3.js",
+      "Actualización en tiempo real",
+      "Exportación a Excel/PDF",
+      "Autenticación con JWT"
+    ],
+    "category": "data"
+  }
+]
