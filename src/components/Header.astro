@@ -15,7 +15,7 @@
           </div>
           <div>
             <div class="text-xl font-bold text-gray-900 dark:text-white">maodas.online</div>
-            <div class="text-xs text-gray-500 dark:text-gray-400">Portafolio Digital</div>
+            <div class="text-xs text-gray-500 dark:text-gray-400">Presentación Digital</div>
           </div>
         </a>
       </div>
@@ -108,15 +108,16 @@
   // ========== FUNCIONALIDAD TEMA OSCURO/CLARO ==========
   
   // Función para obtener el tema actual
-  function getCurrentTheme() {
-    if (localStorage.getItem('theme')) {
-      return localStorage.getItem('theme');
+  function getCurrentTheme(): string {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      return savedTheme;
     }
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
 
   // Función para aplicar el tema
-  function applyTheme(theme) {
+  function applyTheme(theme: string) {
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
       // Actualizar iconos
@@ -145,12 +146,14 @@
     const menu = document.getElementById('mobile-menu');
     const button = document.getElementById('menu-toggle');
     
-    if (menu.classList.contains('hidden')) {
-      menu.classList.remove('hidden');
-      button.textContent = '✕';
-    } else {
-      menu.classList.add('hidden');
-      button.textContent = '☰';
+    if (menu && button) {
+      if (menu.classList.contains('hidden')) {
+        menu.classList.remove('hidden');
+        button.textContent = '✕';
+      } else {
+        menu.classList.add('hidden');
+        button.textContent = '☰';
+      }
     }
   }
 
@@ -169,25 +172,34 @@
     // Cerrar menú móvil al hacer clic en un enlace
     document.querySelectorAll('#mobile-menu a').forEach(link => {
       link.addEventListener('click', () => {
-        document.getElementById('mobile-menu').classList.add('hidden');
-        document.getElementById('menu-toggle').textContent = '☰';
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuToggle = document.getElementById('menu-toggle');
+        if (mobileMenu) {
+          mobileMenu.classList.add('hidden');
+        }
+        if (menuToggle) {
+          menuToggle.textContent = '☰';
+        }
       });
     });
     
     // Smooth scroll para enlaces internos
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
+      anchor.addEventListener('click', function(this: HTMLElement, e: Event) {
         e.preventDefault();
         const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
+        if (!targetId || targetId === '#') return;
         
-        const targetElement = document.querySelector(targetId);
+        const targetElement = document.querySelector(targetId) as HTMLElement;
         if (targetElement) {
           // Cerrar menú móvil si está abierto
           const mobileMenu = document.getElementById('mobile-menu');
-          if (!mobileMenu.classList.contains('hidden')) {
+          if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
             mobileMenu.classList.add('hidden');
-            document.getElementById('menu-toggle').textContent = '☰';
+            const menuToggle = document.getElementById('menu-toggle');
+            if (menuToggle) {
+              menuToggle.textContent = '☰';
+            }
           }
           
           // Scroll suave

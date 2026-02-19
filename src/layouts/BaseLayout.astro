@@ -9,7 +9,7 @@ import Footer from '../components/Footer.astro';
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>maodas.online - Portafolio Digital</title>
+  <title>maodas.online - Presentación Digital</title>
   
   <!-- Meta tags SEO -->
   <meta name="description" content="Portafolio personal de Mao Das - Desarrollador Full Stack & Analista de Datos. Proyectos, experiencia y blog técnico." />
@@ -59,9 +59,10 @@ import Footer from '../components/Footer.astro';
     
     // Smooth scroll para enlaces internos
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
+      anchor.addEventListener('click', function (this: HTMLAnchorElement, e: Event) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const href = this.getAttribute('href');
+        const target = href ? document.querySelector(href) : null;
         if (target) {
           target.scrollIntoView({
             behavior: 'smooth',
