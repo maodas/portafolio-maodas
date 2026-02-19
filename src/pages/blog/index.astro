@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+console.log(posts); // Esto aparecerá en la terminal
+---
+
+<BaseLayout title="Blog">
+  <div class="max-w-7xl mx-auto px-4 py-20">
+    <h1 class="text-4xl font-bold">Blog</h1>
+    {posts.length === 0 ? (
+      <p class="mt-8">No hay artículos aún.</p>
+    ) : (
+      <ul class="mt-8">
+        {posts.map(post => (
+          <li class="mb-4">
+            <a href={`/blog/${post.slug}`} class="text-blue-600 underline">
+              {post.data.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+</BaseLayout>

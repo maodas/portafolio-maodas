@@ -514,46 +514,47 @@
 
 </div>
 
-<script>
-  // Filtrado de proyectos por categoría - VERSIÓN CORREGIDA
-  document.addEventListener('DOMContentLoaded', function() {
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const projects = document.querySelectorAll('.project-card');
-    
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', function() {
-        // Remover clase active de todos los botones
-        filterBtns.forEach(b => {
-          b.classList.remove('bg-blue-600', 'text-white');
-          b.classList.add('bg-gray-100', 'dark:bg-gray-800', 'text-gray-700', 'dark:text-gray-300');
-        });
-        
-        // Agregar clase active al botón clickeado
-        this.classList.remove('bg-gray-100', 'dark:bg-gray-800', 'text-gray-700', 'dark:text-gray-300');
-        this.classList.add('bg-blue-600', 'text-white');
-        
-        const filter = this.dataset.filter;
-        
-        projects.forEach(project => {
-          if (filter === 'all') {
-            // Mostrar todos los proyectos
-            project.style.display = 'block';
-          } else {
-            // Obtener la categoría del proyecto (puede ser una sola o múltiple)
-            const projectCategory = project.dataset.category;
-            
-            // Verificar si la categoría del proyecto coincide con el filtro
-            if (projectCategory === filter) {
-              project.style.display = 'block';
+  <script>
+    // Filtrado de proyectos por categoría - VERSIÓN CORREGIDA
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const projects = document.querySelectorAll('.project-card');
+      
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', function(this: HTMLElement) {
+          // Remover clase active de todos los botones
+          filterBtns.forEach(b => {
+            b.classList.remove('bg-blue-600', 'text-white');
+            b.classList.add('bg-gray-100', 'dark:bg-gray-800', 'text-gray-700', 'dark:text-gray-300');
+          });
+          
+          // Agregar clase active al botón clickeado
+          this.classList.remove('bg-gray-100', 'dark:bg-gray-800', 'text-gray-700', 'dark:text-gray-300');
+          this.classList.add('bg-blue-600', 'text-white');
+          
+          const filter = this.getAttribute('data-filter');
+          
+          projects.forEach(project => {
+            const projectElement = project as HTMLElement;
+            if (filter === 'all') {
+              // Mostrar todos los proyectos
+              projectElement.style.display = 'block';
             } else {
-              project.style.display = 'none';
+              // Obtener la categoría del proyecto (puede ser una sola o múltiple)
+              const projectCategory = projectElement.dataset.category;
+              
+              // Verificar si la categoría del proyecto coincide con el filtro
+              if (projectCategory === filter) {
+                projectElement.style.display = 'block';
+              } else {
+                projectElement.style.display = 'none';
+              }
             }
-          }
+          });
         });
       });
     });
-  });
-</script>
+  </script>
 
 <style>
   /* Animaciones para las tarjetas */
