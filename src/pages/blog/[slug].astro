@@ -16,6 +16,16 @@ const { Content } = await entry.render();
 
 <BaseLayout title={`${entry.data.title} | Blog Mao Das`} description={entry.data.description}>
   <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+
+    <!-- En la parte superior, antes del header del artículo -->
+    <div class="mb-8">
+      <a href="/blog" class="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        <span>Volver al blog</span>
+      </a>
+    </div>
     
     <!-- Cabecera del artículo -->
     <header class="mb-12">

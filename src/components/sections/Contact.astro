@@ -1,6 +1,7 @@
 ---
 // ================= SECCIÓN CONTACTO =================
-// Propósito: Formulario de contacto y enlaces a redes sociales
+// Propósito: Formulario de contacto funcional que envía a Google Sheets + Email
+// Los datos se guardan en tu hoja de cálculo y te llega una copia por correo
 ---
 
 <div class="max-w-7xl mx-auto">
@@ -18,12 +19,13 @@
 
   <div class="grid md:grid-cols-2 gap-12">
     
-    <!-- Información de contacto -->
+    <!-- ===== COLUMNA IZQUIERDA: INFORMACIÓN DE CONTACTO ===== -->
     <div class="space-y-8">
       <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl border border-gray-100 dark:border-gray-700">
         <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Información de contacto</h3>
         
         <div class="space-y-6">
+          <!-- Email 1 -->
           <div class="flex items-center group">
             <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
               <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -33,14 +35,16 @@
             <div>
               <p class="text-sm text-gray-500 dark:text-gray-400">Email</p>
               <a href="mailto:maodas00@gmail.com" class="text-lg font-semibold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400">
-                maodas00@gmail.com - 📬 Enviar mensaje
+                maodas00@gmail.com
               </a>
+              <br>
               <a href="mailto:rodas807@gmail.com" class="text-lg font-semibold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400">
-                rodas807@gmail.com - 📬 Enviar mensaje
+                rodas807@gmail.com
               </a>
             </div>
           </div>
 
+          <!-- Ubicación -->
           <div class="flex items-center group">
             <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
               <svg class="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -54,6 +58,7 @@
             </div>
           </div>
 
+          <!-- Zona horaria -->
           <div class="flex items-center group">
             <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
               <svg class="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -107,14 +112,16 @@
       </div>
     </div>
 
-    <!-- Formulario de contacto -->
+    <!-- ===== COLUMNA DERECHA: FORMULARIO DE CONTACTO ===== -->
     <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl border border-gray-100 dark:border-gray-700">
       <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Envíame un mensaje</h3>
       
-      <form action="#" method="POST" class="space-y-6">
+      <!-- IMPORTANTE: El formulario ahora usa tu URL de Google Apps Script -->
+      <form id="contactForm" class="space-y-6">
+        <!-- Nombre -->
         <div>
           <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-            Nombre completo
+            Nombre completo *
           </label>
           <input 
             type="text" 
@@ -126,9 +133,10 @@
           >
         </div>
 
+        <!-- Email -->
         <div>
           <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-            Correo electrónico
+            Correo electrónico *
           </label>
           <input 
             type="email" 
@@ -140,9 +148,24 @@
           >
         </div>
 
+        <!-- Teléfono (NUEVO) -->
+        <div>
+          <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            Teléfono (opcional - para WhatsApp)
+          </label>
+          <input 
+            type="tel" 
+            id="phone" 
+            name="phone" 
+            class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 text-gray-900 dark:text-white"
+            placeholder="Ej: +502 1234 5678"
+          >
+        </div>
+
+        <!-- Asunto -->
         <div>
           <label for="subject" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-            Asunto
+            Asunto *
           </label>
           <input 
             type="text" 
@@ -154,9 +177,10 @@
           >
         </div>
 
+        <!-- Mensaje -->
         <div>
           <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-            Mensaje
+            Mensaje *
           </label>
           <textarea 
             id="message" 
@@ -168,13 +192,61 @@
           ></textarea>
         </div>
 
+        <!-- Botón de envío -->
         <button 
           type="submit" 
           class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold py-4 px-6 rounded-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
         >
           Enviar mensaje
         </button>
+
+        <!-- Mensaje de resultado (éxito/error) -->
+        <div id="result" class="text-center mt-4"></div>
       </form>
     </div>
   </div>
 </div>
+
+<!-- ===== SCRIPT PARA ENVÍO DEL FORMULARIO ===== -->
+<script>
+  const form = document.getElementById('contactForm');
+  const resultDiv = document.getElementById('result');
+
+  // ⚠️ IMPORTANTE: Esta es TU URL de Google Apps Script (ya la tienes)
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbyySduCPi6uPgBy_7u0dVMU8dHAI39WoB4i_fy_ZjZqPiJ2RRI5lJTzSh4U315Em-w/exec';
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault(); // Evita que la página se recargue
+    
+    // Mostrar estado de carga
+    resultDiv.innerHTML = '<div class="p-4 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-lg">Enviando...</div>';
+    
+    // Recoger datos del formulario
+    const formData = {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      phone: document.getElementById('phone')?.value || '', // Si no hay teléfono, envía vacío
+      subject: document.getElementById('subject').value,
+      message: document.getElementById('message').value
+    };
+    
+    try {
+      const response = await fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors', // Importante para Google Apps Script (permite CORS)
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+      
+      // Como usamos no-cors, no podemos leer la respuesta, pero asumimos éxito si no hay error de red
+      resultDiv.innerHTML = '<div class="p-4 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-lg">¡Mensaje enviado con éxito! Te contactaré pronto.</div>';
+      form.reset(); // Limpiar el formulario
+      
+    } catch (error) {
+      resultDiv.innerHTML = '<div class="p-4 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-lg">Error al enviar. Por favor intenta de nuevo o escríbeme directamente a mi correo.</div>';
+      console.error('Error:', error);
+    }
+  });
+</script>
