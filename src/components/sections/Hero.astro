@@ -29,10 +29,17 @@
         </span>
       </h1>
 
-      <!-- Subtítulo con efecto máquina de escribir -->
-      <div class="relative inline-block mb-8">
+      <!-- Subtítulo con ajuste responsive -->
+      <div class="relative inline-block mb-8 w-full max-w-full px-4">
         <h2 class="text-2xl md:text-3xl text-gray-600 dark:text-gray-300 font-mono">
-          <span class="typing-effect">Coordinador de Proyectos / Ingeniero Administrativo / Desarrollador Full Stack</span>
+          <!-- Versión móvil: cada rol en una línea separada (sin animación) -->
+          <span class="block md:hidden space-y-1">
+            <span class="block">Coordinador de Proyectos</span>
+            <span class="block">Ingeniero Administrativo</span>
+            <span class="block">Desarrollador Full Stack</span>
+          </span>
+          <!-- Versión desktop: efecto máquina de escribir en una línea -->
+          <span class="hidden md:inline typing-effect">Coordinador de Proyectos / Ingeniero Administrativo / Desarrollador Full Stack</span>
         </h2>
       </div>
 
