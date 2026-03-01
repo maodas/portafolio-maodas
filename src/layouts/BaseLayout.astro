@@ -2,6 +2,14 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+
+// Props opcionales para título y descripción
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = 'maodas.online - Portafolio de Mao Das', description = 'Portafolio personal de Mao Das, Desarrollador Full Stack y Analista de Datos.' } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -9,68 +17,57 @@ import Footer from '../components/Footer.astro';
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>maodas.online - Presentación Digital</title>
   
-  <!-- Meta tags SEO -->
-  <meta name="description" content="Portafolio personal de Mao Das - Desarrollador Full Stack & Analista de Datos. Proyectos, experiencia y blog técnico." />
-  <meta name="keywords" content="desarrollo web, analista de datos, full stack, portafolio, proyectos" />
-  <meta name="author" content="Mao Das" />
+  <!-- Título y descripción dinámicos -->
+  <title>{title}</title>
+  <meta name="description" content={description} />
   
-  <!-- Open Graph -->
-  <meta property="og:title" content="maodas.online - Portafolio Digital" />
-  <meta property="og:description" content="Portafolio personal de Mao Das - Desarrollador Full Stack & Analista de Datos" />
+  <!-- Open Graph / Redes sociales -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://maodas.online" />
   <meta property="og:image" content="https://maodas.online/og-image.jpg" />
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="maodas.online - Portafolio Digital" />
-  <meta name="twitter:description" content="Portafolio personal de Mao Das - Desarrollador Full Stack & Analista de Datos" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
   
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="alternate icon" href="/favicon.ico" />
   
-  <!-- Fuentes -->
+  <!-- Fuentes de Google -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <!-- ========== GOOGLE ANALYTICS ========== -->
+  <!-- Reemplaza G-XXXXXXXXXX con tu Measurement ID real -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-6QEYND46L7');
+  </script>
+  <!-- ====================================== -->
 </head>
 <body class="font-sans bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
-  
-  <!-- Header -->
   <Header />
-  
-  <!-- Contenido principal -->
   <main class="min-h-screen">
     <slot />
   </main>
-  
-  <!-- Footer -->
   <Footer />
   
-  <!-- Script para tema oscuro -->
+  <!-- Script para tema oscuro (se mantiene) -->
   <script>
-    // Inicializar tema
     if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
     }
-    
-    // Smooth scroll para enlaces internos
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (this: HTMLAnchorElement, e: Event) {
-        e.preventDefault();
-        const href = this.getAttribute('href');
-        const target = href ? document.querySelector(href) : null;
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
   </script>
 </body>
 </html>
