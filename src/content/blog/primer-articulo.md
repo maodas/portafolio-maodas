@@ -1,54 +1,18 @@
----
-title: 'Mi primer artículo en el blog'
-description: 'Una introducción a mi blog personal y lo que compartiré aquí sobre tecnología, desarrollo y análisis de datos'
-publishDate: 2024-01-15
-category: 'Personal'
-author: 'Mao Das'
-tags: ['bienvenida', 'blog', 'presentación']
-featured: true
-readTime: 4
----
+# Bitácora de un Salto al Vacío (Con Paracaídas de Código)
 
-# ¡Bienvenidos a mi blog!
+**Fecha:** 20 de enero de 2026  
+**Estado emocional:** Optimista, con un toque de "ayuda, por favor".
 
-Este es el primer artículo de mi blog personal, donde compartiré mis experiencias, aprendizajes y proyectos relacionados con el mundo de la tecnología.
+### El arte de prepararse para el apocalipsis (laboral)
 
-## ¿Qué encontrarás aquí?
+Dicen que las mejores ideas nacen de la inspiración; las mías, generalmente, nacen de la necesidad y de un cronómetro que hace tictac en el fondo. Esta página no es solo un despliegue de sintaxis y diseño, sino el resultado directo de una realidad que muchos conocemos: trabajar en un proyecto que se encuentra en ese limbo existencial donde nadie dice que se acaba, pero nadie confirma que sigue. Aunque la ilusión de la extensión es lo último que se pierde, he decidido que **"esperar lo mejor, pero prepararse para lo peor"** no es solo un refrán, sino mi plan de negocios actual.
 
-He creado este espacio con varios objetivos:
+Así que, aquí estamos. Ante la duda oficial y el silencio administrativo, he preferido construir mi propia respuesta en forma de servidor, base de datos y unas cuantas líneas de código.
 
-### 1. **Tutoriales técnicos**
-Compartiré guías paso a paso sobre tecnologías que uso:
-- Desarrollo con **React**, **Node.js** y **Astro**
-- Análisis de datos con **Python** y **SQL**
-- Automatización de procesos con **n8n** y otras herramientas
+### El mito del "Cartón" vs. La Realidad
 
-### 2. **Experiencias personales**
-Relataré mis vivencias en el mundo laboral:
-- Coordinación de equipos de desarrollo
-- Gestión de proyectos digitales
-- Desafíos y soluciones en el día a día
+En nuestra querida sociedad guatemalteca, parece que si no tienes un título colgado en la pared, tus habilidades son un secreto de estado o una leyenda urbana. Mi realidad ha sido esa: una pelea constante contra el sistema del "cartón". Por azares del destino (y porque la vida a veces tiene un sentido del humor bastante retorcido), sigo en el proceso de titularme. 
 
-### 3. **Reflexiones sobre tecnología**
-Analizaré tendencias, herramientas y metodologías:
-- Metodologías ágiles
-- Arquitectura de software
-- Inteligencia Artificial y su impacto
+Sin embargo, me he dado cuenta de que, aunque el título todavía está "en el horno", mi capacidad para resolver incendios técnicos y abordar situaciones complejas no necesita sello de la universidad para funcionar. Esta página es mi declaración de principios: si el mercado busca un papel, yo le ofrezco resultados, experiencia y la terquedad necesaria para salir adelante. 
 
-## Próximos artículos
-
-En las siguientes semanas publicaré contenido sobre:
-
-- Cómo construir un blog como este con **Astro** y **Tailwind CSS**
-- Automatización de reportes con Python
-- Guía de estilos para desarrolladores
-
-## Un poco sobre mí
-
-Para quienes no me conocen, soy **Mao Das**, Desarrollador Full Stack y Analista de Datos con más de 5 años de experiencia. Me apasiona crear soluciones que resuelvan problemas reales y compartir conocimiento con la comunidad.
-
----
-
-*Gracias por leer. ¡Nos leemos pronto!*
-
-![Imagen de bienvenida](/blog/images/bienvenida.jpg)
+Acompáñenme en esta travesía para ver si el futuro me depara una nueva oportunidad laboral o si, al menos, aprendo a diseñar botones que no se muevan de lugar en dispositivos móviles. **¡Bienvenidos!**
