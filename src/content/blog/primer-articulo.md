@@ -1,18 +1,29 @@
-# Bitácora de un Salto al Vacío (Con Paracaídas de Código)
+---
+title: 'Bitácora de un Salto al Vacio'
+description: 'Aprende a construir sitios rápidos con Astro'
+publishDate: 2026-01-20
+category: 'Personal'
+tags: ['Personal', 'Desarrollo']
+featured: true
+readTime: 3
+---
 
-**Fecha:** 20 de enero de 2026  
-**Estado emocional:** Optimista, con un toque de "ayuda, por favor".
+## El motor de la necesidad
 
-### El arte de prepararse para el apocalipsis (laboral)
+Esta página nace de una necesidad... **la necesidad de tener empleo.**
 
-Dicen que las mejores ideas nacen de la inspiración; las mías, generalmente, nacen de la necesidad y de un cronómetro que hace tictac en el fondo. Esta página no es solo un despliegue de sintaxis y diseño, sino el resultado directo de una realidad que muchos conocemos: trabajar en un proyecto que se encuentra en ese limbo existencial donde nadie dice que se acaba, pero nadie confirma que sigue. Aunque la ilusión de la extensión es lo último que se pierde, he decidido que **"esperar lo mejor, pero prepararse para lo peor"** no es solo un refrán, sino mi plan de negocios actual.
+Suena crudo, pero es la realidad. Actualmente, el proyecto donde laboro se encuentra en ese limbo existencial donde el cierre es un secreto a voces; no es "oficial", pero tampoco hay una respuesta clara de extensión. 
 
-Así que, aquí estamos. Ante la duda oficial y el silencio administrativo, he preferido construir mi propia respuesta en forma de servidor, base de datos y unas cuantas líneas de código.
+Y aunque la ilusión de continuar no se ha esfumado del todo, he decidido que es mucho mejor **prepararme para lo peor, mientras sigo esperando lo mejor**. Es así como nace este espacio: entre el tictac de un cronómetro laboral y unas cuantas líneas de código.
 
-### El mito del "Cartón" vs. La Realidad
+<br />
 
-En nuestra querida sociedad guatemalteca, parece que si no tienes un título colgado en la pared, tus habilidades son un secreto de estado o una leyenda urbana. Mi realidad ha sido esa: una pelea constante contra el sistema del "cartón". Por azares del destino (y porque la vida a veces tiene un sentido del humor bastante retorcido), sigo en el proceso de titularme. 
+## El mito del "cartón" en Guatemala
 
-Sin embargo, me he dado cuenta de que, aunque el título todavía está "en el horno", mi capacidad para resolver incendios técnicos y abordar situaciones complejas no necesita sello de la universidad para funcionar. Esta página es mi declaración de principios: si el mercado busca un papel, yo le ofrezco resultados, experiencia y la terquedad necesaria para salir adelante. 
+Además, este proyecto intenta cubrir un área que en nuestra sociedad guatemalteca es dolorosamente latente: **el mito del "cartón"**. Parece que, si no tienes el título colgado en la sala, tus capacidades técnicas son invisibles.
 
-Acompáñenme en esta travesía para ver si el futuro me depara una nueva oportunidad laboral o si, al menos, aprendo a diseñar botones que no se muevan de lugar en dispositivos móviles. **¡Bienvenidos!**
+Mi realidad ha sido esa; por azares de la vida (y quizás por un sentido del humor retorcido del destino), sigo en el proceso de titularme. Lamentablemente, aún no tengo ese trozo de papel que me acredite legalmente como "experto", pero sé que mi experiencia y mi forma de abordar cada situación —por compleja o incendiaria que sea— me harán salir adelante.
+
+Así que, los invito a que me acompañen a ver qué me depara el futuro y, de paso, ver si pescamos una **nueva oportunidad laboral** en el camino.
+
+**¡Bienvenidos!**
