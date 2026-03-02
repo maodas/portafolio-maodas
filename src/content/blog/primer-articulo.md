@@ -20,9 +20,9 @@ Y aunque la ilusión de continuar no se ha esfumado del todo, he decidido que es
 
 ## El mito del "cartón" en Guatemala
 
-Además, este proyecto intenta cubrir un área que en nuestra sociedad guatemalteca es dolorosamente latente: **el mito del "cartón"**. Parece que, si no tienes el título colgado en la sala, tus capacidades técnicas son invisibles.
+Además, este proyecto intenta cubrir un área que en nuestra sociedad guatemalteca es dolorosamente latente: **el mito del "cartón"**. Parece que, si no tienes el título colgado, tus capacidades técnicas son invisibles.
 
-Mi realidad ha sido esa; por azares de la vida (y quizás por un sentido del humor retorcido del destino), sigo en el proceso de titularme. Lamentablemente, aún no tengo ese trozo de papel que me acredite legalmente como "experto", pero sé que mi experiencia y mi forma de abordar cada situación —por compleja o incendiaria que sea— me harán salir adelante.
+Mi realidad ha sido esa; por azares de la vida, sigo en el proceso de titularme. Aún no tengo ese "papel" que me acredite legalmente como "experto", pero sé que mi experiencia y mi forma de abordar cada situación —por compleja o incendiaria que sea— me harán salir adelante.
 
 Así que, los invito a que me acompañen a ver qué me depara el futuro y, de paso, ver si pescamos una **nueva oportunidad laboral** en el camino.
 
