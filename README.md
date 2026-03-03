@@ -1,43 +1,63 @@
-# Astro Starter Kit: Minimal
+# Caracteristicas
 
-```sh
-npm create astro@latest -- --template minimal
+``` -Diseño minimalista pero atractivo, con animaciones sutiles.
+
+    -Modo oscuro/claro persistente.
+
+    -Secciones completas: Hero, Sobre mí, Experiencia laboral, Portafolio con filtros, Blog técnico y Contacto.
+
+    -Blog integrado con Content Collections (Markdown/MDX), soporte para imágenes y vídeos.
+
+    -Formulario de contacto funcional que guarda los mensajes en Google Sheets y envía copia por correo.
+
+    -Totalmente responsive (móvil, tablet, escritorio).
+
+    -Desplegado en Render con dominio personalizado y SSL automático.
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+# Tecnologias
+``` -Framework: Astro (generación de sitios estáticos, islands architecture)
 
-## 🚀 Project Structure
+    -Estilos: Tailwind CSS + modo oscuro
 
-Inside of your Astro project, you'll see the following folders and files:
+    -Lenguaje: TypeScript
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+    -Blog: Content Collections + MDX
+
+    -Formulario: Google Apps Script (integración con Sheets y envío de correos)
+
+    -Despliegue: Render (Static Site)
 ```
+# Desarrollo Local
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Clonar el repositorio
+git clone https://github.com/maodas/portafolio-maodas.git
+cd portafolio-maodas
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Instalar dependencias
+npm install
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Iniciar servidor de desarrollo
+npm run dev
 
-## 🧞 Commands
+El sitio estará disponible en http://localhost:4321.
 
-All commands are run from the root of the project, from a terminal:
+# Construcción para Producción
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+npm run build
+Los archivos estáticos se generan en la carpeta dist/.
 
-## 👀 Want to learn more?
+# Despliege en Render
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Cada push a la rama main activa automáticamente un despliegue en Render. La configuración incluye:
+
+    Build Command: npm run build
+
+    Publish Directory: dist
+
+    Node Version: 20.11.0 (variable de entorno)
+
+Dominio personalizado: maodas.online
+
+# Licencia
+Este proyecto es de código abierto bajo la licencia MIT. Puedes usarlo como inspiración para tu propio portafolio.
