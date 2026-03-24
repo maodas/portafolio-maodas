@@ -1,14 +1,17 @@
 ---
 // Componente Modal para seleccionar idioma del CV
+import { useTranslations } from '../i18n/ui';
+
+const lang = Astro.currentLocale || 'es';
+const t = useTranslations(lang as any);
 ---
 
 <div id="cv-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/50 backdrop-blur-sm transition-opacity">
   <div class="bg-white dark:bg-gray-800 rounded-2xl max-w-md w-full p-8 shadow-2xl transform transition-all scale-95 opacity-0" id="modal-content">
-    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Seleccionar CV / Select CV</h3>
-    <p class="text-gray-600 dark:text-gray-300 mb-6">Elige el idioma para descargar / Choose language to download:</p>
+    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">{t('cv.modal.title')}</h3>
+    <p class="text-gray-600 dark:text-gray-300 mb-6">{t('cv.modal.desc')}</p>
     
     <div class="flex flex-col sm:flex-row gap-4">
-      <!-- Ambos botones ahora tienen el mismo estilo azul con hover -->
       <a href="/cv-Marcos_Rodas-es.pdf" download class="flex-1 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-center transition-colors">
         🇬🇹 Español
       </a>
@@ -18,19 +21,17 @@
     </div>
     
     <button id="close-modal" class="mt-6 w-full px-4 py-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 transition-colors">
-      Cerrar / Close
+      {t('cv.modal.close')}
     </button>
   </div>
 </div>
 
 <script>
-  // Esperamos a que el DOM esté listo para evitar errores de elementos no encontrados
   document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('cv-modal');
     const modalContent = document.getElementById('modal-content');
     const closeBtn = document.getElementById('close-modal');
 
-    // Función para abrir el modal (se asigna al objeto window para que sea accesible desde el botón)
     (window as any).openCVModal = function() {
       if (!modal || !modalContent) return;
       modal.classList.remove('hidden');
@@ -41,7 +42,6 @@
       }, 10);
     };
 
-    // Función para cerrar el modal
     function closeModal() {
       if (!modalContent) return;
       modalContent.classList.remove('scale-100', 'opacity-100');
@@ -54,12 +54,10 @@
       }, 300);
     }
 
-    // Event listeners
     if (closeBtn) {
       closeBtn.addEventListener('click', closeModal);
     }
 
-    // Cerrar al hacer clic fuera del contenido
     if (modal) {
       modal.addEventListener('click', (e) => {
         if (e.target === modal) {

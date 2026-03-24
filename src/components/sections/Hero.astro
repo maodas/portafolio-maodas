@@ -1,99 +1,88 @@
 ---
 // ================= SECCIÓN HERO =================
-// Propósito: Introducción principal con animaciones
+import { useTranslations } from '../../i18n/ui';
+
+const lang = Astro.currentLocale || 'es';
+const t = useTranslations(lang as any);
+const basePath = lang === 'en' ? '/en' : '';
 ---
 
 <div class="relative overflow-hidden">
-  <!-- Fondo con gradiente animado -->
   <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"></div>
-  
-  <!-- Elementos decorativos -->
   <div class="absolute top-20 left-10 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
   <div class="absolute bottom-20 right-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse delay-1000"></div>
   
-  <!-- Contenido principal -->
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
     <div class="text-center">
       
-      <!-- Badge animado -->
       <div class="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-100 to-blue-50 dark:from-blue-900/30 dark:to-blue-800/30 border border-blue-200 dark:border-blue-800 mb-8 animate-bounce">
         <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-ping"></span>
-        <span class="text-sm font-medium text-blue-700 dark:text-blue-300">🚀 Disponible para oportunidades</span>
+        <span class="text-sm font-medium text-blue-700 dark:text-blue-300">{t('hero.badge')}</span>
       </div>
 
-      <!-- Título principal -->
       <h1 class="text-5xl md:text-7xl font-bold mb-6">
-        <span class="block">Hola, soy</span>
+        <span class="block">{t('hero.greeting')}</span>
         <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
           Marcos Rodas
         </span>
       </h1>
 
-      <!-- Subtítulo con ajuste responsive -->
       <div class="relative inline-block mb-8 w-full max-w-full px-4">
         <h2 class="text-2xl md:text-3xl text-gray-600 dark:text-gray-300 font-mono">
-          <!-- Versión móvil: cada rol en una línea separada (sin animación) -->
           <span class="block md:hidden space-y-1">
-            <span class="block">Coordinador de Proyectos</span>
-            <span class="block">Ingeniero Administrativo</span>
-            <span class="block">Desarrollador Full Stack</span>
+            <span class="block">{t('hero.role1')}</span>
+            <span class="block">{t('hero.role2')}</span>
+            <span class="block">{t('hero.role3')}</span>
           </span>
-          <!-- Versión desktop: efecto máquina de escribir en una línea -->
-          <span class="hidden md:inline typing-effect">Coordinador de Proyectos / Ingeniero Administrativo / Desarrollador Full Stack</span>
+          <span class="hidden md:inline typing-effect">{t('hero.rolesCombined')}</span>
         </h2>
       </div>
 
-      <!-- Descripción -->
       <p class="text-xl text-gray-500 dark:text-gray-400 mb-10 max-w-3xl mx-auto leading-relaxed">
-        Soy un profesional multidisciplinario que conecta la estrategia de negocio con la ejecución técnica. 
-        Me especializo en gestionar proyectos de alta complejidad, utilizando la inteligencia de datos, la IA y el desarrollo de software 
-        como herramientas para optimizar recursos y automatizar la eficiencia operativa. Mi enfoque principal es garantizar la continuidad y calidad 
-        de los productos digitales en entornos de alta demanda.
+        {t('hero.description')}
       </p>
 
-      <!-- Botones de acción -->
       <div class="flex flex-wrap justify-center gap-4 mb-16">
         <a
-          href="/#projects"
+          href={`${basePath}/#projects`}
           class="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
         >
-          <span class="relative z-10">✨ Ver Portafolio</span>
+          <span class="relative z-10">{t('hero.btn.portfolio')}</span>
           <div class="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-800 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </a>
         
         <a
-          href="/#contact"
+          href={`${basePath}/#contact`}
           class="px-8 py-4 border-2 border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400 font-semibold rounded-xl hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors"
         >
-          📬 Contactar
+          {t('hero.btn.contact')}
         </a>
         
         <a
           href="#"
-          onclick="event.preventDefault(); openCVModal(); return false;"
+          onclick="event.preventDefault(); window.openCVModal && window.openCVModal(); return false;"
           class="px-8 py-4 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-semibold rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors flex items-center gap-2"
         >
-          📄 Descargar CV
+          {t('hero.btn.cv')}
         </a>
       </div>
 
-      <!-- Estadísticas -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
         <div class="text-center p-6 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-700">
           <div class="text-3xl font-bold text-blue-600 dark:text-blue-400">15+</div>
-          <div class="text-gray-600 dark:text-gray-400">Años de Trayectoria</div>
+          <div class="text-gray-600 dark:text-gray-400">{t('hero.stat1.label')}</div>
         </div>
         <div class="text-center p-6 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-700">
           <div class="text-3xl font-bold text-purple-600 dark:text-purple-400">10+</div>
-          <div class="text-gray-600 dark:text-gray-400">Equipos Coordinados</div>
+          <div class="text-gray-600 dark:text-gray-400">{t('hero.stat2.label')}</div>
         </div>
         <div class="text-center p-6 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-700">
           <div class="text-3xl font-bold text-green-600 dark:text-green-400">30%</div>
-          <div class="text-gray-600 dark:text-gray-400">Mejora Operativa</div>
+          <div class="text-gray-600 dark:text-gray-400">{t('hero.stat3.label')}</div>
         </div>
         <div class="text-center p-6 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-200 dark:border-gray-700">
           <div class="text-3xl font-bold text-orange-600 dark:text-orange-400">∞</div>
-          <div class="text-gray-600 dark:text-gray-400">Capacidad de Adaptación</div>
+          <div class="text-gray-600 dark:text-gray-400">{t('hero.stat4.label')}</div>
         </div>
       </div>
     </div>
@@ -101,7 +90,6 @@
 </div>
 
 <style>
-  /* Animación typing effect */
   .typing-effect {
     overflow: hidden;
     border-right: 3px solid #3b82f6;

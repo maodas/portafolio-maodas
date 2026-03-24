@@ -1,31 +1,30 @@
 ---
 // ================= SECCIÓN CONTACTO =================
-// Propósito: Formulario de contacto funcional que envía a Google Sheets + Email
-// Los datos se guardan en tu hoja de cálculo y te llega una copia por correo
+import { useTranslations } from '../../i18n/ui';
+
+const lang = Astro.currentLocale || 'es';
+const t = useTranslations(lang as any);
 ---
 
 <div class="max-w-7xl mx-auto">
   
-  <!-- Encabezado -->
   <div class="text-center mb-16">
     <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-      ¿Hablamos? <span class="text-blue-600 dark:text-blue-400">Contacto</span>
+      {t('contact.title1')} <span class="text-blue-600 dark:text-blue-400">{t('contact.title2')}</span>
     </h2>
     <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
     <p class="text-xl text-gray-600 dark:text-gray-300 mt-6 max-w-3xl mx-auto">
-      ¿Tienes un proyecto en mente? ¿Quieres colaborar? Estoy a un mensaje de distancia.
+      {t('contact.desc')}
     </p>
   </div>
 
   <div class="grid md:grid-cols-2 gap-12">
     
-    <!-- ===== COLUMNA IZQUIERDA: INFORMACIÓN DE CONTACTO ===== -->
     <div class="space-y-8">
       <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl border border-gray-100 dark:border-gray-700">
-        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Información de contacto</h3>
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">{t('contact.info.title')}</h3>
         
         <div class="space-y-6">
-          <!-- Email 1 -->
           <div class="flex items-center group">
             <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
               <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -37,12 +36,9 @@
               <a href="mailto:maodas00@gmail.com" class="text-lg font-semibold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400">
                 maodas00@gmail.com
               </a>
-              <br>
-              
             </div>
           </div>
 
-          <!-- Ubicación -->
           <div class="flex items-center group">
             <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
               <svg class="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -51,12 +47,11 @@
               </svg>
             </div>
             <div>
-              <p class="text-sm text-gray-500 dark:text-gray-400">Ubicación</p>
-              <p class="text-lg font-semibold text-gray-900 dark:text-white">Guatemala, Guatemala</p>
+              <p class="text-sm text-gray-500 dark:text-gray-400">{t('contact.info.location')}</p>
+              <p class="text-lg font-semibold text-gray-900 dark:text-white">{t('contact.info.location.val')}</p>
             </div>
           </div>
 
-          <!-- Zona horaria -->
           <div class="flex items-center group">
             <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform">
               <svg class="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -64,15 +59,14 @@
               </svg>
             </div>
             <div>
-              <p class="text-sm text-gray-500 dark:text-gray-400">Zona horaria</p>
-              <p class="text-lg font-semibold text-gray-900 dark:text-white">UTC-6 (Centroamérica)</p>
+              <p class="text-sm text-gray-500 dark:text-gray-400">{t('contact.info.timezone')}</p>
+              <p class="text-lg font-semibold text-gray-900 dark:text-white">{t('contact.info.timezone.val')}</p>
             </div>
           </div>
         </div>
 
-        <!-- Redes sociales -->
         <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
-          <h4 class="font-semibold text-gray-900 dark:text-white mb-4">Redes sociales</h4>
+          <h4 class="font-semibold text-gray-900 dark:text-white mb-4">{t('contact.social.title')}</h4>
           <div class="flex space-x-4">
             <a href="https://github.com/maodas" target="_blank" class="w-12 h-12 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
               <svg class="w-6 h-6 text-gray-700 dark:text-gray-300" fill="currentColor" viewBox="0 0 24 24">
@@ -93,33 +87,29 @@
         </div>
       </div>
 
-      <!-- Disponibilidad -->
       <div class="bg-gradient-to-r from-green-500 to-teal-500 rounded-2xl p-8 text-white">
         <div class="flex items-center mb-4">
           <div class="w-3 h-3 bg-white rounded-full animate-pulse mr-3"></div>
-          <span class="font-semibold">Disponible para oportunidades</span>
+          <span class="font-semibold">{t('contact.availability.title')}</span>
         </div>
         <p class="mb-4 opacity-90">
-          Actualmente estoy buscando nuevos proyectos y oportunidades laborales. 
-          Si tienes una idea, propuesta o simplemente quieres conversar, ¡escríbeme!
+          {t('contact.availability.desc')}
         </p>
         <div class="flex items-center">
           <span class="text-2xl mr-2">⏱️</span>
-          <span>Respuesta en menos de 24 horas</span>
+          <span>{t('contact.availability.response')}</span>
         </div>
       </div>
     </div>
 
-    <!-- ===== COLUMNA DERECHA: FORMULARIO DE CONTACTO ===== -->
     <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl border border-gray-100 dark:border-gray-700">
-      <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Envíame un mensaje</h3>
+      <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">{t('contact.form.title')}</h3>
       
-      <!-- IMPORTANTE: El formulario ahora usa tu URL de Google Apps Script -->
-      <form id="contactForm" class="space-y-6">
-        <!-- Nombre -->
+      <!-- DATA TAGS para i18n js -->
+      <form id="contactForm" class="space-y-6" data-t-sending={t('contact.form.sending')} data-t-success={t('contact.form.success')} data-t-error={t('contact.form.error')}>
         <div>
           <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-            Nombre completo *
+            {t('contact.form.name')}
           </label>
           <input 
             type="text" 
@@ -127,14 +117,13 @@
             name="name" 
             required
             class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 text-gray-900 dark:text-white"
-            placeholder="Tu nombre"
+            placeholder={t('contact.form.name.ph')}
           >
         </div>
 
-        <!-- Email -->
         <div>
           <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-            Correo electrónico *
+            {t('contact.form.email')}
           </label>
           <input 
             type="email" 
@@ -146,24 +135,22 @@
           >
         </div>
 
-        <!-- Teléfono (NUEVO) -->
         <div>
           <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-            Teléfono (opcional - para Contactar por WhatsApp)
+            {t('contact.form.phone')}
           </label>
           <input 
             type="tel" 
             id="phone" 
             name="phone" 
             class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 text-gray-900 dark:text-white"
-            placeholder="Ej: +502 1234 5678"
+            placeholder={t('contact.form.phone.ph')}
           >
         </div>
 
-        <!-- Asunto -->
         <div>
           <label for="subject" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-            Asunto *
+            {t('contact.form.subject')}
           </label>
           <input 
             type="text" 
@@ -171,14 +158,13 @@
             name="subject" 
             required
             class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 text-gray-900 dark:text-white"
-            placeholder="¿De qué quieres hablar?"
+            placeholder={t('contact.form.subject.ph')}
           >
         </div>
 
-        <!-- Mensaje -->
         <div>
           <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-            Mensaje *
+            {t('contact.form.message')}
           </label>
           <textarea 
             id="message" 
@@ -186,65 +172,70 @@
             rows="5" 
             required
             class="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 text-gray-900 dark:text-white resize-none"
-            placeholder="Escribe tu mensaje aquí..."
+            placeholder={t('contact.form.message.ph')}
           ></textarea>
         </div>
 
-        <!-- Botón de envío -->
         <button 
           type="submit" 
           class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold py-4 px-6 rounded-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
         >
-          Enviar mensaje
+          {t('contact.form.submit')}
         </button>
 
-        <!-- Mensaje de resultado (éxito/error) -->
         <div id="result" class="text-center mt-4"></div>
       </form>
     </div>
   </div>
 </div>
 
-<!-- ===== SCRIPT PARA ENVÍO DEL FORMULARIO ===== -->
 <script>
-  const form = document.getElementById('contactForm');
-  const resultDiv = document.getElementById('result');
+  const form = document.getElementById('contactForm') as HTMLFormElement;
+  const resultDiv = document.getElementById('result') as HTMLElement;
 
-  // ⚠️ IMPORTANTE: Esta es TU URL de Google Apps Script (ya la tienes)
   const scriptURL = 'https://script.google.com/macros/s/AKfycbyySduCPi6uPgBy_7u0dVMU8dHAI39WoB4i_fy_ZjZqPiJ2RRI5lJTzSh4U315Em-w/exec';
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault(); // Evita que la página se recargue
-    
-    // Mostrar estado de carga
-    resultDiv.innerHTML = '<div class="p-4 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-lg">Enviando...</div>';
-    
-    // Recoger datos del formulario
-    const formData = {
-      name: document.getElementById('name').value,
-      email: document.getElementById('email').value,
-      phone: document.getElementById('phone')?.value || '', // Si no hay teléfono, envía vacío
-      subject: document.getElementById('subject').value,
-      message: document.getElementById('message').value
-    };
-    
-    try {
-      const response = await fetch(scriptURL, {
-        method: 'POST',
-        mode: 'no-cors', // Importante para Google Apps Script (permite CORS)
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData)
-      });
+  if (form) {
+    const tSending = form.getAttribute('data-t-sending') || 'Enviando...';
+    const tSuccess = form.getAttribute('data-t-success') || '¡Enviado!';
+    const tError = form.getAttribute('data-t-error') || 'Error al enviar.';
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
       
-      // Como usamos no-cors, no podemos leer la respuesta, pero asumimos éxito si no hay error de red
-      resultDiv.innerHTML = '<div class="p-4 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-lg">¡Mensaje enviado con éxito! Te contactaré pronto.</div>';
-      form.reset(); // Limpiar el formulario
+      if (resultDiv) {
+        resultDiv.innerHTML = `<div class="p-4 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-lg">${tSending}</div>`;
+      }
       
-    } catch (error) {
-      resultDiv.innerHTML = '<div class="p-4 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-lg">Error al enviar. Por favor intenta de nuevo o escríbeme directamente a mi correo.</div>';
-      console.error('Error:', error);
-    }
-  });
+      const formData = {
+        name: (document.getElementById('name') as HTMLInputElement).value,
+        email: (document.getElementById('email') as HTMLInputElement).value,
+        phone: (document.getElementById('phone') as HTMLInputElement)?.value || '',
+        subject: (document.getElementById('subject') as HTMLInputElement).value,
+        message: (document.getElementById('message') as HTMLInputElement).value
+      };
+      
+      try {
+        const response = await fetch(scriptURL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData)
+        });
+        
+        if (resultDiv) {
+          resultDiv.innerHTML = `<div class="p-4 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-lg">${tSuccess}</div>`;
+        }
+        form.reset();
+        
+      } catch (error) {
+        if (resultDiv) {
+          resultDiv.innerHTML = `<div class="p-4 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-lg">${tError}</div>`;
+        }
+        console.error('Error:', error);
+      }
+    });
+  }
 </script>

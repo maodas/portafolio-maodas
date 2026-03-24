@@ -1,11 +1,14 @@
 ---
 // ================= SECCIÓN HABILIDADES =================
-// Propósito: Mostrar habilidades técnicas y blandas
 import { Icon } from 'astro-icon/components';
+import { useTranslations } from '../../i18n/ui';
+
+const lang = Astro.currentLocale || 'es';
+const t = useTranslations(lang as any);
 
 const categories = [
   {
-    title: "Frontend",
+    title: t('skills.cat1'),
     icon: "lucide:layout",
     color: "blue",
     skills: [
@@ -16,7 +19,7 @@ const categories = [
     ]
   },
   {
-    title: "Backend",
+    title: t('skills.cat2'),
     icon: "lucide:server",
     color: "purple",
     skills: [
@@ -24,11 +27,11 @@ const categories = [
       { name: "PHP", icon: "lucide:file-code" },
       { name: "Python", icon: "lucide:terminal" },
       { name: "SQL", icon: "lucide:database" },
-      { name: "Gestión BD", icon: "lucide:hard-drive" }
+      { name: t('skills.s.db'), icon: "lucide:hard-drive" }
     ]
   },
   {
-    title: "Tools / Soft Skills",
+    title: t('skills.cat3'),
     icon: "lucide:wrench",
     color: "green",
     skills: [
@@ -38,18 +41,17 @@ const categories = [
       { name: "CI/CD", icon: "lucide:workflow" },
       { name: "Scrum", icon: "lucide:kanban" },
       { name: "PowerBI / Tableau", icon: "lucide:bar-chart-2" },
-      { name: "Liderazgo", icon: "lucide:users" },
-      { name: "Comunicación", icon: "lucide:message-square" },
-      { name: "Resolución", icon: "lucide:puzzle" },
-      { name: "Tiempo", icon: "lucide:clock" },
-      { name: "Adaptabilidad", icon: "lucide:refresh-cw" },
-      { name: "Creatividad", icon: "lucide:palette" },
-      { name: "Análisis", icon: "lucide:activity" }
+      { name: t('skills.s.leadership'), icon: "lucide:users" },
+      { name: t('skills.s.comm'), icon: "lucide:message-square" },
+      { name: t('skills.s.resolution'), icon: "lucide:puzzle" },
+      { name: t('skills.s.time'), icon: "lucide:clock" },
+      { name: t('skills.s.adapt'), icon: "lucide:refresh-cw" },
+      { name: t('skills.s.creative'), icon: "lucide:palette" },
+      { name: t('skills.s.analysis'), icon: "lucide:activity" }
     ]
   }
 ];
 
-// Helper estático para colores en Tailwind
 const colorMap: Record<string, string> = {
   blue: "bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 group-hover:bg-blue-600 group-hover:text-white dark:group-hover:bg-blue-500",
   purple: "bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400 group-hover:bg-purple-600 group-hover:text-white dark:group-hover:bg-purple-500",
@@ -65,18 +67,16 @@ const headerColorMap: Record<string, string> = {
 
 <div class="max-w-7xl mx-auto">
   
-  <!-- Encabezado -->
   <div class="text-center mb-16">
     <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-      Mis <span class="text-blue-600 dark:text-blue-400">Habilidades</span>
+      {t('skills.title1')} <span class="text-blue-600 dark:text-blue-400">{t('skills.title2')}</span>
     </h2>
     <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
     <p class="text-xl text-gray-600 dark:text-gray-300 mt-6 max-w-3xl mx-auto">
-      Tecnologías y herramientas que utilizo para integrar la estrategia de negocio con soluciones técnicas eficientes.
+      {t('skills.desc')}
     </p>
   </div>
 
-  <!-- Categorías de habilidades -->
   <div class="space-y-16">
     {categories.map((category) => (
       <div>
