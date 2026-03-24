@@ -1,6 +1,66 @@
 ---
 // ================= SECCIÓN HABILIDADES =================
 // Propósito: Mostrar habilidades técnicas y blandas
+import { Icon } from 'astro-icon/components';
+
+const categories = [
+  {
+    title: "Frontend",
+    icon: "lucide:layout",
+    color: "blue",
+    skills: [
+      { name: "HTML / CSS", icon: "lucide:file-code-2" },
+      { name: "JavaScript", icon: "lucide:file-json-2" },
+      { name: "TypeScript", icon: "lucide:file-type-2" },
+      { name: "React", icon: "lucide:atom" }
+    ]
+  },
+  {
+    title: "Backend",
+    icon: "lucide:server",
+    color: "purple",
+    skills: [
+      { name: "Node.js", icon: "lucide:hexagon" },
+      { name: "PHP", icon: "lucide:file-code" },
+      { name: "Python", icon: "lucide:terminal" },
+      { name: "SQL", icon: "lucide:database" },
+      { name: "Gestión BD", icon: "lucide:hard-drive" }
+    ]
+  },
+  {
+    title: "Tools / Soft Skills",
+    icon: "lucide:wrench",
+    color: "green",
+    skills: [
+      { name: "Git", icon: "lucide:git-branch" },
+      { name: "AWS", icon: "lucide:cloud" },
+      { name: "Linux", icon: "lucide:terminal-square" },
+      { name: "CI/CD", icon: "lucide:workflow" },
+      { name: "Scrum", icon: "lucide:kanban" },
+      { name: "PowerBI / Tableau", icon: "lucide:bar-chart-2" },
+      { name: "Liderazgo", icon: "lucide:users" },
+      { name: "Comunicación", icon: "lucide:message-square" },
+      { name: "Resolución", icon: "lucide:puzzle" },
+      { name: "Tiempo", icon: "lucide:clock" },
+      { name: "Adaptabilidad", icon: "lucide:refresh-cw" },
+      { name: "Creatividad", icon: "lucide:palette" },
+      { name: "Análisis", icon: "lucide:activity" }
+    ]
+  }
+];
+
+// Helper estático para colores en Tailwind
+const colorMap: Record<string, string> = {
+  blue: "bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 group-hover:bg-blue-600 group-hover:text-white dark:group-hover:bg-blue-500",
+  purple: "bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400 group-hover:bg-purple-600 group-hover:text-white dark:group-hover:bg-purple-500",
+  green: "bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400 group-hover:bg-green-600 group-hover:text-white dark:group-hover:bg-green-500"
+};
+
+const headerColorMap: Record<string, string> = {
+  blue: "bg-blue-100 text-blue-600 dark:bg-blue-900/40 dark:text-blue-400",
+  purple: "bg-purple-100 text-purple-600 dark:bg-purple-900/40 dark:text-purple-400",
+  green: "bg-green-100 text-green-600 dark:bg-green-900/40 dark:text-green-400"
+};
 ---
 
 <div class="max-w-7xl mx-auto">
@@ -17,248 +77,29 @@
   </div>
 
   <!-- Categorías de habilidades -->
-  <div class="space-y-12">
-    
-    <!-- Frontend -->
-    <div>
-      <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
-        <span class="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center mr-3">
-          <span class="text-blue-600 dark:text-blue-400">🌐</span>
-        </span>
-        Desarrollo Full-Stack
-      </h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-          <div class="flex justify-between items-center mb-2">
-            <span class="font-semibold text-gray-900 dark:text-white">JS (Node.js / React)</span>
-            <span class="text-sm text-gray-600 dark:text-gray-400">81%</span>
-          </div>
-          <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-            <div class="bg-blue-600 h-2.5 rounded-full" style="width: 81%"></div>
-          </div>
-        </div>
-        <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-          <div class="flex justify-between items-center mb-2">
-            <span class="font-semibold text-gray-900 dark:text-white">TypeScript</span>
-            <span class="text-sm text-gray-600 dark:text-gray-400">63%</span>
-          </div>
-          <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-            <div class="bg-blue-600 h-2.5 rounded-full" style="width: 63%"></div>
-          </div>
-        </div>
-        <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-          <div class="flex justify-between items-center mb-2">
-            <span class="font-semibold text-gray-900 dark:text-white">PHP</span>
-            <span class="text-sm text-gray-600 dark:text-gray-400">70%</span>
-          </div>
-          <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-            <div class="bg-blue-600 h-2.5 rounded-full" style="width: 70%"></div>
-          </div>
-        </div>
-        <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-          <div class="flex justify-between items-center mb-2">
-            <span class="font-semibold text-gray-900 dark:text-white">HTML/CSS</span>
-            <span class="text-sm text-gray-600 dark:text-gray-400">91%</span>
-          </div>
-          <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-            <div class="bg-blue-600 h-2.5 rounded-full" style="width: 91%"></div>
-          </div>
-        </div>
-        <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-          <div class="flex justify-between items-center mb-2">
-            <span class="font-semibold text-gray-900 dark:text-white">Git</span>
-            <span class="text-sm text-gray-600 dark:text-gray-400">75%</span>
-          </div>
-          <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-            <div class="bg-blue-600 h-2.5 rounded-full" style="width: 75%"></div>
-          </div>
-        </div>
-        <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-          <div class="flex justify-between items-center mb-2">
-            <span class="font-semibold text-gray-900 dark:text-white">Python</span>
-            <span class="text-sm text-gray-600 dark:text-gray-400">80%</span>
-          </div>
-          <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-            <div class="bg-blue-600 h-2.5 rounded-full" style="width: 80%"></div>
-          </div>
+  <div class="space-y-16">
+    {categories.map((category) => (
+      <div>
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">
+          <span class={`w-12 h-12 rounded-xl flex items-center justify-center mr-4 shadow-sm ${headerColorMap[category.color]}`}>
+            <Icon name={category.icon} class="w-6 h-6" />
+          </span>
+          {category.title}
+        </h3>
+        
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-4 lg:gap-6">
+          {category.skills.map((skill) => (
+            <div class="group bg-white dark:bg-gray-800/80 p-5 md:p-6 rounded-2xl shadow-sm hover:shadow-xl border border-gray-100 dark:border-gray-700/60 flex flex-col items-center justify-center text-center transition-all duration-300 hover:-translate-y-2 backdrop-blur-sm">
+              <div class={`w-14 h-14 md:w-16 md:h-16 rounded-2xl flex items-center justify-center mb-4 transition-colors duration-300 shadow-inner ${colorMap[category.color]}`}>
+                <Icon name={skill.icon} class="w-7 h-7 md:w-8 md:h-8" />
+              </div>
+              <span class="font-semibold text-gray-900 dark:text-gray-100 text-sm md:text-base group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                {skill.name}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
-
-    <!-- Backend -->
-    <div>
-      <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
-        <span class="w-8 h-8 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mr-3">
-          <span class="text-purple-600 dark:text-purple-400">⚙️</span>
-        </span>
-        Inteligencia de Negocios & Data
-      </h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-          <div class="flex justify-between items-center mb-2">
-            <span class="font-semibold text-gray-900 dark:text-white">Análisis Estratégico</span>
-            <span class="text-sm text-gray-600 dark:text-gray-400">85%</span>
-          </div>
-          <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-            <div class="bg-purple-600 h-2.5 rounded-full" style="width: 85%"></div>
-          </div>
-        </div>
-        <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-          <div class="flex justify-between items-center mb-2">
-            <span class="font-semibold text-gray-900 dark:text-white">Visualización de Datos</span>
-            <span class="text-sm text-gray-600 dark:text-gray-400">80%</span>
-          </div>
-          <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-            <div class="bg-purple-600 h-2.5 rounded-full" style="width: 80%"></div>
-          </div>
-        </div>
-        <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-          <div class="flex justify-between items-center mb-2">
-            <span class="font-semibold text-gray-900 dark:text-white">Gestión de Bases de Datos</span>
-            <span class="text-sm text-gray-600 dark:text-gray-400">85%</span>
-          </div>
-          <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-            <div class="bg-purple-600 h-2.5 rounded-full" style="width: 85%"></div>
-          </div>
-        </div>
-        <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-          <div class="flex justify-between items-center mb-2">
-            <span class="font-semibold text-gray-900 dark:text-white">Traducción de Datos a Estrategia</span>
-            <span class="text-sm text-gray-600 dark:text-gray-400">80%</span>
-          </div>
-          <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-            <div class="bg-purple-600 h-2.5 rounded-full" style="width: 80%"></div>
-          </div>
-        </div>
-        <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-          <div class="flex justify-between items-center mb-2">
-            <span class="font-semibold text-gray-900 dark:text-white">SQL</span>
-            <span class="text-sm text-gray-600 dark:text-gray-400">75%</span>
-          </div>
-          <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-            <div class="bg-purple-600 h-2.5 rounded-full" style="width: 75%"></div>
-          </div>
-        </div>
-        <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-          <div class="flex justify-between items-center mb-2">
-            <span class="font-semibold text-gray-900 dark:text-white">PowerBi & Tableau</span>
-            <span class="text-sm text-gray-600 dark:text-gray-400">70%</span>
-          </div>
-          <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-            <div class="bg-purple-600 h-2.5 rounded-full" style="width: 70%"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Automatización y Procesos -->
-    <div>
-      <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
-        <span class="w-8 h-8 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center mr-3">
-          <span class="text-green-600 dark:text-green-400">🛠️</span>
-        </span>
-        Procesos y Automatización
-      </h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-          <div class="flex justify-between items-center mb-2">
-            <span class="font-semibold text-gray-900 dark:text-white">Gestión Águil (Scrum)</span>
-            <span class="text-sm text-gray-600 dark:text-gray-400">80%</span>
-          </div>
-          <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-            <div class="bg-green-600 h-2.5 rounded-full" style="width: 80%"></div>
-          </div>
-        </div>
-        <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-          <div class="flex justify-between items-center mb-2">
-            <span class="font-semibold text-gray-900 dark:text-white">Git</span>
-            <span class="text-sm text-gray-600 dark:text-gray-400">90%</span>
-          </div>
-          <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-            <div class="bg-green-600 h-2.5 rounded-full" style="width: 90%"></div>
-          </div>
-        </div>
-        <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-          <div class="flex justify-between items-center mb-2">
-            <span class="font-semibold text-gray-900 dark:text-white">AWS</span>
-            <span class="text-sm text-gray-600 dark:text-gray-400">70%</span>
-          </div>
-          <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-            <div class="bg-green-600 h-2.5 rounded-full" style="width: 70%"></div>
-          </div>
-        </div>
-        <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-          <div class="flex justify-between items-center mb-2">
-            <span class="font-semibold text-gray-900 dark:text-white">Linux</span>
-            <span class="text-sm text-gray-600 dark:text-gray-400">85%</span>
-          </div>
-          <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-            <div class="bg-green-600 h-2.5 rounded-full" style="width: 85%"></div>
-          </div>
-        </div>
-        <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-          <div class="flex justify-between items-center mb-2">
-            <span class="font-semibold text-gray-900 dark:text-white">CI/CD</span>
-            <span class="text-sm text-gray-600 dark:text-gray-400">75%</span>
-          </div>
-          <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-            <div class="bg-green-600 h-2.5 rounded-full" style="width: 75%"></div>
-          </div>
-        </div>
-        <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-          <div class="flex justify-between items-center mb-2">
-            <span class="font-semibold text-gray-900 dark:text-white">Render/Netlify</span>
-            <span class="text-sm text-gray-600 dark:text-gray-400">85%</span>
-          </div>
-          <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
-            <div class="bg-green-600 h-2.5 rounded-full" style="width: 85%"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Soft Skills -->
-    <div>
-      <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
-        <span class="w-8 h-8 bg-yellow-100 dark:bg-yellow-900/30 rounded-lg flex items-center justify-center mr-3">
-          <span class="text-yellow-600 dark:text-yellow-400">💡</span>
-        </span>
-        Soft Skills
-      </h3>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 text-center">
-          <span class="text-2xl mb-2 block">🎯</span>
-          <span class="font-semibold text-gray-900 dark:text-white">Liderazgo</span>
-        </div>
-        <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 text-center">
-          <span class="text-2xl mb-2 block">🤝</span>
-          <span class="font-semibold text-gray-900 dark:text-white">Trabajo en equipo</span>
-        </div>
-        <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 text-center">
-          <span class="text-2xl mb-2 block">💬</span>
-          <span class="font-semibold text-gray-900 dark:text-white">Comunicación</span>
-        </div>
-        <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 text-center">
-          <span class="text-2xl mb-2 block">🧩</span>
-          <span class="font-semibold text-gray-900 dark:text-white">Resolución problemas</span>
-        </div>
-        <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 text-center">
-          <span class="text-2xl mb-2 block">⏱️</span>
-          <span class="font-semibold text-gray-900 dark:text-white">Gestión de tiempo</span>
-        </div>
-        <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 text-center">
-          <span class="text-2xl mb-2 block">🔄</span>
-          <span class="font-semibold text-gray-900 dark:text-white">Adaptabilidad</span>
-        </div>
-        <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 text-center">
-          <span class="text-2xl mb-2 block">🎨</span>
-          <span class="font-semibold text-gray-900 dark:text-white">Creatividad</span>
-        </div>
-        <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 text-center">
-          <span class="text-2xl mb-2 block">📊</span>
-          <span class="font-semibold text-gray-900 dark:text-white">Pensamiento analítico</span>
-        </div>
-      </div>
-    </div>
+    ))}
   </div>
 </div>
