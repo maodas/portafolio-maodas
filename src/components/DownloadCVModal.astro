@@ -27,7 +27,7 @@ const t = useTranslations(lang as any);
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('astro:page-load', () => {
     const modal = document.getElementById('cv-modal');
     const modalContent = document.getElementById('modal-content');
     const closeBtn = document.getElementById('close-modal');
@@ -55,15 +55,15 @@ const t = useTranslations(lang as any);
     }
 
     if (closeBtn) {
-      closeBtn.addEventListener('click', closeModal);
+      closeBtn.onclick = closeModal;
     }
 
     if (modal) {
-      modal.addEventListener('click', (e) => {
+      modal.onclick = (e) => {
         if (e.target === modal) {
           closeModal();
         }
-      });
+      };
     }
   });
 </script>
