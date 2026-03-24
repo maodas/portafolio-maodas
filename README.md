@@ -1,63 +1,23 @@
-# Caracteristicas
+# 🚀 Portafolio Personal - Marcos Rodas (Mao Das)
 
-``` -Diseño minimalista pero atractivo, con animaciones sutiles.
+Mi portafolio profesional construido con un enfoque en rendimiento, SEO y experiencia de usuario.
 
-    -Modo oscuro/claro persistente.
+## 🛠️ Stack Tecnológico
+* **Framework:** [Astro](https://astro.build/) (Static Site Generation)
+* **Estilos:** Tailwind CSS
+* **Despliegue:** Firebase Hosting
+* **Automatización:** GitHub Actions (CI/CD)
+* **Idiomas:** i18n (Español / Inglés)
 
-    -Secciones completas: Hero, Sobre mí, Experiencia laboral, Portafolio con filtros, Blog técnico y Contacto.
+## 📦 Características
+- **Navegación Fluida:** Implementación de View Transitions para una experiencia tipo App.
+- **Formulario Inteligente:** Conectado a Google Apps Script y Google Sheets.
+- **Despliegue Automático:** Cada `push` a la rama `master` actualiza el sitio en vivo.
 
-    -Blog integrado con Content Collections (Markdown/MDX), soporte para imágenes y vídeos.
+## 🚀 Comandos Rápidos
+- `npm run dev`: Inicia el servidor de desarrollo local.
+- `npm run build`: Genera la versión estática para producción.
+- `firebase deploy`: Sube los cambios manualmente a Firebase.
 
-    -Formulario de contacto funcional que guarda los mensajes en Google Sheets y envía copia por correo.
-
-    -Totalmente responsive (móvil, tablet, escritorio).
-
-    -Desplegado en Render con dominio personalizado y SSL automático.
-```
-
-# Tecnologias
-``` -Framework: Astro (generación de sitios estáticos, islands architecture)
-
-    -Estilos: Tailwind CSS + modo oscuro
-
-    -Lenguaje: TypeScript
-
-    -Blog: Content Collections + MDX
-
-    -Formulario: Google Apps Script (integración con Sheets y envío de correos)
-
-    -Despliegue: Render (Static Site)
-```
-# Desarrollo Local
-
-## Clonar el repositorio
-git clone https://github.com/maodas/portafolio-maodas.git
-cd portafolio-maodas
-
-## Instalar dependencias
-npm install
-
-## Iniciar servidor de desarrollo
-npm run dev
-
-El sitio estará disponible en http://localhost:4321.
-
-# Construcción para Producción
-
-npm run build
-Los archivos estáticos se generan en la carpeta dist/.
-
-# Despliege en Render
-
-Cada push a la rama main activa automáticamente un despliegue en Render. La configuración incluye:
-
-    Build Command: npm run build
-
-    Publish Directory: dist
-
-    Node Version: 20.11.0 (variable de entorno)
-
-Dominio personalizado: maodas.online
-
-# Licencia
-Este proyecto es de código abierto bajo la licencia MIT. Puedes usarlo como inspiración para tu propio portafolio.
+---
+Hecho con ❤️ por [Mao Das](https://maodas.online)
