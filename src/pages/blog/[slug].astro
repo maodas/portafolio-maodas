@@ -14,7 +14,13 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<BaseLayout title={`${entry.data.title} | Blog Mao Das`} description={entry.data.description}>
+<BaseLayout 
+  title={`${entry.data.title} | Blog Mao Das`} 
+  description={entry.data.description}
+  image={entry.data.image ? `https://maodas.online${entry.data.image}` : undefined}
+  url={`https://maodas.online/blog/${entry.slug}`}
+  keywords={entry.data.tags ? entry.data.tags.join(', ') : undefined}
+>
   <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
 
     <!-- En la parte superior, antes del header del artículo -->
@@ -64,6 +70,7 @@ const { Content } = await entry.render();
             src={entry.data.image} 
             alt={entry.data.title}
             class="w-full h-auto"
+            loading="lazy"
           />
         </div>
       )}
@@ -79,7 +86,7 @@ const { Content } = await entry.render();
       <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
         <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Etiquetas</h3>
         <div class="flex flex-wrap gap-2">
-          {entry.data.tags.map(tag => (
+          {entry.data.tags.map((tag: string) => (
             <span class="px-4 py-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg text-sm">
               #{tag}
             </span>

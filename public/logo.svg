@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="gradientM" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#9333ea" />
+    </linearGradient>
+  </defs>
+  <!-- Abstract M -->
+  <path d="M 20 80 L 20 40 
+           C 20 30, 35 25, 45 40 
+           L 50 48 
+           L 55 40 
+           C 65 25, 80 30, 80 40 
+           L 80 80" 
+        fill="none" 
+        stroke="url(#gradientM)" 
+        stroke-width="12" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" />
+  <!-- A dynamic swoosh to make it more abstract and fluid -->
+  <path d="M 12 60 C 40 85, 60 75, 88 45" 
+        fill="none" 
+        stroke="url(#gradientM)" 
+        stroke-width="8" 
+        stroke-linecap="round" 
+        opacity="0.5"/>
+</svg>

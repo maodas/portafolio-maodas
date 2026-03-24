@@ -1,6 +1,24 @@
 ---
 // ================= HEADER SIMPLIFICADO =================
-// Sin React, solo JavaScript vanilla
+// Con soporte i18n
+import { useTranslations } from '../i18n/ui';
+
+const lang = Astro.currentLocale || 'es';
+const t = useTranslations(lang as any);
+const basePath = lang === 'en' ? '/en' : '';
+
+// Lógica de route switching
+const { pathname } = Astro.url;
+const toggleLang = lang === 'es' ? 'en' : 'es';
+let toggleHref = pathname;
+
+if (lang === 'es' && toggleLang === 'en') {
+  toggleHref = '/en' + pathname;
+  if (pathname === '/') toggleHref = '/en/';
+} else if (lang === 'en' && toggleLang === 'es') {
+  toggleHref = pathname.replace(/^\/en/, '');
+  if (toggleHref === '') toggleHref = '/';
+}
 ---
 
 <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
@@ -9,57 +27,62 @@
       
       <!-- Logo -->
       <div class="flex items-center">
-        <a href="/" class="flex items-center space-x-3">
-          <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
-            <span class="text-white font-bold text-lg">MD</span>
-          </div>
+        <a href={`${basePath}/`} class="flex items-center space-x-3">
+          <img src="/logo.svg" alt="maodas.online logo" class="w-10 h-10 object-contain" loading="lazy" />
           <div>
             <div class="text-xl font-bold text-gray-900 dark:text-white">maodas.online</div>
-            <div class="text-xs text-gray-500 dark:text-gray-400">Presentación Digital</div>
+            <div class="text-xs text-gray-500 dark:text-gray-400">{t('header.subtitle')}</div>
           </div>
         </a>
       </div>
 
       <!-- Navegación Desktop -->
-      <nav class="hidden md:flex items-center space-x-8">
-        <a href="/" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium py-2 relative group">
-          Inicio
+      <nav class="hidden md:flex items-center space-x-6 lg:space-x-8">
+        <a href={`${basePath}/`} class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium py-2 relative group">
+          {t('nav.inicio')}
           <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
         </a>
-        <a href="/#about" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium py-2 relative group">
-          Sobre mí
+        <a href={`${basePath}/#about`} class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium py-2 relative group">
+          {t('nav.sobre-mi')}
           <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
         </a>
-        <a href="/#experience" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium py-2 relative group">
-          Experiencia
+        <a href={`${basePath}/#experience`} class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium py-2 relative group">
+          {t('nav.experiencia')}
           <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
         </a>
-        <a href="/#projects" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium py-2 relative group">
-          Portafolio
+        <a href={`${basePath}/#projects`} class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium py-2 relative group">
+          {t('nav.proyectos')}
           <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
         </a>
-        <a href="/blog" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium py-2 relative group">
-          Blog
+        <a href={`${basePath}/blog`} class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium py-2 relative group">
+          {t('nav.blog')}
           <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
         </a>
-        <a href="/#contact" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium py-2 relative group">
-          Contacto
+        <a href={`${basePath}/#contact`} class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium py-2 relative group">
+          {t('nav.contacto')}
           <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
         </a>
         
-        <!-- Botón Toggle Tema Desktop -->
-        <button
-          id="theme-toggle"
-          class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors ml-4"
-          aria-label="Cambiar tema"
-        >
-          <span id="theme-icon">🌙</span>
-        </button>
+        <!-- Toggle Lenguaje y Tema -->
+        <div class="flex items-center pl-4 border-l border-gray-200 dark:border-gray-700 space-x-2">
+          <a href={toggleHref} data-lang={toggleLang} class="btn-lang-toggle px-2 py-1 text-sm font-bold bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+            {lang === 'es' ? 'EN' : 'ES'}
+          </a>
+          <button
+            id="theme-toggle"
+            class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+            aria-label="Cambiar tema"
+          >
+            <span id="theme-icon">🌙</span>
+          </button>
+        </div>
       </nav>
 
-      <!-- Botones móvil -->
-      <div class="md:hidden flex items-center space-x-4">
-        <!-- Botón Toggle Tema Móvil -->
+      <!-- Botones Móvil -->
+      <div class="md:hidden flex items-center space-x-3">
+        <a href={toggleHref} data-lang={toggleLang} class="btn-lang-toggle px-2 py-1 text-xs font-bold bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+          {lang === 'es' ? 'EN' : 'ES'}
+        </a>
         <button
           id="theme-toggle-mobile"
           class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
@@ -67,8 +90,6 @@
         >
           <span id="theme-icon-mobile">🌙</span>
         </button>
-        
-        <!-- Botón menú móvil -->
         <button 
           id="menu-toggle"
           class="p-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
@@ -78,26 +99,26 @@
       </div>
     </div>
 
-    <!-- Menú móvil (oculto por defecto) -->
+    <!-- Menú Móvil -->
     <div id="mobile-menu" class="md:hidden border-t border-gray-200 dark:border-gray-800 py-4 hidden">
       <div class="flex flex-col space-y-3">
-        <a href="/" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 py-2 px-4 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors">
-          Inicio
+        <a href={`${basePath}/`} class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 py-2 px-4 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors">
+          {t('nav.inicio')}
         </a>
-        <a href="/#about" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 py-2 px-4 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors">
-          Sobre mí
+        <a href={`${basePath}/#about`} class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 py-2 px-4 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors">
+          {t('nav.sobre-mi')}
         </a>
-        <a href="/#experience" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 py-2 px-4 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors">
-          Experiencia
+        <a href={`${basePath}/#experience`} class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 py-2 px-4 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors">
+          {t('nav.experiencia')}
         </a>
-        <a href="/portfolio" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 py-2 px-4 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors">
-          Portafolio
+        <a href={`${basePath}/#projects`} class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 py-2 px-4 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors">
+          {t('nav.proyectos')}
         </a>
-        <a href="/blog" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 py-2 px-4 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors">
-          Blog
+        <a href={`${basePath}/blog`} class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 py-2 px-4 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors">
+          {t('nav.blog')}
         </a>
-        <a href="/#contact" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 py-2 px-4 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors">
-          Contacto
+        <a href={`${basePath}/#contact`} class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 py-2 px-4 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors">
+          {t('nav.contacto')}
         </a>
       </div>
     </div>
@@ -105,28 +126,20 @@
 </header>
 
 <script>
-  // ========== FUNCIONALIDAD TEMA OSCURO/CLARO ==========
-  
-  // Función para obtener el tema actual
   function getCurrentTheme(): string {
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      return savedTheme;
-    }
+    if (savedTheme) return savedTheme;
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
 
-  // Función para aplicar el tema
   function applyTheme(theme: string) {
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
-      // Actualizar iconos
       document.querySelectorAll('#theme-icon, #theme-icon-mobile').forEach(icon => {
         icon.textContent = '☀️';
       });
     } else {
       document.documentElement.classList.remove('dark');
-      // Actualizar iconos
       document.querySelectorAll('#theme-icon, #theme-icon-mobile').forEach(icon => {
         icon.textContent = '🌙';
       });
@@ -134,18 +147,13 @@
     localStorage.setItem('theme', theme);
   }
 
-  // Función para alternar tema
   function toggleTheme() {
-    const currentTheme = getCurrentTheme();
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    applyTheme(newTheme);
+    applyTheme(getCurrentTheme() === 'dark' ? 'light' : 'dark');
   }
 
-  // Función para menú móvil
   function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
     const button = document.getElementById('menu-toggle');
-    
     if (menu && button) {
       if (menu.classList.contains('hidden')) {
         menu.classList.remove('hidden');
@@ -157,72 +165,68 @@
     }
   }
 
-  // Inicializar cuando el DOM esté listo
   document.addEventListener('DOMContentLoaded', function() {
-    // Aplicar tema guardado o del sistema
     applyTheme(getCurrentTheme());
-    
-    // Agregar event listeners a los botones de tema
     document.getElementById('theme-toggle')?.addEventListener('click', toggleTheme);
     document.getElementById('theme-toggle-mobile')?.addEventListener('click', toggleTheme);
-    
-    // Agregar event listener al botón de menú móvil
     document.getElementById('menu-toggle')?.addEventListener('click', toggleMobileMenu);
     
-    // Cerrar menú móvil al hacer clic en un enlace
-    document.querySelectorAll('#mobile-menu a').forEach(link => {
-      link.addEventListener('click', () => {
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuToggle = document.getElementById('menu-toggle');
-        if (mobileMenu) {
-          mobileMenu.classList.add('hidden');
-        }
-        if (menuToggle) {
-          menuToggle.textContent = '☰';
-        }
-      });
-    });
-    
-    // Smooth scroll para enlaces internos
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(this: HTMLElement, e: Event) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        if (!targetId || targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId) as HTMLElement;
-        if (targetElement) {
-          // Cerrar menú móvil si está abierto
-          const mobileMenu = document.getElementById('mobile-menu');
-          if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-            mobileMenu.classList.add('hidden');
-            const menuToggle = document.getElementById('menu-toggle');
-            if (menuToggle) {
-              menuToggle.textContent = '☰';
-            }
-          }
-          
-          // Scroll suave
-          window.scrollTo({
-            top: targetElement.offsetTop - 80,
-            behavior: 'smooth'
+    document.querySelectorAll('.btn-lang-toggle').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const targetLang = (e.currentTarget as HTMLElement).getAttribute('data-lang');
+        if (typeof (window as any).gtag === 'function') {
+          (window as any).gtag('event', 'language_switch', {
+            'event_category': 'engagement',
+            'event_label': targetLang
           });
         }
       });
     });
+
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobile-menu')?.classList.add('hidden');
+        const menuToggle = document.getElementById('menu-toggle');
+        if (menuToggle) menuToggle.textContent = '☰';
+      });
+    });
+    
+    document.querySelectorAll('a[href^="#"], a[href^="/#"], a[href^="/en/#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(this: HTMLElement, e: Event) {
+        const href = this.getAttribute('href') || '';
+        const targetIdMatch = href.match(/#([a-zA-Z0-9_-]+)$/);
+        
+        // Si no estamos en la homepage y hacemos clic en enlace a homepage section, 
+        // dejar que el navegador haga la navegación por defecto
+        if (window.location.pathname !== '/' && window.location.pathname !== '/en/' && window.location.pathname !== '/en') {
+          return; 
+        }
+
+        if (targetIdMatch) {
+          const targetId = '#' + targetIdMatch[1];
+          const targetElement = document.querySelector(targetId) as HTMLElement;
+          if (targetElement) {
+            e.preventDefault();
+            document.getElementById('mobile-menu')?.classList.add('hidden');
+            const menuToggle = document.getElementById('menu-toggle');
+            if (menuToggle) menuToggle.textContent = '☰';
+            
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: 'smooth'
+            });
+            history.pushState(null, '', href);
+          }
+        }
+      });
+    });
   });
 
-  // Escuchar cambios en la preferencia del sistema
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-    if (!localStorage.getItem('theme')) {
-      applyTheme(e.matches ? 'dark' : 'light');
-    }
+    if (!localStorage.getItem('theme')) applyTheme(e.matches ? 'dark' : 'light');
   });
 </script>
 
 <style>
-  /* Transición suave para cambios de tema */
-  * {
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
+  * { transition: background-color 0.3s ease, border-color 0.3s ease; }
 </style>
