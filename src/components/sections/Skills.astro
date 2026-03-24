@@ -89,7 +89,7 @@ const headerColorMap: Record<string, string> = {
         
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-4 lg:gap-6">
           {category.skills.map((skill) => (
-            <div class="group bg-white dark:bg-gray-800/80 p-5 md:p-6 rounded-2xl shadow-sm hover:shadow-xl border border-gray-100 dark:border-gray-700/60 flex flex-col items-center justify-center text-center transition-all duration-300 hover:-translate-y-2 backdrop-blur-sm">
+            <div class="group bg-white dark:bg-gray-800/80 p-5 md:p-6 rounded-2xl shadow-sm hover:shadow-lg border border-gray-100 dark:border-gray-700/60 flex flex-col items-center justify-center text-center transition-transform duration-300 hover:scale-[1.05] backdrop-blur-sm">
               <div class={`w-14 h-14 md:w-16 md:h-16 rounded-2xl flex items-center justify-center mb-4 transition-colors duration-300 shadow-inner ${colorMap[category.color]}`}>
                 <Icon name={skill.icon} class="w-7 h-7 md:w-8 md:h-8" />
               </div>

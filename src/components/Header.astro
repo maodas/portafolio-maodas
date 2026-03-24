@@ -28,7 +28,7 @@ if (lang === 'es' && toggleLang === 'en') {
       <!-- Logo -->
       <div class="flex items-center">
         <a href={`${basePath}/`} class="flex items-center space-x-3">
-          <img src="/logo.svg" alt="maodas.online logo" class="w-10 h-10 object-contain" />
+          <img src="/logo.svg" alt="maodas.online logo" class="w-10 h-10 object-contain" loading="lazy" />
           <div>
             <div class="text-xl font-bold text-gray-900 dark:text-white">maodas.online</div>
             <div class="text-xs text-gray-500 dark:text-gray-400">{t('header.subtitle')}</div>
@@ -65,7 +65,7 @@ if (lang === 'es' && toggleLang === 'en') {
         
         <!-- Toggle Lenguaje y Tema -->
         <div class="flex items-center pl-4 border-l border-gray-200 dark:border-gray-700 space-x-2">
-          <a href={toggleHref} class="px-2 py-1 text-sm font-bold bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+          <a href={toggleHref} data-lang={toggleLang} class="btn-lang-toggle px-2 py-1 text-sm font-bold bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition">
             {lang === 'es' ? 'EN' : 'ES'}
           </a>
           <button
@@ -80,7 +80,7 @@ if (lang === 'es' && toggleLang === 'en') {
 
       <!-- Botones Móvil -->
       <div class="md:hidden flex items-center space-x-3">
-        <a href={toggleHref} class="px-2 py-1 text-xs font-bold bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+        <a href={toggleHref} data-lang={toggleLang} class="btn-lang-toggle px-2 py-1 text-xs font-bold bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition">
           {lang === 'es' ? 'EN' : 'ES'}
         </a>
         <button
@@ -171,6 +171,18 @@ if (lang === 'es' && toggleLang === 'en') {
     document.getElementById('theme-toggle-mobile')?.addEventListener('click', toggleTheme);
     document.getElementById('menu-toggle')?.addEventListener('click', toggleMobileMenu);
     
+    document.querySelectorAll('.btn-lang-toggle').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const targetLang = (e.currentTarget as HTMLElement).getAttribute('data-lang');
+        if (typeof (window as any).gtag === 'function') {
+          (window as any).gtag('event', 'language_switch', {
+            'event_category': 'engagement',
+            'event_label': targetLang
+          });
+        }
+      });
+    });
+
     document.querySelectorAll('#mobile-menu a').forEach(link => {
       link.addEventListener('click', () => {
         document.getElementById('mobile-menu')?.classList.add('hidden');

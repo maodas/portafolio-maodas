@@ -15,7 +15,7 @@ const basePath = lang === 'en' ? '/en' : '';
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
     <div class="text-center">
       
-      <div class="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-100 to-blue-50 dark:from-blue-900/30 dark:to-blue-800/30 border border-blue-200 dark:border-blue-800 mb-8 animate-bounce">
+      <div class="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-blue-100 to-blue-50 dark:from-blue-900/30 dark:to-blue-800/30 border border-blue-200 dark:border-blue-800 mb-8 animate-[pulse_3s_ease-in-out_infinite]">
         <span class="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-ping"></span>
         <span class="text-sm font-medium text-blue-700 dark:text-blue-300">{t('hero.badge')}</span>
       </div>
@@ -53,6 +53,7 @@ const basePath = lang === 'en' ? '/en' : '';
         
         <a
           href={`${basePath}/#contact`}
+          id="hero-contact-btn"
           class="px-8 py-4 border-2 border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400 font-semibold rounded-xl hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors"
         >
           {t('hero.btn.contact')}
@@ -88,6 +89,21 @@ const basePath = lang === 'en' ? '/en' : '';
     </div>
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('hero-contact-btn');
+    if (btn) {
+      btn.addEventListener('click', () => {
+        if (typeof (window as any).gtag === 'function') {
+          (window as any).gtag('event', 'hero_contact_click', {
+            'event_category': 'engagement'
+          });
+        }
+      });
+    }
+  });
+</script>
 
 <style>
   .typing-effect {

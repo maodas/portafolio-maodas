@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { ViewTransitions } from 'astro:transitions';
 
 // Props opcionales para SEO dinámico
 export interface Props {
@@ -54,12 +55,13 @@ const {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
   
-  <!-- ========== GOOGLE ANALYTICS ========== -->
-  <!-- Reemplaza G-XXXXXXXXXX con tu Measurement ID real -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    (window as any).dataLayer = (window as any).dataLayer || [];
-    function gtag(...args: any[]){(window as any).dataLayer.push(arguments);}
+  <ViewTransitions />
+
+  <!-- ========== GOOGLE ANALYTICS (Firebase) ========== -->
+  <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-6QEYND46L7"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-6QEYND46L7');
   </script>
