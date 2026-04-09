@@ -7,8 +7,8 @@ export default defineConfig({
   site: 'https://maodas.online',
 
   i18n: {
-    defaultLocale: "es",
-    locales: ["es", "en"],
+    defaultLocale: "en",
+    locales: ["en", "es"],
     routing: {
       prefixDefaultLocale: false
     }

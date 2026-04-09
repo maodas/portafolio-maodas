@@ -2,9 +2,9 @@
 // ================= COMPONENTE FOOTER =================
 import { useTranslations } from '../i18n/ui';
 
-const lang = Astro.currentLocale || 'es';
+const lang = Astro.currentLocale || 'en';
 const t = useTranslations(lang as any);
-const basePath = lang === 'en' ? '/en' : '';
+const basePath = lang === 'es' ? '/es' : '';
 ---
 
 <footer class="bg-gray-900 text-gray-300">

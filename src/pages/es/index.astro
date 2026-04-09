@@ -1,5 +1,7 @@
 ---
-// ================= MAIN PAGE (EN) =================
+// ================= PÁGINA PRINCIPAL =================
+// Propósito: Landing page con todas las secciones
+
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/sections/Hero.astro';
 import About from '../../components/sections/About.astro';
@@ -10,40 +12,46 @@ import Contact from '../../components/sections/Contact.astro';
 import DownloadCVModal from '../../components/DownloadCVModal.astro';
 
 // SEO
-const pageTitle = 'Marcos Rodas | Project Coordinator / Administrative Engineer / Full Stack Developer';
-const pageDescription = 'Personal portfolio showcasing web development, data analysis, and automation projects. Experience, skills, and technical blog.';
+const pageTitle = 'Marcos Rodas|Coordinador de Proyectos / Ingeniero Administrativo / Desarrollador Full Stack ';
+const pageDescription = 'Portafolio personal mostrando proyectos de desarrollo web, análisis de datos y automatización. Experiencia, habilidades y blog técnico.';
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
   
+  <!-- Sección Hero (Introducción) -->
   <section id="hero">
     <Hero />
   </section>
 
+  <!-- Sección Sobre Mí -->
   <section id="about" class="py-20 bg-gray-50 dark:bg-gray-800/50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <About />
     </div>
   </section>
 
+  <!-- Sección Experiencia -->
   <section id="experience" class="py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <Experience />
     </div>
   </section>
 
+  <!-- Sección Proyectos Destacados -->
   <section id="projects" class="py-20 bg-gray-50 dark:bg-gray-800/50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <Projects />
     </div>
   </section>
 
+  <!-- Sección Habilidades -->
   <section id="skills" class="py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <Skills />
     </div>
   </section>
 
+  <!-- Sección Contacto -->
   <section id="contact" class="py-20 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <Contact />

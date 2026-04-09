@@ -3,20 +3,20 @@
 // Con soporte i18n
 import { useTranslations } from '../i18n/ui';
 
-const lang = Astro.currentLocale || 'es';
+const lang = Astro.currentLocale || 'en';
 const t = useTranslations(lang as any);
-const basePath = lang === 'en' ? '/en' : '';
+const basePath = lang === 'es' ? '/es' : '';
 
 // Lógica de route switching
 const { pathname } = Astro.url;
-const toggleLang = lang === 'es' ? 'en' : 'es';
+const toggleLang = lang === 'en' ? 'es' : 'en';
 let toggleHref = pathname;
 
-if (lang === 'es' && toggleLang === 'en') {
-  toggleHref = '/en' + pathname;
-  if (pathname === '/') toggleHref = '/en/';
-} else if (lang === 'en' && toggleLang === 'es') {
-  toggleHref = pathname.replace(/^\/en/, '');
+if (lang === 'en' && toggleLang === 'es') {
+  toggleHref = '/es' + pathname;
+  if (pathname === '/') toggleHref = '/es/';
+} else if (lang === 'es' && toggleLang === 'en') {
+  toggleHref = pathname.replace(/^\/es/, '');
   if (toggleHref === '') toggleHref = '/';
 }
 ---
@@ -65,8 +65,8 @@ if (lang === 'es' && toggleLang === 'en') {
         
         <!-- Toggle Lenguaje y Tema -->
         <div class="flex items-center pl-4 border-l border-gray-200 dark:border-gray-700 space-x-2">
-          <a href={toggleHref} data-lang={toggleLang} class="btn-lang-toggle px-2 py-1 text-sm font-bold bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition">
-            {lang === 'es' ? 'EN' : 'ES'}
+          <a href={toggleHref} data-lang={toggleLang} class="btn-lang-toggle px-3 py-1.5 text-sm font-bold bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 rounded border border-blue-200 dark:border-blue-800 hover:bg-blue-200 dark:hover:bg-blue-800/60 shadow-sm transition-all focus:ring-2 focus:ring-blue-500 flex items-center gap-1">
+            <span class="text-xs font-normal">🌐</span> {lang === 'es' ? 'EN' : 'ES'}
           </a>
           <button
             id="theme-toggle"
@@ -80,8 +80,8 @@ if (lang === 'es' && toggleLang === 'en') {
 
       <!-- Botones Móvil -->
       <div class="md:hidden flex items-center space-x-3">
-        <a href={toggleHref} data-lang={toggleLang} class="btn-lang-toggle px-2 py-1 text-xs font-bold bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition">
-          {lang === 'es' ? 'EN' : 'ES'}
+        <a href={toggleHref} data-lang={toggleLang} class="btn-lang-toggle px-3 py-1.5 text-xs font-bold bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 rounded border border-blue-200 dark:border-blue-800 hover:bg-blue-200 dark:hover:bg-blue-800/60 shadow-sm transition-all flex items-center gap-1">
+          <span class="text-xs font-normal">🌐</span> {lang === 'es' ? 'EN' : 'ES'}
         </a>
         <button
           id="theme-toggle-mobile"

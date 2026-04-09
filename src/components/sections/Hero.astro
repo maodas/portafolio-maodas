@@ -2,9 +2,9 @@
 // ================= SECCIÓN HERO =================
 import { useTranslations } from '../../i18n/ui';
 
-const lang = Astro.currentLocale || 'es';
+const lang = Astro.currentLocale || 'en';
 const t = useTranslations(lang as any);
-const basePath = lang === 'en' ? '/en' : '';
+const basePath = lang === 'es' ? '/es' : '';
 ---
 
 <div class="relative overflow-hidden">
