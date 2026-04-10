@@ -20,6 +20,77 @@ const t = useTranslations(lang as any);
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
     
+    <!-- Proyecto 6 -->
+    <div class="project-card group relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-700" data-category="automation">
+      <div class="absolute top-4 right-4 z-10 px-3 py-1 bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300 rounded-full text-sm font-medium">
+        {t('projects.status.inprogress')}
+      </div>
+
+      <div class="h-48 bg-gradient-to-br from-indigo-500 to-blue-600 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <svg class="w-16 h-16 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+        </div>
+      </div>
+
+      <div class="p-6">
+        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+          {t('projects.p6.title')}
+        </h3>
+        
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
+          {t('projects.p6.desc')}
+        </p>
+
+        <div class="flex flex-wrap gap-2 mb-4">
+          <span class="px-2 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-xs rounded-md">n8n</span>
+          <span class="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-xs rounded-md">Node.js</span>
+          <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs rounded-md">Tiledesk</span>
+          <span class="px-2 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 text-xs rounded-md">GCP</span>
+          <span class="px-2 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 text-xs rounded-md">Firebase</span>
+          <span class="px-2 py-1 bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 text-xs rounded-md">Tailwind</span>
+          <span class="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs rounded-md">Stripe</span>
+        </div>
+
+        <div class="mb-4">
+          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-2">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            {t('projects.p6.f1')}
+          </div>
+          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-2">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            {t('projects.p6.f2')}
+          </div>
+          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400">
+            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            {t('projects.p6.f3')}
+          </div>
+        </div>
+
+        <div class="flex gap-3 mt-4">
+          <a href="#" class="flex-1 px-4 py-2 bg-gray-900 dark:bg-gray-700 text-white text-center text-sm rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors opacity-75 cursor-not-allowed" onclick="event.preventDefault()">
+            {t('projects.btn.code')}
+          </a>
+          <a href="#" class="flex-1 px-4 py-2 bg-indigo-600 text-white text-center text-sm rounded-lg hover:bg-indigo-700 transition-colors opacity-75 cursor-not-allowed" onclick="event.preventDefault()">
+            {t('projects.btn.demo')}
+          </a>
+          <a href="#" class="px-3 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors opacity-75 cursor-not-allowed" onclick="event.preventDefault()">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
     <!-- Proyecto 1 -->
     <div class="project-card group relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-700" data-category="web">
       <div class="absolute top-4 right-4 z-10 px-3 py-1 bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300 rounded-full text-sm font-medium">
@@ -364,6 +435,8 @@ const t = useTranslations(lang as any);
         </div>
       </div>
     </div>
+
+
 
   </div>
 </div>
