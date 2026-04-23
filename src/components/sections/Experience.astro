@@ -11,33 +11,49 @@ const roles = [
     title:    lang === 'es'
       ? 'Coordinador de Proyectos — Plataformas Digitales'
       : 'Project Coordinator — Digital Platforms',
-    org:      lang === 'es' ? 'IOM (RRP) · Tiempo completo' : 'IOM (RRP) · Full-time',
-    impact:   t('exp.1.impact'),
-    tags:     ['Scrum', 'AI Automation', 'Python', 'SQL', lang === 'es' ? 'Infraestructura' : 'Infrastructure'],
+    org:      'IOM (RRP)',
+    impactBullets: lang === 'es' ? [
+      'Lideré la modernización de servicios digitales públicos de alta demanda, traduciendo requisitos complejos en arquitecturas técnicas escalables.',
+      'Desarrollé herramientas de automatización que eliminaron cuellos de botella operativos e integré flujos impulsados por IA.',
+      'Gestioné el ciclo completo de proyectos en equipos multifuncionales dentro de un entorno internacional de alta responsabilidad.'
+    ] : [
+      'Led modernization of high-demand public digital services, translating complex stakeholder requirements into scalable technical architectures.',
+      'Built automation tools that eliminated operational bottlenecks and integrated AI-driven workflows to reduce response times.',
+      'Managed full project lifecycle across cross-functional teams in a high-accountability international environment.'
+    ],
+    tags:     ['Astro', 'Node.js', 'Python', 'n8n', 'GCP', 'IOM'],
     current:  true,
   },
   {
     period:   '2013 – 2023',
     title:    lang === 'es' ? 'Sub-Gerente de Operaciones' : 'Operations Sub-Manager',
-    org:      lang === 'es' ? 'IDC Los Tres, S.A. · Tiempo completo' : 'IDC Los Tres, S.A. · Full-time',
-    impact:   t('exp.2.impact'),
-    tags:     [
-      lang === 'es' ? 'Liderazgo' : 'Leadership',
-      lang === 'es' ? 'Gestión de Riesgo' : 'Risk Management',
-      lang === 'es' ? 'Reingeniería de Procesos' : 'Process Reengineering',
+    org:      'IDC Los Tres, S.A.',
+    impactBullets: lang === 'es' ? [
+      'Rediseñé flujos operativos centrales en logística de alto volumen, reduciendo errores de envío un 30% mediante sistemas de control estructurado.',
+      'Mantuve 100% de operatividad durante crisis de alta demanda a través de mitigación proactiva de riesgos y protocolos de contingencia.',
+      'Lideré equipos de 10+ personas implementando programas de liderazgo que mejoraron simultáneamente retención y productividad.'
+    ] : [
+      'Redesigned core operational workflows in high-volume logistics, reducing shipping errors by 30% through structured control systems.',
+      'Maintained 100% uptime during high-demand crises via proactive risk mitigation and contingency protocols.',
+      'Led 10+ person teams with leadership programs that simultaneously improved retention and productivity.'
     ],
+    tags:     ['PowerBI', 'Excel', 'Tableau', 'Process Design', 'Team Leadership'],
     current: false,
   },
   {
     period:   '2007 – 2012',
     title:    lang === 'es' ? 'Supervisor Regional de Ventas' : 'Regional Sales Supervisor',
     org:      lang === 'es' ? 'Calzado Matrix · 22 sucursales' : 'Calzado Matrix · 22 branches',
-    impact:   t('exp.3.impact'),
-    tags:     [
-      lang === 'es' ? 'Estrategia Comercial' : 'Commercial Strategy',
-      lang === 'es' ? 'Liderazgo' : 'Leadership',
-      lang === 'es' ? 'Mejora de Procesos' : 'Process Improvement',
+    impactBullets: lang === 'es' ? [
+      'Gestioné el rendimiento comercial de 22 sucursales, superando metas mensuales mediante métricas de seguimiento y estandarización de procesos.',
+      'Construí y escalé procesos de ventas regionales desde cero, convirtiendo sucursales de bajo rendimiento en contribuidores consistentes.',
+      'Desarrollé la disciplina operativa y de reporte que estructuró los fundamentos de mi carrera en gestión de operaciones y equipos.'
+    ] : [
+      'Managed commercial performance across 22 branches, consistently hitting monthly targets through tracking metrics and process standardization.',
+      'Built and scaled regional sales processes from scratch, turning underperforming branches into consistent contributors.',
+      'Developed the operational and reporting discipline that became the foundation of my career in operations and team management.'
     ],
+    tags:     ['Sales Ops', 'Reporting', 'Team Mgmt', 'Process Standardization'],
     current: false,
   },
 ];
@@ -75,7 +91,11 @@ const eduItems = [
           <div class="role-content">
             <div class="role-title font-sans" style="font-size: 1rem;">{role.title}</div>
             <div class="role-org font-mono" style="font-size: 0.85rem;">{role.org}</div>
-            <p class="role-impact font-sans" style="font-size: 0.95rem; line-height: 1.75;">{role.impact}</p>
+            <ul class="role-impact font-sans" style="font-size: 0.95rem; line-height: 1.75; list-style-type: disc; margin-left: 1.2rem; margin-bottom: 0.75rem;">
+              {role.impactBullets.map(bullet => (
+                <li style="margin-bottom: 0.4rem;">{bullet}</li>
+              ))}
+            </ul>
             <div class="role-tags">
               {role.tags.map(tag => (
                 <span class="tag font-mono" style="font-size: 0.75rem;">{tag}</span>
@@ -101,7 +121,40 @@ const eduItems = [
 
 </section>
 
-<style>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (prefersReducedMotion) {
+      // If reduced motion is preferred, show all tags immediately
+      document.querySelectorAll('[class*="tag"]').forEach(tag => {
+        tag.style.opacity = '1';
+        tag.style.transition = 'none';
+      });
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const tags = entry.target.querySelectorAll('[class*="tag"]');
+          tags.forEach((tag, index) => {
+            setTimeout(() => {
+              tag.classList.add('is-visible');
+            }, index * 60);
+          });
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('[class*="role-tags"]').forEach(container => {
+      observer.observe(container);
+    });
+  });
+</script>
+
+<style is:global>
   /* Section separator */
   .exp-section {
     border-top: 1px solid var(--border);
@@ -194,9 +247,10 @@ const eduItems = [
     color: var(--muted);
     border: 1px solid var(--border-hi);
     border-radius: 3px;
-    padding: 2px 7px;
     line-height: 1.6;
   }
+  
+
 
   /* Education block */
   .edu-block {
