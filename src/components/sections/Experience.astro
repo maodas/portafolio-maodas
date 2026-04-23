@@ -1,253 +1,247 @@
 ---
-// ================= SECCIÓN EXPERIENCIA LABORAL =================
+// ================= EXPERIENCE (spec §3.4) =================
 import { useTranslations } from '../../i18n/ui';
 
 const lang = Astro.currentLocale || 'en';
 const t = useTranslations(lang as any);
+
+const roles = [
+  {
+    period:   lang === 'es' ? '2023 – presente' : '2023 – present',
+    title:    lang === 'es'
+      ? 'Coordinador de Proyectos — Plataformas Digitales'
+      : 'Project Coordinator — Digital Platforms',
+    org:      lang === 'es' ? 'IOM (RRP) · Tiempo completo' : 'IOM (RRP) · Full-time',
+    impact:   t('exp.1.impact'),
+    tags:     ['Scrum', 'AI Automation', 'Python', 'SQL', lang === 'es' ? 'Infraestructura' : 'Infrastructure'],
+    current:  true,
+  },
+  {
+    period:   '2013 – 2023',
+    title:    lang === 'es' ? 'Sub-Gerente de Operaciones' : 'Operations Sub-Manager',
+    org:      lang === 'es' ? 'IDC Los Tres, S.A. · Tiempo completo' : 'IDC Los Tres, S.A. · Full-time',
+    impact:   t('exp.2.impact'),
+    tags:     [
+      lang === 'es' ? 'Liderazgo' : 'Leadership',
+      lang === 'es' ? 'Gestión de Riesgo' : 'Risk Management',
+      lang === 'es' ? 'Reingeniería de Procesos' : 'Process Reengineering',
+    ],
+    current: false,
+  },
+  {
+    period:   '2007 – 2012',
+    title:    lang === 'es' ? 'Supervisor Regional de Ventas' : 'Regional Sales Supervisor',
+    org:      lang === 'es' ? 'Calzado Matrix · 22 sucursales' : 'Calzado Matrix · 22 branches',
+    impact:   t('exp.3.impact'),
+    tags:     [
+      lang === 'es' ? 'Estrategia Comercial' : 'Commercial Strategy',
+      lang === 'es' ? 'Liderazgo' : 'Leadership',
+      lang === 'es' ? 'Mejora de Procesos' : 'Process Improvement',
+    ],
+    current: false,
+  },
+];
+
+const eduItems = [
+  { period: t('exp.edu.1.period'), title: t('exp.edu.1.title') },
+  { period: t('exp.edu.2.period'), title: t('exp.edu.2.title') },
+  { period: '',                    title: t('exp.edu.3.title') },
+];
 ---
 
-<div class="max-w-7xl mx-auto">
-  
-  <div class="text-center mb-16">
-    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-      {t('exp.title1')} <span class="text-blue-600 dark:text-blue-400">{t('exp.title2')}</span>
-    </h2>
-    <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
-    <p class="text-xl text-gray-600 dark:text-gray-300 mt-6 max-w-3xl mx-auto">
-      {t('exp.desc')}
-    </p>
+<section id="experience" class="exp-section max-w-content mx-auto px-12 py-16">
+
+  <!-- Section label -->
+  <div class="section-label font-mono mb-10">
+    <span class="section-num">{t('exp.section.num')}</span>
+    <span class="section-title">/ {t('exp.section.label')}</span>
   </div>
 
-  <div class="relative">
-    <div class="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-blue-200 via-purple-200 to-pink-200 dark:from-blue-900/30 dark:via-purple-900/30 dark:to-pink-900/30 hidden md:block"></div>
-    
-    <div class="space-y-12">
-      
-      <!-- Experiencia 1 -->
-      <div class="relative md:flex items-center group">
-        
-        <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
-          <div class="inline-block px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-bold rounded-2xl shadow-lg">
-            <span class="text-lg">{t('exp.1.date')}</span>
+  <!-- Roles -->
+  <div class="roles-list">
+    {roles.map((role, i) => (
+      <div class={`role-row ${i === roles.length - 1 ? 'role-last' : ''}`}>
+
+        <!-- Two-column grid -->
+        <div class="role-grid">
+
+          <!-- Left: period -->
+          <div class="role-period font-mono">
+            {role.period}
+            {role.current && <span class="current-dot" />}
           </div>
-        </div>
-        
-        <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-5 h-5">
-          <div class="absolute w-5 h-5 bg-blue-500 rounded-full shadow-lg"></div>
-          <div class="absolute w-5 h-5 bg-blue-500 rounded-full animate-ping opacity-75"></div>
-        </div>
-        
-        <div class="md:w-1/2 md:pl-12">
-          <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl border border-gray-100 dark:border-gray-700 group-hover:shadow-2xl group-hover:-translate-y-1 transition-all duration-300">
-            
-            <div class="inline-flex items-center px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-sm font-semibold mb-4">
-              <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
-              {t('exp.badge.current')}
-            </div>
-            
-            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-              {t('exp.1.title')}
-            </h3>
-            <p class="text-blue-600 dark:text-blue-400 font-semibold text-lg mb-4">
-              {t('exp.1.company')}
-            </p>
-            
-            <p class="text-gray-700 dark:text-gray-300 mb-6">
-              {t('exp.1.desc')}
-            </p>
-            
-            <div class="mb-6">
-              <h4 class="font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
-                <svg class="w-5 h-5 text-yellow-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-                {t('exp.achievements')}
-              </h4>
-              <ul class="space-y-3">
-                <li class="flex items-start text-gray-600 dark:text-gray-400">
-                  <span class="text-green-500 mr-3">✓</span>
-                  <span>{t('exp.1.l1')}</span>
-                </li>
-                <li class="flex items-start text-gray-600 dark:text-gray-400">
-                  <span class="text-green-500 mr-3">✓</span>
-                  <span>{t('exp.1.l2')}</span>
-                </li>
-                <li class="flex items-start text-gray-600 dark:text-gray-400">
-                  <span class="text-green-500 mr-3">✓</span>
-                  <span>{t('exp.1.l3')}</span>
-                </li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 class="font-semibold text-gray-900 dark:text-white mb-3">{t('exp.technologies')}</h4>
-              <div class="flex flex-wrap gap-2">
-                <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg text-sm">{t('exp.1.t1')}</span>
-                <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg text-sm">{t('exp.1.t2')}</span>
-                <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg text-sm">{t('exp.1.t3')}</span>
-                <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg text-sm">SQL</span>
-                <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg text-sm">Python</span>
-              </div>
+
+          <!-- Right: content -->
+          <div class="role-content">
+            <div class="role-title font-sans" style="font-size: 1rem;">{role.title}</div>
+            <div class="role-org font-mono" style="font-size: 0.85rem;">{role.org}</div>
+            <p class="role-impact font-sans" style="font-size: 0.95rem; line-height: 1.75;">{role.impact}</p>
+            <div class="role-tags">
+              {role.tags.map(tag => (
+                <span class="tag font-mono" style="font-size: 0.75rem;">{tag}</span>
+              ))}
             </div>
           </div>
+
         </div>
       </div>
-
-      <!-- Experiencia 2 -->
-      <div class="relative md:flex items-center group">
-        
-        <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
-          <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl border border-gray-100 dark:border-gray-700 group-hover:shadow-2xl group-hover:-translate-y-1 transition-all duration-300">
-            
-            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-              {t('exp.2.title')}
-            </h3>
-            <p class="text-purple-600 dark:text-purple-400 font-semibold text-lg mb-4">
-              {t('exp.2.company')}
-            </p>
-            
-            <p class="text-gray-700 dark:text-gray-300 mb-6">
-              {t('exp.2.desc')}
-            </p>
-            
-            <div class="mb-6">
-              <h4 class="font-semibold text-gray-900 dark:text-white mb-3">{t('exp.achievements')}</h4>
-              <ul class="space-y-3">
-                <li class="flex items-start justify-end text-gray-600 dark:text-gray-400">
-                  <span>{t('exp.2.l1')}</span>
-                  <span class="text-purple-500 ml-3">✓</span>
-                </li>
-                <li class="flex items-start justify-end text-gray-600 dark:text-gray-400">
-                  <span>{t('exp.2.l2')}</span>
-                  <span class="text-purple-500 ml-3">✓</span>
-                </li>
-                <li class="flex items-start justify-end text-gray-600 dark:text-gray-400">
-                  <span>{t('exp.2.l3')}</span>
-                  <span class="text-purple-500 ml-3">✓</span>
-                </li>
-              </ul>
-            </div>
-            
-            <div class="mt-4 flex justify-end">
-              <div class="inline-block px-6 py-3 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 font-bold rounded-2xl">
-                <span class="text-lg">{t('exp.2.date')}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-5 h-5">
-          <div class="absolute w-5 h-5 bg-purple-500 rounded-full shadow-lg"></div>
-        </div>
-        
-        <div class="md:w-1/2 md:pl-12"></div>
-      </div>
-
-      <!-- Experiencia 3 -->
-      <div class="relative md:flex items-center group">
-        
-        <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0">
-          <div class="inline-block px-6 py-3 bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 font-bold rounded-2xl">
-            <span class="text-lg">{t('exp.3.date')}</span>
-          </div>
-        </div>
-        
-        <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-5 h-5">
-          <div class="absolute w-5 h-5 bg-pink-500 rounded-full shadow-lg"></div>
-        </div>
-        
-        <div class="md:w-1/2 md:pl-12">
-          <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl border border-gray-100 dark:border-gray-700 group-hover:shadow-2xl group-hover:-translate-y-1 transition-all duration-300">
-            
-            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-              {t('exp.3.title')}
-            </h3>
-            <p class="text-pink-600 dark:text-pink-400 font-semibold text-lg mb-4">
-              {t('exp.3.company')}
-            </p>
-            
-            <p class="text-gray-700 dark:text-gray-300 mb-6">
-              {t('exp.3.desc')}
-            </p>
-            
-            <div class="mb-6">
-              <h4 class="font-semibold text-gray-900 dark:text-white mb-3">{t('exp.achievements')}</h4>
-              <ul class="space-y-3">
-                <li class="flex items-start text-gray-600 dark:text-gray-400">
-                  <span class="text-pink-500 mr-3">✓</span>
-                  <span>{t('exp.3.l1')}</span>
-                </li>
-                <li class="flex items-start text-gray-600 dark:text-gray-400">
-                  <span class="text-pink-500 mr-3">✓</span>
-                  <span>{t('exp.3.l2')}</span>
-                </li>
-                <li class="flex items-start text-gray-600 dark:text-gray-400">
-                  <span class="text-pink-500 mr-3">✓</span>
-                  <span>{t('exp.3.l3')}</span>
-                </li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 class="font-semibold text-gray-900 dark:text-white mb-3">{t('exp.competencies')}</h4>
-              <div class="flex flex-wrap gap-2">
-                <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg text-sm">{t('exp.3.t1')}</span>
-                <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg text-sm">{t('exp.3.t2')}</span>
-                <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg text-sm">{t('exp.3.t3')}</span>
-                <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg text-sm">{t('exp.3.t4')}</span>
-                <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg text-sm">{t('exp.3.t5')}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
+    ))}
   </div>
 
-  <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6">
-    <div class="text-center p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700">
-      <div class="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">15+</div>
-      <div class="text-gray-600 dark:text-gray-300 font-medium">{t('exp.stats.1.label')}</div>
-    </div>
-    
-    <div class="text-center p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700">
-      <div class="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">{t('exp.stats.2.value')}</div>
-      <div class="text-gray-600 dark:text-gray-300 font-medium">{t('exp.stats.2.label')}</div>
-    </div>
-    
-    <div class="text-center p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700">
-      <div class="text-4xl font-bold text-pink-600 dark:text-pink-400 mb-2">{t('exp.stats.3.value')}</div>
-      <div class="text-gray-600 dark:text-gray-300 font-medium">{t('exp.stats.3.label')}</div>
-    </div>
-    
-    <div class="text-center p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700">
-      <div class="text-4xl font-bold text-green-600 dark:text-green-400 mb-2">{t('exp.stats.4.value')}</div>
-      <div class="text-gray-600 dark:text-gray-300 font-medium">{t('exp.stats.4.label')}</div>
-    </div>
+  <!-- Education — same two-column layout, no descriptions -->
+  <div class="edu-block">
+    <div class="edu-label font-mono">{t('exp.edu.label')}</div>
+    {eduItems.map(item => (
+      <div class="edu-row">
+        <div class="edu-period font-mono">{item.period}</div>
+        <div class="edu-title font-mono">{item.title}</div>
+      </div>
+    ))}
   </div>
-</div>
+
+</section>
 
 <style>
-  .group {
-    opacity: 0;
-    animation: fadeInUp 0.6s ease-out forwards;
+  /* Section separator */
+  .exp-section {
+    border-top: 1px solid var(--border);
   }
-  
-  .group:nth-child(1) { animation-delay: 0.1s; }
-  .group:nth-child(2) { animation-delay: 0.3s; }
-  .group:nth-child(3) { animation-delay: 0.5s; }
-  
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+
+  /* Section label */
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.08em;
   }
-  
-  @media (max-width: 768px) {
-    .md\:flex { flex-direction: column; }
-    .md\:w-1\/2 { width: 100%; }
-    .md\:pr-12, .md\:pl-12 { padding-right: 0; padding-left: 0; }
-    .md\:text-right { text-align: left; }
-    .absolute.left-1\/2 { display: none; }
+  .section-num {
+    color: var(--accent);
+    margin-right: 0.4rem;
+  }
+  .section-title {
+    color: var(--muted);
+  }
+
+  /* Roles list */
+  .roles-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .role-row {
+    border-bottom: 1px solid var(--border);
+    padding: 2rem 0;
+  }
+  .role-last {
+    border-bottom: none;
+  }
+
+  /* Two-column role grid */
+  .role-grid {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 0 2rem;
+  }
+
+  /* Left column — period */
+  .role-period {
+    font-size: 0.8rem;
+    color: var(--muted);
+    opacity: 1;
+    padding-top: 2px;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  /* Current role indicator — small accent dot */
+  .current-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  /* Right column */
+  .role-title {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+  .role-org {
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+  .role-impact {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.75;
+    margin: 0 0 0.75rem 0;
+    max-width: 540px;
+  }
+
+  /* Stack tags */
+  .role-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .tag {
+    font-size: 10px;
+    color: var(--muted);
+    border: 1px solid var(--border-hi);
+    border-radius: 3px;
+    padding: 2px 7px;
+    line-height: 1.6;
+  }
+
+  /* Education block */
+  .edu-block {
+    border-top: 1px solid var(--border);
+    padding-top: 1.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .edu-label {
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .edu-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 0 2rem;
+    padding: 0.35rem 0;
+  }
+
+  .edu-period {
+    font-size: 0.85rem;
+    color: var(--muted);
+    opacity: 1;
+  }
+
+  .edu-title {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  /* Mobile — stack columns */
+  @media (max-width: 560px) {
+    .role-grid,
+    .edu-row {
+      grid-template-columns: 1fr;
+      gap: 0.3rem;
+    }
+    .role-period {
+      flex-direction: row;
+      align-items: center;
+      gap: 0.5rem;
+    }
   }
 </style>

@@ -1,105 +1,171 @@
 ---
-// ================= SECCIÓN HABILIDADES =================
-import { Icon } from 'astro-icon/components';
+// ================= SKILLS (spec §3.6) =================
+// 4-column grid. No bars, no stars, no percentages.
 import { useTranslations } from '../../i18n/ui';
 
 const lang = Astro.currentLocale || 'en';
 const t = useTranslations(lang as any);
 
-const categories = [
+const columns = [
   {
-    title: t('skills.cat1'),
-    icon: "lucide:layout",
-    color: "blue",
-    skills: [
-      { name: "HTML / CSS", icon: "lucide:file-code-2" },
-      { name: "JavaScript", icon: "lucide:file-json-2" },
-      { name: "TypeScript", icon: "lucide:file-type-2" },
-      { name: "React", icon: "lucide:atom" }
-    ]
+    header: t('skills.col.1'),
+    items: [
+      'HTML / CSS',
+      'JavaScript',
+      'TypeScript',
+      'React',
+      'Astro',
+      'Tailwind',
+    ],
   },
   {
-    title: t('skills.cat2'),
-    icon: "lucide:server",
-    color: "purple",
-    skills: [
-      { name: "Node.js", icon: "lucide:hexagon" },
-      { name: "PHP", icon: "lucide:file-code" },
-      { name: "Python", icon: "lucide:terminal" },
-      { name: "SQL", icon: "lucide:database" },
-      { name: t('skills.s.db'), icon: "lucide:hard-drive" }
-    ]
+    header: t('skills.col.2'),
+    items: [
+      'Node.js',
+      'Python',
+      'PHP',
+      'SQL · MongoDB',
+      'Firebase',
+      'GCP · AWS',
+    ],
   },
   {
-    title: t('skills.cat3'),
-    icon: "lucide:wrench",
-    color: "green",
-    skills: [
-      { name: "Git", icon: "lucide:git-branch" },
-      { name: "AWS", icon: "lucide:cloud" },
-      { name: "Linux", icon: "lucide:terminal-square" },
-      { name: "CI/CD", icon: "lucide:workflow" },
-      { name: "Scrum", icon: "lucide:kanban" },
-      { name: "PowerBI / Tableau", icon: "lucide:bar-chart-2" },
-      { name: t('skills.s.leadership'), icon: "lucide:users" },
-      { name: t('skills.s.comm'), icon: "lucide:message-square" },
-      { name: t('skills.s.resolution'), icon: "lucide:puzzle" },
-      { name: t('skills.s.time'), icon: "lucide:clock" },
-      { name: t('skills.s.adapt'), icon: "lucide:refresh-cw" },
-      { name: t('skills.s.creative'), icon: "lucide:palette" },
-      { name: t('skills.s.analysis'), icon: "lucide:activity" }
-    ]
-  }
+    header: t('skills.col.3'),
+    items: [
+      'n8n',
+      'Make (Integromat)',
+      'Twilio API',
+      'ManyChat',
+      'Tiledesk',
+      'WhatsApp Business',
+    ],
+  },
+  {
+    header: t('skills.col.4'),
+    items: [
+      'Scrum / Agile',
+      'Git · CI/CD',
+      'Linux · Docker',
+      'PowerBI · Tableau',
+      'GitHub Actions',
+      'Project Mgmt',
+    ],
+  },
 ];
-
-const colorMap: Record<string, string> = {
-  blue: "bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 group-hover:bg-blue-600 group-hover:text-white dark:group-hover:bg-blue-500",
-  purple: "bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400 group-hover:bg-purple-600 group-hover:text-white dark:group-hover:bg-purple-500",
-  green: "bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400 group-hover:bg-green-600 group-hover:text-white dark:group-hover:bg-green-500"
-};
-
-const headerColorMap: Record<string, string> = {
-  blue: "bg-blue-100 text-blue-600 dark:bg-blue-900/40 dark:text-blue-400",
-  purple: "bg-purple-100 text-purple-600 dark:bg-purple-900/40 dark:text-purple-400",
-  green: "bg-green-100 text-green-600 dark:bg-green-900/40 dark:text-green-400"
-};
 ---
 
-<div class="max-w-7xl mx-auto">
-  
-  <div class="text-center mb-16">
-    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-      {t('skills.title1')} <span class="text-blue-600 dark:text-blue-400">{t('skills.title2')}</span>
-    </h2>
-    <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
-    <p class="text-xl text-gray-600 dark:text-gray-300 mt-6 max-w-3xl mx-auto">
-      {t('skills.desc')}
-    </p>
+<section id="skills" class="skills-section max-w-content mx-auto px-12 py-16">
+
+  <!-- Section label -->
+  <div class="section-label font-mono mb-10">
+    <span class="section-num">{t('skills.section.num')}</span>
+    <span class="section-title">/ {t('skills.section.label')}</span>
   </div>
 
-  <div class="space-y-16">
-    {categories.map((category) => (
-      <div>
-        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">
-          <span class={`w-12 h-12 rounded-xl flex items-center justify-center mr-4 shadow-sm ${headerColorMap[category.color]}`}>
-            <Icon name={category.icon} class="w-6 h-6" />
-          </span>
-          {category.title}
-        </h3>
-        
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-4 lg:gap-6">
-          {category.skills.map((skill) => (
-            <div class="group bg-white dark:bg-gray-800/80 p-5 md:p-6 rounded-2xl shadow-sm hover:shadow-lg border border-gray-100 dark:border-gray-700/60 flex flex-col items-center justify-center text-center transition-transform duration-300 hover:scale-[1.05] backdrop-blur-sm">
-              <div class={`w-14 h-14 md:w-16 md:h-16 rounded-2xl flex items-center justify-center mb-4 transition-colors duration-300 shadow-inner ${colorMap[category.color]}`}>
-                <Icon name={skill.icon} class="w-7 h-7 md:w-8 md:h-8" />
-              </div>
-              <span class="font-semibold text-gray-900 dark:text-gray-100 text-sm md:text-base group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                {skill.name}
-              </span>
-            </div>
-          ))}
-        </div>
+  <!-- 4-column skill grid -->
+  <div class="skills-grid">
+    {columns.map((col, ci) => (
+      <div class={`skill-col ${ci < columns.length - 1 ? 'col-border' : ''}`}>
+
+        <!-- Column header -->
+        <div class="col-header font-mono" style="font-size: 0.75rem;">{col.header}</div>
+
+        <!-- Skill items -->
+        {col.items.map((item, ii) => (
+          <div class={`skill-item font-sans ${ii < col.items.length - 1 ? 'item-border' : ''}`} style="font-size: 0.9rem;">
+            {item}
+          </div>
+        ))}
+
       </div>
     ))}
   </div>
-</div>
+
+</section>
+
+<style>
+  /* Section separator */
+  .skills-section {
+    border-top: 1px solid var(--border);
+  }
+
+  /* Section label */
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+  .section-num   { color: var(--accent); margin-right: 0.4rem; }
+  .section-title { color: var(--muted); }
+
+  /* ── 4-column grid ────────────────────────────────────────── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Right border between columns (all except last) */
+  .col-border {
+    border-right: 1px solid var(--border);
+    padding-right: 1.5rem;
+    margin-right: 0;
+  }
+  .skill-col:not(.col-border) {
+    padding-left: 1.5rem;
+  }
+  .skill-col.col-border + .skill-col {
+    padding-left: 1.5rem;
+  }
+
+  /* Column header */
+  .col-header {
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Skill items */
+  .skill-item {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--muted);
+    padding: 0.45rem 0;
+    line-height: 1.4;
+  }
+  .item-border {
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── Tablet: 2 columns ───────────────────────────────────── */
+  @media (max-width: 768px) and (min-width: 421px) {
+    .skills-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    /* Reset all column borders, re-apply for 2-col layout */
+    .skill-col       { padding-left: 0; padding-right: 0; border-right: none; }
+    .skill-col:nth-child(odd)  { border-right: 1px solid var(--border); padding-right: 1.5rem; }
+    .skill-col:nth-child(even) { padding-left: 1.5rem; }
+    /* Add bottom border between the two rows */
+    .skill-col:nth-child(1),
+    .skill-col:nth-child(2) {
+      padding-bottom: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+  }
+
+  /* ── Mobile: 1 column ────────────────────────────────────── */
+  @media (max-width: 420px) {
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+    .skill-col       { padding-left: 0; padding-right: 0; border-right: none; }
+    .skill-col:not(:last-child) {
+      padding-bottom: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+  }
+</style>

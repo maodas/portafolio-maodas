@@ -1,13 +1,14 @@
 ---
-// ================= HEADER SIMPLIFICADO =================
-// Con soporte i18n
+// ================= HEADER (spec §3.1) =================
+// Removed: CV download button
+// Kept: logo · nav anchors · status badge · lang toggle · dark mode toggle
 import { useTranslations } from '../i18n/ui';
 
 const lang = Astro.currentLocale || 'en';
 const t = useTranslations(lang as any);
 const basePath = lang === 'es' ? '/es' : '';
 
-// Lógica de route switching
+// Language route switching logic (preserved)
 const { pathname } = Astro.url;
 const toggleLang = lang === 'en' ? 'es' : 'en';
 let toggleHref = pathname;
@@ -19,129 +20,130 @@ if (lang === 'en' && toggleLang === 'es') {
   toggleHref = pathname.replace(/^\/es/, '');
   if (toggleHref === '') toggleHref = '/';
 }
+
+const navLinks = lang === 'es'
+  ? [
+      { href: `${basePath}/#about`,      label: 'sobre mí'   },
+      { href: `${basePath}/#experience`, label: 'experiencia' },
+      { href: `${basePath}/#projects`,   label: 'proyectos'  },
+      { href: `${basePath}/#contact`,    label: 'contacto'   },
+    ]
+  : [
+      { href: `${basePath}/#about`,      label: 'about'      },
+      { href: `${basePath}/#experience`, label: 'experience' },
+      { href: `${basePath}/#projects`,   label: 'projects'   },
+      { href: `${basePath}/#contact`,    label: 'contact'    },
+    ];
+
+const availableLabel = lang === 'es' ? 'disponible' : 'available';
 ---
 
-<header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
-      
-      <!-- Logo -->
-      <div class="flex items-center">
-        <a href={`${basePath}/`} class="flex items-center space-x-3">
-          <img src="/logo.svg" alt="maodas.online logo" class="w-10 h-10 object-contain" loading="lazy" />
-          <div>
-            <div class="text-xl font-bold text-gray-900 dark:text-white">maodas.online</div>
-            <div class="text-xs text-gray-500 dark:text-gray-400">{t('header.subtitle')}</div>
-          </div>
-        </a>
-      </div>
+<header class="header-root sticky top-0 z-50 border-b" style="border-color: var(--border);">
+  <div class="max-w-content mx-auto px-12">
+    <div class="flex items-center justify-between h-14">
 
-      <!-- Navegación Desktop -->
-      <nav class="hidden md:flex items-center space-x-6 lg:space-x-8">
-        <a href={`${basePath}/`} class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium py-2 relative group">
-          {t('nav.inicio')}
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
-        </a>
-        <a href={`${basePath}/#about`} class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium py-2 relative group">
-          {t('nav.sobre-mi')}
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
-        </a>
-        <a href={`${basePath}/#experience`} class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium py-2 relative group">
-          {t('nav.experiencia')}
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
-        </a>
-        <a href={`${basePath}/#projects`} class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium py-2 relative group">
-          {t('nav.proyectos')}
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
-        </a>
-        <a href={`${basePath}/blog`} class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium py-2 relative group">
-          {t('nav.blog')}
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
-        </a>
-        <a href={`${basePath}/#contact`} class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium py-2 relative group">
-          {t('nav.contacto')}
-          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
-        </a>
-        
-        <!-- Toggle Lenguaje y Tema -->
-        <div class="flex items-center pl-4 border-l border-gray-200 dark:border-gray-700 space-x-2">
-          <a href={toggleHref} data-lang={toggleLang} class="btn-lang-toggle px-3 py-1.5 text-sm font-bold bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 rounded border border-blue-200 dark:border-blue-800 hover:bg-blue-200 dark:hover:bg-blue-800/60 shadow-sm transition-all focus:ring-2 focus:ring-blue-500 flex items-center gap-1">
-            <span class="text-xs font-normal">🌐</span> {lang === 'es' ? 'EN' : 'ES'}
+      <!-- Wordmark / logo -->
+      <a href={`${basePath}/`} class="font-mono text-sm font-normal transition-colors" style="color: var(--text);">
+        maodas.online
+      </a>
+
+      <!-- Desktop navigation -->
+      <nav class="hidden md:flex items-center gap-8" aria-label="Main navigation">
+        {navLinks.map(link => (
+          <a href={link.href} class="nav-link font-mono text-xs tracking-wider">
+            {link.label}
           </a>
-          <button
-            id="theme-toggle"
-            class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-            aria-label="Cambiar tema"
-          >
-            <span id="theme-icon">🌙</span>
-          </button>
-        </div>
+        ))}
       </nav>
 
-      <!-- Botones Móvil -->
-      <div class="md:hidden flex items-center space-x-3">
-        <a href={toggleHref} data-lang={toggleLang} class="btn-lang-toggle px-3 py-1.5 text-xs font-bold bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 rounded border border-blue-200 dark:border-blue-800 hover:bg-blue-200 dark:hover:bg-blue-800/60 shadow-sm transition-all flex items-center gap-1">
-          <span class="text-xs font-normal">🌐</span> {lang === 'es' ? 'EN' : 'ES'}
-        </a>
-        <button
-          id="theme-toggle-mobile"
-          class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-          aria-label="Cambiar tema"
+      <!-- Right controls -->
+      <div class="flex items-center gap-4">
+
+        <!-- Availability badge -->
+        <div class="hidden sm:flex items-center gap-1.5">
+          <span class="status-dot w-1.5 h-1.5 rounded-full" style="background: var(--accent);"></span>
+          <span class="font-mono uppercase tracking-widest" style="font-size: 10px; color: var(--accent);">
+            {availableLabel}
+          </span>
+        </div>
+
+        <!-- Vertical rule -->
+        <div class="hidden sm:block w-px h-3" style="background: var(--border-hi);"></div>
+
+        <!-- Language toggle -->
+        <a
+          href={toggleHref}
+          data-lang={toggleLang}
+          class="btn-lang-toggle font-mono text-xs transition-colors"
+          style="color: var(--muted);"
+          aria-label="Switch language"
         >
-          <span id="theme-icon-mobile">🌙</span>
+          {lang === 'es' ? 'EN' : 'ES'}
+        </a>
+
+        <!-- Theme toggle -->
+        <button
+          id="theme-toggle"
+          class="btn-theme-toggle"
+          title="Toggle theme"
+          aria-label="Toggle theme"
+          style="font-family: DM Mono; font-size: 11px; color: var(--muted); border: 1px solid var(--border-hi); border-radius: 4px; padding: 3px 10px; background: transparent; cursor: pointer; letter-spacing: 0.06em; transition: color 0.2s, border-color 0.2s;"
+        >
+          <span id="theme-icon" class="theme-label">light</span>
         </button>
-        <button 
+
+        <!-- Mobile hamburger -->
+        <button
           id="menu-toggle"
-          class="p-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+          class="md:hidden font-mono text-xs"
+          style="color: var(--muted); background: none; border: none; cursor: pointer; padding: 0;"
+          aria-label="Toggle menu"
         >
           ☰
         </button>
+
       </div>
     </div>
 
-    <!-- Menú Móvil -->
-    <div id="mobile-menu" class="md:hidden border-t border-gray-200 dark:border-gray-800 py-4 hidden">
-      <div class="flex flex-col space-y-3">
-        <a href={`${basePath}/`} class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 py-2 px-4 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors">
-          {t('nav.inicio')}
-        </a>
-        <a href={`${basePath}/#about`} class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 py-2 px-4 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors">
-          {t('nav.sobre-mi')}
-        </a>
-        <a href={`${basePath}/#experience`} class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 py-2 px-4 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors">
-          {t('nav.experiencia')}
-        </a>
-        <a href={`${basePath}/#projects`} class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 py-2 px-4 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors">
-          {t('nav.proyectos')}
-        </a>
-        <a href={`${basePath}/blog`} class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 py-2 px-4 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors">
-          {t('nav.blog')}
-        </a>
-        <a href={`${basePath}/#contact`} class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 py-2 px-4 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors">
-          {t('nav.contacto')}
-        </a>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="md:hidden border-t py-5 hidden" style="border-color: var(--border);">
+      <div class="flex flex-col gap-5">
+        {navLinks.map(link => (
+          <a href={link.href} class="nav-link font-mono text-xs tracking-wider">
+            {link.label}
+          </a>
+        ))}
+        <!-- Availability in mobile -->
+        <div class="flex items-center gap-1.5 pt-3 border-t" style="border-color: var(--border);">
+          <span class="status-dot w-1.5 h-1.5 rounded-full" style="background: var(--accent);"></span>
+          <span class="font-mono uppercase tracking-widest" style="font-size: 10px; color: var(--accent);">
+            {availableLabel}
+          </span>
+        </div>
       </div>
     </div>
+
   </div>
 </header>
 
 <script>
+  // ── Theme helpers ──────────────────────────────────────────────
   function getCurrentTheme(): string {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) return savedTheme;
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    const saved = localStorage.getItem('theme');
+    if (saved) return saved;
+    return 'dark'; // Default is always dark (spec §1.4)
   }
 
   function applyTheme(theme: string) {
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
-      document.querySelectorAll('#theme-icon, #theme-icon-mobile').forEach(icon => {
-        icon.textContent = '☀️';
+      document.querySelectorAll('#theme-icon, #theme-icon-mobile').forEach(el => {
+        el.textContent = 'light'; // dark mode active — toggle to light
       });
     } else {
       document.documentElement.classList.remove('dark');
-      document.querySelectorAll('#theme-icon, #theme-icon-mobile').forEach(icon => {
-        icon.textContent = '🌙';
+      document.querySelectorAll('#theme-icon, #theme-icon-mobile').forEach(el => {
+        el.textContent = 'dark'; // light mode active — toggle to dark
       });
     }
     localStorage.setItem('theme', theme);
@@ -151,82 +153,121 @@ if (lang === 'en' && toggleLang === 'es') {
     applyTheme(getCurrentTheme() === 'dark' ? 'light' : 'dark');
   }
 
+  // ── Mobile menu ────────────────────────────────────────────────
   function toggleMobileMenu() {
-    const menu = document.getElementById('mobile-menu');
+    const menu   = document.getElementById('mobile-menu');
     const button = document.getElementById('menu-toggle');
     if (menu && button) {
-      if (menu.classList.contains('hidden')) {
-        menu.classList.remove('hidden');
-        button.textContent = '✕';
-      } else {
-        menu.classList.add('hidden');
-        button.textContent = '☰';
-      }
+      const isHidden = menu.classList.contains('hidden');
+      menu.classList.toggle('hidden', !isHidden);
+      button.textContent = isHidden ? '✕' : '☰';
     }
   }
 
-  document.addEventListener('astro:page-load', function() {
-    applyTheme(getCurrentTheme());
-    document.getElementById('theme-toggle')?.addEventListener('click', toggleTheme);
-    document.getElementById('theme-toggle-mobile')?.addEventListener('click', toggleTheme);
-    document.getElementById('menu-toggle')?.addEventListener('click', toggleMobileMenu);
-    
-    document.querySelectorAll('.btn-lang-toggle').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const targetLang = (e.currentTarget as HTMLElement).getAttribute('data-lang');
-        if (typeof (window as any).gtag === 'function') {
-          (window as any).gtag('event', 'language_switch', {
-            'event_category': 'engagement',
-            'event_label': targetLang
-          });
-        }
-      });
-    });
-
-    document.querySelectorAll('#mobile-menu a').forEach(link => {
-      link.addEventListener('click', () => {
-        document.getElementById('mobile-menu')?.classList.add('hidden');
-        const menuToggle = document.getElementById('menu-toggle');
-        if (menuToggle) menuToggle.textContent = '☰';
-      });
-    });
-    
-    document.querySelectorAll('a[href^="#"], a[href^="/#"], a[href^="/en/#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(this: HTMLElement, e: Event) {
+  // ── Smooth scroll (same logic as before) ──────────────────────
+  function setupSmoothScroll() {
+    document.querySelectorAll('a[href^="#"], a[href*="/#"], a[href*="/es/#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (this: HTMLElement, e: Event) {
         const href = this.getAttribute('href') || '';
-        const targetIdMatch = href.match(/#([a-zA-Z0-9_-]+)$/);
-        
-        // Si no estamos en la homepage y hacemos clic en enlace a homepage section, 
-        // dejar que el navegador haga la navegación por defecto
-        if (window.location.pathname !== '/' && window.location.pathname !== '/en/' && window.location.pathname !== '/en') {
-          return; 
-        }
+        const match = href.match(/#([a-zA-Z0-9_-]+)$/);
+        // Only intercept if we're on the homepage
+        const isHome = ['/', '/es/', '/en/'].includes(window.location.pathname) ||
+                       window.location.pathname === '';
+        if (!isHome) return;
 
-        if (targetIdMatch) {
-          const targetId = '#' + targetIdMatch[1];
-          const targetElement = document.querySelector(targetId) as HTMLElement;
-          if (targetElement) {
+        if (match) {
+          const target = document.querySelector('#' + match[1]) as HTMLElement | null;
+          if (target) {
             e.preventDefault();
             document.getElementById('mobile-menu')?.classList.add('hidden');
-            const menuToggle = document.getElementById('menu-toggle');
-            if (menuToggle) menuToggle.textContent = '☰';
-            
-            window.scrollTo({
-              top: targetElement.offsetTop - 80,
-              behavior: 'smooth'
-            });
+            const btn = document.getElementById('menu-toggle');
+            if (btn) btn.textContent = '☰';
+            window.scrollTo({ top: target.offsetTop - 56, behavior: 'smooth' });
             history.pushState(null, '', href);
           }
         }
       });
     });
+  }
+
+  // ── Bootstrap on each Astro page load ─────────────────────────
+  document.addEventListener('astro:page-load', () => {
+    applyTheme(getCurrentTheme());
+
+    document.getElementById('theme-toggle')?.addEventListener('click', toggleTheme);
+    document.getElementById('menu-toggle')?.addEventListener('click', toggleMobileMenu);
+
+    // Close mobile menu when a link inside it is clicked
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobile-menu')?.classList.add('hidden');
+        const btn = document.getElementById('menu-toggle');
+        if (btn) btn.textContent = '☰';
+      });
+    });
+
+    // Language switch analytics
+    document.querySelectorAll('.btn-lang-toggle').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const targetLang = (e.currentTarget as HTMLElement).getAttribute('data-lang');
+        if (typeof (window as any).gtag === 'function') {
+          (window as any).gtag('event', 'language_switch', {
+            event_category: 'engagement',
+            event_label: targetLang,
+          });
+        }
+      });
+    });
+
+    setupSmoothScroll();
   });
 
+  // System theme change listener
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
     if (!localStorage.getItem('theme')) applyTheme(e.matches ? 'dark' : 'light');
   });
 </script>
 
 <style>
-  * { transition: background-color 0.3s ease, border-color 0.3s ease; }
+  /* Header background — semi-transparent with blur, adapts to light/dark */
+  .header-root {
+    background: rgba(14, 14, 14, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  html:not(.dark) .header-root {
+    background: rgba(250, 250, 248, 0.92);
+  }
+
+  /* Nav links */
+  .nav-link {
+    color: var(--muted);
+    transition: color 0.15s ease;
+    text-decoration: none;
+  }
+  .nav-link:hover {
+    color: var(--text);
+  }
+
+  /* Status dot pulse (CSS only) */
+  @media (prefers-reduced-motion: no-preference) {
+    .status-dot {
+      animation: pulse-dot 2.5s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.4; }
+    }
+  }
+
+  /* Theme toggle button */
+  .btn-theme-toggle:hover {
+    color: var(--text) !important;
+    border-color: var(--muted) !important;
+  }
+
+  /* Smooth color transitions for theme toggle */
+  * {
+    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.15s ease;
+  }
 </style>

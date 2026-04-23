@@ -46,14 +46,27 @@ const {
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={image} />
   
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+  <!-- Favicon (terminal monogram — spec correction #5) -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="alternate icon" href="/favicon.ico" />
+
+  <!-- Dark mode: apply class BEFORE paint to prevent flash (#1) -->
+  <script is:inline>
+    (function() {
+      var saved = localStorage.getItem('theme');
+      // Default is dark — only go light if explicitly saved as light
+      if (saved === 'light') {
+        document.documentElement.classList.remove('dark');
+      } else {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
   
   <!-- Fuentes de Google -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   
   <ViewTransitions />
 
@@ -67,20 +80,22 @@ const {
   </script>
   <!-- ====================================== -->
 </head>
-<body class="font-sans bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+<body class="font-sans bg-[var(--bg)] text-[var(--text)] transition-colors duration-300">
   <Header />
   <main class="min-h-screen">
     <slot />
   </main>
   <Footer />
   
-  <!-- Script para tema oscuro (se mantiene) -->
+  <!-- Theme persistence (default: dark) -->
   <script>
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+    // Sync icon state after Astro view transitions re-mount
+    document.addEventListener('astro:page-load', () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      document.querySelectorAll('#theme-icon, #theme-icon-mobile').forEach(el => {
+        el.textContent = isDark ? '○' : '●';
+      });
+    });
   </script>
 </body>
 </html>

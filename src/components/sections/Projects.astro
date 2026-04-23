@@ -1,465 +1,221 @@
 ---
-// ================= SECCIÓN PORTAFOLIO / PROYECTOS =================
+// ================= PROJECTS (spec §3.5) =================
 import { useTranslations } from '../../i18n/ui';
 
 const lang = Astro.currentLocale || 'en';
 const t = useTranslations(lang as any);
+
+const projects = [
+  {
+    status:   t('proj.status.active'),
+    active:   true,
+    name:     t('proj.1.name'),
+    problem:  t('proj.1.problem'),
+    stack:    ['n8n', 'GCP', 'Firebase', 'Stripe', 'Tiledesk', 'Node.js'],
+    codeUrl:  'https://github.com/maodas',
+    demoUrl:  null,
+  },
+  {
+    status:   t('proj.status.active'),
+    active:   true,
+    name:     t('proj.2.name'),
+    problem:  t('proj.2.problem'),
+    stack:    ['Twilio', 'Node.js', 'Render', 'GitHub'],
+    codeUrl:  'https://github.com/maodas/verificador-n-meros-render',
+    demoUrl:  'https://youtu.be/_K9cwxWZPL4',
+  },
+  {
+    status:   t('proj.status.done'),
+    active:   false,
+    name:     t('proj.3.name'),
+    problem:  t('proj.3.problem'),
+    stack:    ['OpenAI', 'Python', 'Docker', 'PostgreSQL', 'Celery'],
+    codeUrl:  'https://github.com/maodas/asistente-inteligente-multicanal',
+    demoUrl:  'https://youtu.be/0ofnavIl1nE',
+  },
+  {
+    status:   t('proj.status.done'),
+    active:   false,
+    name:     t('proj.4.name'),
+    problem:  t('proj.4.problem'),
+    stack:    ['MongoDB', 'Express', 'Node.js', 'Render'],
+    codeUrl:  'https://github.com/maodas/portal-wifi-captive',
+    demoUrl:  'https://portal-wifi-captive-site.onrender.com/',
+  },
+];
+
+const codeLabel  = lang === 'es' ? 'código' : 'code';
+const demoLabel  = 'demo';
 ---
 
-<div class="max-w-7xl mx-auto">
-  
-  <div class="text-center mb-16">
-    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-      {t('projects.title1')} <span class="text-blue-600 dark:text-blue-400">{t('projects.title2')}</span>
-    </h2>
-    <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
-    <p class="text-xl text-gray-600 dark:text-gray-300 mt-6 max-w-3xl mx-auto">
-      {t('projects.desc')}
-    </p>
+<section id="projects" class="proj-section max-w-content mx-auto px-12 py-16">
+
+  <!-- Section label -->
+  <div class="section-label font-mono mb-8">
+    <span class="section-num">{t('proj.section.num')}</span>
+    <span class="section-title">/ {t('proj.section.label')}</span>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    
-    <!-- Proyecto 6 -->
-    <div class="project-card group relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-700" data-category="automation">
-      <div class="absolute top-4 right-4 z-10 px-3 py-1 bg-indigo-100 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300 rounded-full text-sm font-medium">
-        {t('projects.status.inprogress')}
-      </div>
+  <!-- 2×2 project grid -->
+  <div class="proj-grid">
+    {projects.map((proj, i) => (
+      <article class={`proj-card ${i % 2 === 0 ? 'card-left' : 'card-right'} ${i < 2 ? 'card-top' : 'card-bottom'}`}>
 
-      <div class="h-48 bg-gradient-to-br from-indigo-500 to-blue-600 relative overflow-hidden">
-        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-        <div class="absolute inset-0 flex items-center justify-center">
-          <svg class="w-16 h-16 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
-          </svg>
-        </div>
-      </div>
-
-      <div class="p-6">
-        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-          {t('projects.p6.title')}
-        </h3>
-        
-        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
-          {t('projects.p6.desc')}
-        </p>
-
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="px-2 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-xs rounded-md">n8n</span>
-          <span class="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-xs rounded-md">Node.js</span>
-          <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs rounded-md">Tiledesk</span>
-          <span class="px-2 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 text-xs rounded-md">GCP</span>
-          <span class="px-2 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 text-xs rounded-md">Firebase</span>
-          <span class="px-2 py-1 bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 text-xs rounded-md">Tailwind</span>
-          <span class="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs rounded-md">Stripe</span>
-        </div>
-
-        <div class="mb-4">
-          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-2">
-            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            {t('projects.p6.f1')}
-          </div>
-          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-2">
-            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            {t('projects.p6.f2')}
-          </div>
-          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400">
-            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            {t('projects.p6.f3')}
+        <!-- Top row: status + arrow link -->
+        <div class="card-header">
+          <span class={`proj-status font-mono ${proj.active ? 'status-active' : 'status-done'}`}>
+            {proj.status}
+          </span>
+          <div class="card-links font-mono">
+            {proj.demoUrl && (
+              <a href={proj.demoUrl} target="_blank" rel="noopener noreferrer" class="card-link" aria-label="Demo">
+                {demoLabel} ↗
+              </a>
+            )}
+            <a href={proj.codeUrl} target="_blank" rel="noopener noreferrer" class="card-link" aria-label="Code">
+              {codeLabel} ↗
+            </a>
           </div>
         </div>
 
-        <div class="flex gap-3 mt-4">
-          <a href="#" class="flex-1 px-4 py-2 bg-gray-900 dark:bg-gray-700 text-white text-center text-sm rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors opacity-75 cursor-not-allowed" onclick="event.preventDefault()">
-            {t('projects.btn.code')}
-          </a>
-          <a href="#" class="flex-1 px-4 py-2 bg-indigo-600 text-white text-center text-sm rounded-lg hover:bg-indigo-700 transition-colors opacity-75 cursor-not-allowed" onclick="event.preventDefault()">
-            {t('projects.btn.demo')}
-          </a>
-          <a href="#" class="px-3 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors opacity-75 cursor-not-allowed" onclick="event.preventDefault()">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
+        <!-- Project name -->
+        <h3 class="proj-name font-sans" style="font-size: 0.95rem;">{proj.name}</h3>
 
-    <!-- Proyecto 1 -->
-    <div class="project-card group relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-700" data-category="web">
-      <div class="absolute top-4 right-4 z-10 px-3 py-1 bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300 rounded-full text-sm font-medium">
-        {t('projects.status.dev')}
-      </div>
+        <!-- Problem statement -->
+        <p class="proj-problem font-sans" style="font-size: 0.85rem;">{proj.problem}</p>
 
-      <div class="h-48 bg-gradient-to-br from-blue-500 to-purple-600 relative overflow-hidden">
-        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-        <div class="absolute inset-0 flex items-center justify-center">
-          <svg class="w-16 h-16 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-          </svg>
-        </div>
-      </div>
-
-      <div class="p-6">
-        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-          {t('projects.p1.title')}
-        </h3>
-        
-        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
-          {t('projects.p1.desc')}
-        </p>
-
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs rounded-md">React</span>
-          <span class="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-xs rounded-md">Node.js</span>
-          <span class="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs rounded-md">Astro</span>
-          <span class="px-2 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 text-xs rounded-md">Render</span>
-          <span class="px-2 py-1 bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 text-xs rounded-md">Tailwind</span>
+        <!-- Stack chips -->
+        <div class="proj-stack">
+          {proj.stack.map(tech => (
+            <span class="stack-chip font-mono" style="font-size: 0.75rem;">{tech}</span>
+          ))}
         </div>
 
-        <div class="mb-4">
-          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-2">
-            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            {t('projects.p1.f1')}
-          </div>
-          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-2">
-            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            {t('projects.p1.f2')}
-          </div>
-          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400">
-            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            {t('projects.p1.f3')}
-          </div>
-        </div>
-
-        <div class="flex gap-3 mt-4">
-          <a href="https://github.com/maodas/portafolio-maodas" target="_blank" class="flex-1 px-4 py-2 bg-gray-900 dark:bg-gray-700 text-white text-center text-sm rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors">
-            {t('projects.btn.code')}
-          </a>
-          <a href="https://maodas.online" target="_blank" class="flex-1 px-4 py-2 bg-blue-600 text-white text-center text-sm rounded-lg hover:bg-blue-700 transition-colors">
-            {t('projects.btn.demo')}
-          </a>
-          <a href="https://drive.google.com/drive/folders/1owZsqcpaOKg3akzDpVKdpIQrvwOJfNVe?usp=sharing" target="_blank" class="px-3 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Proyecto 2 -->
-    <div class="project-card group relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-700" data-category="data">
-      <div class="absolute top-4 right-4 z-10 px-3 py-1 bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300 rounded-full text-sm font-medium">
-        {t('projects.status.completed')}
-      </div>
-
-      <div class="h-48 bg-gradient-to-br from-purple-500 to-pink-600 relative overflow-hidden">
-        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-        <div class="absolute inset-0 flex items-center justify-center">
-          <svg class="w-16 h-16 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2-10H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V6a2 2 0 00-2-2z" />
-          </svg>
-        </div>
-      </div>
-
-      <div class="p-6">
-        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
-          {t('projects.p2.title')}
-        </h3>
-        
-        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
-          {t('projects.p2.desc')}
-        </p>
-
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs rounded-md">Twilio API</span>
-          <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs rounded-md">GitHub</span>
-          <span class="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-xs rounded-md">Node.js</span>
-          <span class="px-2 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 text-xs rounded-md">Render</span>
-        </div>
-
-        <div class="mb-4">
-          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-2">
-            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            {t('projects.p2.f1')}
-          </div>
-          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-2">
-            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            {t('projects.p2.f2')}
-          </div>
-          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400">
-            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            {t('projects.p2.f3')}
-          </div>
-        </div>
-
-        <div class="flex gap-3 mt-4">
-          <a href="https://github.com/maodas/verificador-n-meros-render" target="_blank" class="flex-1 px-4 py-2 bg-gray-900 dark:bg-gray-700 text-white text-center text-sm rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors">
-            {t('projects.btn.code')}
-          </a>
-          <a href="https://youtu.be/_K9cwxWZPL4" target="_blank" class="flex-1 px-4 py-2 bg-purple-600 text-white text-center text-sm rounded-lg hover:bg-purple-700 transition-colors">
-            {t('projects.btn.demo')}
-          </a>
-          <a href="https://drive.google.com/drive/folders/1I9KpXYoe8H22mvR-yT5ACg0qZMPCRgkW?usp=sharing" target="_blank" class="px-3 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Proyecto 3 -->
-    <div class="project-card group relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-700" data-category="mobile">
-      <div class="absolute top-4 right-4 z-10 px-3 py-1 bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 rounded-full text-sm font-medium">
-        {t('projects.status.completed')}
-      </div>
-
-      <div class="h-48 bg-gradient-to-br from-green-500 to-teal-600 relative overflow-hidden">
-        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-        <div class="absolute inset-0 flex items-center justify-center">
-          <svg class="w-16 h-16 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-          </svg>
-        </div>
-      </div>
-
-      <div class="p-6">
-        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
-          {t('projects.p3.title')}
-        </h3>
-        
-        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
-          {t('projects.p3.desc')}
-        </p>
-
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-xs rounded-md">API</span>
-          <span class="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs rounded-md">Netlify</span>
-          <span class="px-2 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 text-xs rounded-md">Twilio Lookup</span>
-          <span class="px-2 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 text-xs rounded-md">Node.js</span>
-        </div>
-
-        <div class="mb-4">
-          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-2">
-            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-           {t('projects.p3.f1')}
-          </div>
-          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-2">
-            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            {t('projects.p3.f2')}
-          </div>
-          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400">
-            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            {t('projects.p3.f3')}
-          </div>
-        </div>
-
-        <div class="flex gap-3 mt-4">
-          <a href="https://github.com/maodas/twilio-lookup-validator" target="_blank" class="flex-1 px-4 py-2 bg-gray-900 dark:bg-gray-700 text-white text-center text-sm rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors">
-            {t('projects.btn.code')}
-          </a>
-          <a href="https://superlative-taffy-2804c6.netlify.app/" target="_blank"class="flex-1 px-4 py-2 bg-green-600 text-white text-center text-sm rounded-lg hover:bg-green-700 transition-colors">
-            {t('projects.btn.demo')}
-          </a>
-          <a href="https://drive.google.com/drive/folders/1k1okKVLEC-x6CfdNML6Ebhacz5ZLq0bL?usp=sharing" target="_blank" class="px-3 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Proyecto 4 -->
-    <div class="project-card group relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-700" data-category="automation">
-      <div class="absolute top-4 right-4 z-10 px-3 py-1 bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300 rounded-full text-sm font-medium">
-        {t('projects.status.beta')}
-      </div>
-
-      <div class="h-48 bg-gradient-to-br from-orange-500 to-red-600 relative overflow-hidden">
-        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-        <div class="absolute inset-0 flex items-center justify-center">
-          <svg class="w-16 h-16 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
-          </svg>
-        </div>
-      </div>
-
-      <div class="p-6">
-        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
-          {t('projects.p4.title')}
-        </h3>
-        
-        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
-          {t('projects.p4.desc')}
-        </p>
-
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="px-2 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 text-xs rounded-md">MongoDB</span>
-          <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs rounded-md">Node.js</span>
-          <span class="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-xs rounded-md">Render</span>
-          <span class="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs rounded-md">API Rest</span>
-          <span class="px-2 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 text-xs rounded-md">Express</span>
-        </div>
-
-        <div class="mb-4">
-          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-2">
-            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            {t('projects.p4.f1')}
-          </div>
-          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-2">
-            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            {t('projects.p4.f2')}
-          </div>
-          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400">
-            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            {t('projects.p4.f3')}
-          </div>
-        </div>
-
-        <div class="flex gap-3 mt-4">
-          <a href="https://github.com/maodas/portal-wifi-captive" target="_blank" class="flex-1 px-4 py-2 bg-gray-900 dark:bg-gray-700 text-white text-center text-sm rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors">
-            {t('projects.btn.code')}
-          </a>
-          <a href="https://portal-wifi-captive-site.onrender.com/" target="_blank" class="flex-1 px-4 py-2 bg-orange-600 text-white text-center text-sm rounded-lg hover:bg-orange-700 transition-colors">
-            {t('projects.btn.demo')}
-          </a>
-          <a href="https://drive.google.com/drive/folders/1NfHoTZ8PRKkAKAztwvWp0WaX4ui3NZfh?usp=sharing" target="_blank" class="px-3 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Proyecto 5 -->
-    <div class="project-card group relative bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-700" data-category="web">
-      <div class="absolute top-4 right-4 z-10 px-3 py-1 bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300 rounded-full text-sm font-medium">
-        {t('projects.status.beta')}
-      </div>
-
-      <div class="h-48 bg-gradient-to-br from-pink-500 to-rose-600 relative overflow-hidden">
-        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-        <div class="absolute inset-0 flex items-center justify-center">
-           <svg class="w-16 h-16 text-white opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-            <circle cx="12" cy="13" r="1" fill="currentColor" />
-            <path stroke-linecap="round" stroke-width="1.5" d="M8 14h8" />
-          </svg>
-        </div>
-      </div>
-
-      <div class="p-6">
-        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">
-          {t('projects.p5.title')}
-        </h3>
-        
-        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">
-          {t('projects.p5.desc')}
-        </p>
-
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span class="px-2 py-1 bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 text-xs rounded-md">OpenAI</span>
-          <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs rounded-md">Docker</span>
-          <span class="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-xs rounded-md">Python</span>
-          <span class="px-2 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-xs rounded-md">Celery</span>
-          <span class="px-2 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 text-xs rounded-md">PostgreSQL</span>
-        </div>
-
-        <div class="mb-4">
-          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-2">
-            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            {t('projects.p5.f1')}
-          </div>
-          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-2">
-            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            {t('projects.p5.f2')}
-          </div>
-          <div class="flex items-center text-sm text-gray-600 dark:text-gray-400">
-            <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-            </svg>
-            {t('projects.p5.f3')}
-          </div>
-        </div>
-
-        <div class="flex gap-3 mt-4">
-          <a href="https://github.com/maodas/asistente-inteligente-multicanal" target="_blank" class="flex-1 px-4 py-2 bg-gray-900 dark:bg-gray-700 text-white text-center text-sm rounded-lg hover:bg-gray-800 dark:hover:bg-gray-600 transition-colors">
-            {t('projects.btn.code')}
-          </a>
-          <a href="https://youtu.be/0ofnavIl1nE" target="_blank" class="flex-1 px-4 py-2 bg-pink-600 text-white text-center text-sm rounded-lg hover:bg-pink-700 transition-colors">
-            {t('projects.btn.demo')}
-          </a>
-          <a href="https://drive.google.com/drive/folders/1VoP1AES9taTS__HVSigti9ZoovJlLJgI?usp=sharing" target="_blank" class="px-3 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-
-
-
+      </article>
+    ))}
   </div>
-</div>
+
+</section>
 
 <style>
-  .project-card {
+  /* Section separator + label */
+  .proj-section {
+    border-top: 1px solid var(--border);
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+  .section-num   { color: var(--accent); margin-right: 0.4rem; }
+  .section-title { color: var(--muted); }
+
+  /* ── Grid wrapper ─────────────────────────────────────────── */
+  .proj-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  /* ── Cards ────────────────────────────────────────────────── */
+  .proj-card {
+    padding: 1.5rem;
+    position: relative;
+    transition: background 0.15s ease;
+  }
+  .proj-card:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  /* Internal borders — right edge of left column */
+  .card-left  { border-right: 1px solid var(--border); }
+  /* Internal borders — bottom edge of top row */
+  .card-top   { border-bottom: 1px solid var(--border); }
+
+  /* ── Card header ──────────────────────────────────────────── */
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+  }
+
+  .proj-status {
+    font-size: 9px;
+    letter-spacing: 0.04em;
+  }
+  .status-active { color: var(--accent); }
+  .status-done   { color: var(--dim); }
+
+  /* Links — hidden until hover for cleaner look */
+  .card-links {
+    display: flex;
+    gap: 0.75rem;
     opacity: 0;
-    animation: fadeIn 0.5s ease-out forwards;
+    transition: opacity 0.15s ease;
   }
-  
-  .project-card:nth-child(1) { animation-delay: 0.1s; }
-  .project-card:nth-child(2) { animation-delay: 0.2s; }
-  .project-card:nth-child(3) { animation-delay: 0.3s; }
-  .project-card:nth-child(4) { animation-delay: 0.4s; }
-  .project-card:nth-child(5) { animation-delay: 0.5s; }
-  .project-card:nth-child(6) { animation-delay: 0.6s; }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+  .proj-card:hover .card-links {
+    opacity: 1;
   }
-  
-  .project-card {
-    transition: opacity 0.3s ease;
+
+  .card-link {
+    font-size: 9px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .card-link:hover {
+    color: var(--accent);
+  }
+
+  /* ── Project name ─────────────────────────────────────────── */
+  .proj-name {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text);
+    margin: 0 0 0.5rem 0;
+    line-height: 1.4;
+  }
+
+  /* ── Problem statement ────────────────────────────────────── */
+  .proj-problem {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.6;
+    margin: 0 0 1rem 0;
+  }
+
+  /* ── Stack chips ──────────────────────────────────────────── */
+  .proj-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+  .stack-chip {
+    font-size: 9px;
+    background: var(--accent-dim);
+    color: var(--accent);
+    border-radius: 2px;
+    padding: 2px 6px;
+    line-height: 1.6;
+  }
+
+  /* ── Mobile — single column ───────────────────────────────── */
+  @media (max-width: 560px) {
+    .proj-grid {
+      grid-template-columns: 1fr;
+    }
+    /* Reset column borders; keep row borders */
+    .card-left  { border-right: none; }
+    .card-top   { border-bottom: 1px solid var(--border); }
+    /* All cards except last get a bottom border */
+    .proj-card:not(:last-child) {
+      border-bottom: 1px solid var(--border);
+    }
+    /* Remove double border from card-top on mobile */
+    .card-bottom { border-bottom: none; }
   }
 </style>

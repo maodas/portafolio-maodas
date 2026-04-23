@@ -56,7 +56,60 @@ export const ui = {
 
     'footer.desc': 'Espacio donde comparto mis proyectos, experiencias y conocimientos en desarrollo web, análisis de datos y automatización de procesos.', 'footer.nav.title': 'Navegación', 'footer.legal.title': 'Legal', 'footer.legal.privacy': 'Privacidad', 'footer.legal.terms': 'Términos', 'footer.legal.cookies': 'Cookies', 'footer.rights': 'Todos los derechos reservados.', 'footer.made': 'Desarrollado con ❤️ usando Astro + Tailwind CSS e IA.', 'footer.updated': 'Última actualización: Feb 2026',
 
-    'cv.modal.title': 'Seleccionar CV / Select CV', 'cv.modal.desc': 'Elige el idioma para descargar / Choose language to download:', 'cv.modal.close': 'Cerrar / Close'
+    'cv.modal.title': 'Seleccionar CV / Select CV', 'cv.modal.desc': 'Elige el idioma para descargar / Choose language to download:', 'cv.modal.close': 'Cerrar / Close',
+
+    /* ── Hero redesign (spec §3.2) ── */
+    'hero.eyebrow': '// Project Coordinator · AI Automation · Guatemala',
+    'hero.tagline': 'conecta estrategia con ejecución.',
+    'hero.voice': '15 años no me enseñaron a escribir código. Me enseñaron cómo falla un proceso, cómo motiva una persona, y cuándo el problema real no es el que te piden resolver. El código llegó después — como herramienta, no como fin. Hoy construyo puentes entre lo que el negocio necesita y lo que la tecnología puede hacer.',
+    'hero.cta.portfolio': 'ver portafolio',
+    'hero.cta.cv': 'descargar cv →',
+
+    /* ── Metrics strip (spec §3.3) ── */
+    'metrics.1.label': 'años de trayectoria',
+    'metrics.2.label': 'equipos coordinados',
+    'metrics.3.label': 'mejora operativa',
+
+    /* ── Experience redesign (spec §3.4) ── */
+    'exp.section.num': '01',
+    'exp.section.label': 'experiencia',
+    'exp.1.impact': 'Lideré la modernización de servicios digitales públicos de alta demanda — traduciendo requisitos complejos de stakeholders en arquitecturas técnicas escalables. Desarrollé herramientas de automatización que eliminaron cuellos de botella operativos e integré flujos impulsados por IA que redujeron significativamente los tiempos de respuesta. Gestiono el ciclo completo de proyectos en equipos multifuncionales dentro de un entorno internacional de alta responsabilidad.',
+    'exp.2.impact': 'Rediseñé los flujos operativos centrales en un entorno logístico de alto volumen — reduciendo errores de envío en un 30% y manteniendo el 100% de operatividad durante crisis de alta demanda mediante mitigación proactiva de riesgos. Lideré equipos multifuncionales de 10+ personas implementando programas de liderazgo que mejoraron simultáneamente la retención y la productividad.',
+    'exp.3.impact': 'Gestioné el rendimiento comercial de 22 sucursales, superando consistentemente metas mensuales de Q2 millones mediante mentoría directa y estandarización del servicio. Construí y escalé procesos de ventas regionales desde cero — convirtiendo sucursales con bajo rendimiento en contribuidores consistentes y desarrollando la disciplina operativa que definiría los siguientes 15 años de mi carrera.',
+    'exp.edu.label': 'formación',
+    'exp.edu.1.period': '2024–presente',
+    'exp.edu.1.title': 'Ingeniería Administrativa · Universidad Galileo',
+    'exp.edu.2.period': '2021–2022',
+    'exp.edu.2.title': 'Técnico Desarrollo de Software · Universidad Galileo',
+    'exp.edu.3.title': 'Google Project Management Certificate · Coursera',
+
+    /* ── Projects redesign (spec §3.5) ── */
+    'proj.section.num': '02',
+    'proj.section.label': 'proyectos',
+    'proj.status.active': '● en progreso',
+    'proj.status.done': '✓ completado',
+    'proj.1.name': 'Nutrissé — Ecosistema Digital',
+    'proj.1.problem': 'Plataforma omnicanal que conecta e-commerce, WhatsApp y redes sociales en un solo panel de administración.',
+    'proj.2.name': 'Mensajería Masiva a Beneficiarios',
+    'proj.2.problem': 'Sistema de comunicación segmentada con reportes automáticos para programas sociales de alto volumen.',
+    'proj.3.name': 'Chatbot WhatsApp + IA',
+    'proj.3.problem': 'Atención al cliente 24/7 con derivación inteligente a agente humano y panel de monitoreo de conversaciones.',
+    'proj.4.name': 'Captive WiFi Portal',
+    'proj.4.problem': 'Portal de acceso con captura de datos de usuarios y reportes automáticos para espacios con WiFi pública.',
+
+    /* ── Skills redesign (spec §3.6) ── */
+    'skills.section.num': '03',
+    'skills.section.label': 'habilidades',
+    'skills.col.1': 'FRONTEND',
+    'skills.col.2': 'BACKEND & DATOS',
+    'skills.col.3': 'AUTOMATIZACIÓN',
+    'skills.col.4': 'MÉTODOS',
+
+    /* ── Contact redesign (spec §3.7) ── */
+    'contact.section.num': '04',
+    'contact.section.label': 'contacto',
+    'contact.text': '¿Tienes un proyecto que necesita a alguien que entienda tanto el negocio como el código? Respondo en menos de 24 horas.',
+    'contact.cta.cv': 'Descargar CV'
   },
   en: {
     'header.subtitle': 'Digital Profile', 'nav.inicio': 'Home', 'nav.sobre-mi': 'About', 'nav.experiencia': 'Experience', 'nav.proyectos': 'Portfolio', 'nav.blog': 'Blog', 'nav.contacto': 'Contact',
@@ -68,7 +121,60 @@ export const ui = {
     'exp.title1': 'Professional', 'exp.title2': 'Experience', 'exp.desc': 'A 15-year career marked by a transition from commercial management to process architecture. I have led operational optimization across multiple sectors, integrating tech and strategy to solve critical business challenges.', 'exp.badge.current': 'Current', 'exp.achievements': 'Key Achievements', 'exp.technologies': 'Technologies', 'exp.competencies': 'Competencies', 'exp.related_projects': 'View related projects', 'exp.1.date': '2023 - Present', 'exp.1.title': 'Project Coordinator - Digital Platforms', 'exp.1.company': 'IOM (RRP) · Full time', 'exp.1.desc': 'I lead the modernization of public services by translating complex requirements into viable strategies and designing sustainable technical infrastructure.', 'exp.1.l1': 'Reduced operational bottlenecks by developing custom automation tools.', 'exp.1.l2': 'Implemented agile methodologies that slashed project development and deployment times.', 'exp.1.l3': 'Integrated AI-driven automation to improve customer service and cut response times.', 'exp.1.t1': 'Agile Mgmt (Scrum)', 'exp.1.t2': 'Automations', 'exp.1.t3': 'Infrastructure', 'exp.2.date': '2013 - 2023', 'exp.2.title': 'Assistant Operations Manager', 'exp.2.company': 'IDC Los Tres, S.A. · Full time', 'exp.2.desc': 'Led the reengineering of strategic workflows to maximize productivity and ensure operational excellence in high-demand environments.', 'exp.2.l1': 'Reduced shipping errors by 30% through the restructuring of administrative and HR flows.', 'exp.2.l2': 'Maintained 100% operability during high-demand crises by executing risk mitigation plans.', 'exp.2.l3': 'Increased productivity and lowered staff turnover via team leadership programs.', 'exp.3.date': '2007 - 2012', 'exp.3.title': 'Regional Sales Supervisor', 'exp.3.company': 'Calzado Matrix de Guatemala · Full time', 'exp.3.desc': 'Responsible for commercial performance and customer service standardization across multiple regional business units.', 'exp.3.l1': 'Consistently exceeded regional revenue goals of Q2 Million monthly managing 22 branches.', 'exp.3.l2': 'Elevated store performance through direct staff mentoring and high-impact service training.', 'exp.3.l3': 'Upgraded sales processes and customer service with new strategies that improved UX.', 'exp.3.t1': 'Leadership', 'exp.3.t2': 'Commercial Strategy', 'exp.3.t3': 'Goals Management', 'exp.3.t4': 'Mentoring', 'exp.3.t5': 'Process Improvement', 'exp.stats.1.label': 'Years of exp.', 'exp.stats.2.value': '100%', 'exp.stats.2.label': 'In regional expansion.', 'exp.stats.3.value': '30%', 'exp.stats.3.label': 'Increase in operational efficiency', 'exp.stats.4.value': '1:1 Milestones', 'exp.stats.4.label': 'Guaranteed delivery of complex projects',
     'contact.title1': "Let's Talk?", 'contact.title2': 'Contact', 'contact.desc': 'Have a project in mind? Want to collaborate? I am just one message away.', 'contact.info.title': 'Contact Information', 'contact.info.location': 'Location', 'contact.info.location.val': 'Guatemala City, GT', 'contact.info.timezone': 'Timezone', 'contact.info.timezone.val': 'UTC-6 (Central America)', 'contact.social.title': 'Socials', 'contact.availability.title': 'Available for opportunities', 'contact.availability.desc': "I'm currently seeking new projects and job opportunities. If you have an idea, proposal, or just want to chat, drop me a line!", 'contact.availability.response': 'Response in less than 24 hours', 'contact.form.title': 'Send me a message', 'contact.form.name': 'Full name *', 'contact.form.name.ph': 'Your name', 'contact.form.email': 'Email address *', 'contact.form.phone': 'Phone (optional - for WhatsApp)', 'contact.form.phone.ph': 'Ex: +1 234 5678', 'contact.form.subject': 'Subject *', 'contact.form.subject.ph': 'What do you want to talk about?', 'contact.form.message': 'Message *', 'contact.form.message.ph': 'Write your message here...', 'contact.form.submit': 'Send Message', 'contact.form.sending': 'Sending...', 'contact.form.success': 'Message sent successfully! I will contact you soon.', 'contact.form.error': 'Error sending. Please try again or email me directly.',
     'footer.desc': 'Space where I share my projects, experiences, and knowledge in web development, data analysis, and process automation.', 'footer.nav.title': 'Navigation', 'footer.legal.title': 'Legal', 'footer.legal.privacy': 'Privacy', 'footer.legal.terms': 'Terms', 'footer.legal.cookies': 'Cookies', 'footer.rights': 'All rights reserved.', 'footer.made': 'Built with ❤️ using Astro + Tailwind CSS and AI.', 'footer.updated': 'Last updated: Feb 2026',
-    'cv.modal.title': 'Select CV / Seleccionar CV', 'cv.modal.desc': 'Choose language to download / Elige el idioma para descargar:', 'cv.modal.close': 'Close / Cerrar'
+    'cv.modal.title': 'Select CV / Seleccionar CV', 'cv.modal.desc': 'Choose language to download / Elige el idioma para descargar:', 'cv.modal.close': 'Close / Cerrar',
+
+    /* ── Hero redesign (spec §3.2) ── */
+    'hero.eyebrow': '// Project Coordinator · AI Automation · Guatemala',
+    'hero.tagline': 'bridges strategy and execution.',
+    'hero.voice': '15 years didn\'t teach me to write code. They taught me how a process fails, how people are motivated, and when the real problem isn\'t the one you\'re asked to solve. Code came later — as a tool, not an end. Today I build bridges between what a business needs and what technology can deliver.',
+    'hero.cta.portfolio': 'view portfolio',
+    'hero.cta.cv': 'download cv →',
+
+    /* ── Metrics strip (spec §3.3) ── */
+    'metrics.1.label': 'years of experience',
+    'metrics.2.label': 'teams coordinated',
+    'metrics.3.label': 'operational improvement',
+
+    /* ── Experience redesign (spec §3.4) ── */
+    'exp.section.num': '01',
+    'exp.section.label': 'experience',
+    'exp.1.impact': 'Led the modernization of high-demand public digital services — translating complex stakeholder requirements into scalable technical architectures. Built custom automation tools that eliminated operational bottlenecks, and integrated AI-driven workflows that cut client response times significantly. Currently managing the full project lifecycle across cross-functional teams in a high-accountability international environment.',
+    'exp.2.impact': 'Redesigned core operational workflows across a high-volume logistics environment — reducing shipping errors by 30% and achieving 100% service uptime during peak-demand crises through proactive risk mitigation. Led cross-functional teams of 10+ people, implementing leadership programs that improved retention and productivity simultaneously.',
+    'exp.3.impact': 'Managed commercial performance across 22 branches, consistently surpassing Q2M monthly revenue targets through direct team mentorship and service standardization. Built and scaled regional sales processes from the ground up — turning underperforming locations into consistent contributors and developing the operational discipline that would define the next 15 years of my career.',
+    'exp.edu.label': 'education',
+    'exp.edu.1.period': '2024–present',
+    'exp.edu.1.title': 'Administrative Engineering · Universidad Galileo',
+    'exp.edu.2.period': '2021–2022',
+    'exp.edu.2.title': 'A.S. Software Development · Universidad Galileo',
+    'exp.edu.3.title': 'Google Project Management Certificate · Coursera',
+
+    /* ── Projects redesign (spec §3.5) ── */
+    'proj.section.num': '02',
+    'proj.section.label': 'projects',
+    'proj.status.active': '● in progress',
+    'proj.status.done': '✓ completed',
+    'proj.1.name': 'Nutrissé — Digital Ecosystem',
+    'proj.1.problem': 'Omnichannel platform connecting e-commerce, WhatsApp, and social media through a single admin dashboard.',
+    'proj.2.name': 'Mass Beneficiary Messaging',
+    'proj.2.problem': 'Segmented communication system with automated reporting for high-volume social programs.',
+    'proj.3.name': 'WhatsApp AI Chatbot',
+    'proj.3.problem': '24/7 customer service with intelligent human handoff and conversation monitoring dashboard.',
+    'proj.4.name': 'Captive WiFi Portal',
+    'proj.4.problem': 'Access portal with user data capture and automated reporting for public WiFi environments.',
+
+    /* ── Skills redesign (spec §3.6) ── */
+    'skills.section.num': '03',
+    'skills.section.label': 'skills',
+    'skills.col.1': 'FRONTEND',
+    'skills.col.2': 'BACKEND & DATA',
+    'skills.col.3': 'AUTOMATION',
+    'skills.col.4': 'METHODS',
+
+    /* ── Contact redesign (spec §3.7) ── */
+    'contact.section.num': '04',
+    'contact.section.label': 'contact',
+    'contact.text': 'Have a project that needs someone who understands both the business and the code? I reply within 24 hours.',
+    'contact.cta.cv': 'Download CV'
   },
 } as const;
 

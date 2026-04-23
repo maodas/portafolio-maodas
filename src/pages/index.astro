@@ -1,55 +1,21 @@
 ---
-// ================= MAIN PAGE (EN) =================
+// ================= MAIN PAGE (EN) — spec §4 layout order =================
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Hero from '../components/sections/Hero.astro';
-import About from '../components/sections/About.astro';
+import Hero       from '../components/sections/Hero.astro';
 import Experience from '../components/sections/Experience.astro';
-import Skills from '../components/sections/Skills.astro';
-import Projects from '../components/sections/Projects.astro';
-import Contact from '../components/sections/Contact.astro';
-import DownloadCVModal from '../components/DownloadCVModal.astro';
+import Projects   from '../components/sections/Projects.astro';
+import Skills     from '../components/sections/Skills.astro';
+import Contact    from '../components/sections/Contact.astro';
+// About.astro kept on disk but removed from layout (spec §2 / §4)
 
-// SEO
-const pageTitle = 'Marcos Rodas | Project Coordinator — Digital Platforms & AI Automation';
-const pageDescription = 'Personal portfolio showcasing web development, data analysis, and automation projects. Experience, skills, and technical blog.';
+const pageTitle       = 'Marcos Rodas | Project Coordinator — Digital Platforms & AI Automation';
+const pageDescription = 'Portfolio of Marcos Rodas — Project Coordinator and AI Automation specialist based in Guatemala. 15 years bridging strategy and execution.';
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
-  
-  <section id="hero">
-    <Hero />
-  </section>
-
-  <section id="about" class="py-20 bg-gray-50 dark:bg-gray-800/50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <About />
-    </div>
-  </section>
-
-  <section id="experience" class="py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <Experience />
-    </div>
-  </section>
-
-  <section id="projects" class="py-20 bg-gray-50 dark:bg-gray-800/50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <Projects />
-    </div>
-  </section>
-
-  <section id="skills" class="py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <Skills />
-    </div>
-  </section>
-
-  <section id="contact" class="py-20 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <Contact />
-    </div>
-  </section>
-
-   <DownloadCVModal />
-
+  <Hero />
+  <Experience />
+  <Projects />
+  <Skills />
+  <Contact />
 </BaseLayout>
