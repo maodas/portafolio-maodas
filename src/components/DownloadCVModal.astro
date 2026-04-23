@@ -21,8 +21,8 @@ const t = useTranslations(lang as any);
       </a>
     </div>
 
-    <button id="close-modal" class="btn-close font-mono">
-      {t('cv.modal.close')}
+    <button id="close-modal" class="btn-close">
+      close
     </button>
 
   </div>
@@ -68,7 +68,7 @@ const t = useTranslations(lang as any);
     align-items: center;
     justify-content: center;
     padding: 1rem;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.75);
     backdrop-filter: blur(4px);
   }
 
@@ -77,9 +77,9 @@ const t = useTranslations(lang as any);
     background: var(--surface);
     border: 1px solid var(--border-hi);
     border-radius: 8px;
-    padding: 2rem;
-    max-width: 400px;
-    width: 100%;
+    padding: 2rem 2.5rem;
+    max-width: 380px;
+    width: 90%;
     opacity: 0;
     transform: translateY(8px);
     transition: opacity 0.2s ease, transform 0.2s ease;
@@ -91,57 +91,63 @@ const t = useTranslations(lang as any);
 
   /* Title */
   .modal-title {
-    font-size: 1.1rem;
-    font-weight: 300;
+    font-family: DM Sans;
+    font-weight: 400;
+    font-size: 1rem;
     color: var(--text);
     margin: 0 0 0.5rem 0;
   }
 
   /* Subtitle */
   .modal-desc {
-    font-size: 11px;
+    font-family: DM Mono;
+    font-size: 0.75rem;
     color: var(--muted);
-    margin: 0 0 1.5rem 0;
+    margin: 0 0 2rem 0;
     line-height: 1.6;
   }
 
   /* Download buttons */
   .modal-buttons {
     display: flex;
-    gap: 0.75rem;
-    margin-bottom: 1.25rem;
+    gap: 1rem;
   }
 
   .btn-primary {
     flex: 1;
-    display: block;
+    display: inline-block;
     text-align: center;
-    font-size: 12px;
-    background: var(--accent);
-    color: #0e0e0e;
+    font-family: DM Mono;
+    font-size: 0.85rem;
+    padding: 0.6rem 1.5rem;
+    border: 1px solid var(--border-hi);
     border-radius: 4px;
-    padding: 0.55rem 1.5rem;
+    color: var(--muted);
+    background: transparent;
     text-decoration: none;
-    transition: opacity 0.15s ease;
+    transition: color 0.2s, border-color 0.2s;
+    cursor: pointer;
   }
   .btn-primary:hover {
-    opacity: 0.88;
+    color: var(--accent);
+    border-color: var(--accent);
   }
 
   /* Close link */
   .btn-close {
-    display: block;
-    width: 100%;
-    font-size: 11px;
-    color: var(--muted);
+    font-family: DM Mono;
+    font-size: 0.75rem;
+    color: var(--dim);
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0;
+    margin: 1.5rem auto 0;
+    display: block;
     text-align: center;
-    transition: color 0.15s ease;
+    transition: color 0.2s;
+    width: auto;
   }
   .btn-close:hover {
-    color: var(--text);
+    color: var(--muted);
   }
 </style>
