@@ -13,13 +13,39 @@ export interface Props {
   keywords?: string;
 }
 
-const { 
-  title = 'maodas.online - Portafolio de Mao Das', 
+const {
+  title = 'maodas.online - Portafolio de Mao Das',
   description = 'Portafolio personal de Mao Das, Project Coordinator — Digital Platforms & AI Automation.',
-  image = 'https://maodas.online/og-image.svg',
+  image = 'https://maodas.online/og-image.png',
   url = 'https://maodas.online',
   keywords = 'Mao Das, Marcos Rodas, Portafolio, Project Coordinator, Digital Platforms, AI Automation, Tech lead'
 } = Astro.props;
+
+// ── hreflang / canonical (spec: bilingual EN default, ES prefixed) ──
+const pathNoLocale = Astro.url.pathname.replace(/^\/es\/?/, '/');
+const enUrl = `https://maodas.online${pathNoLocale}`;
+const esUrl = `https://maodas.online/es${pathNoLocale === '/' ? '/' : pathNoLocale}`;
+const canonicalUrl = Astro.currentLocale === 'es' ? esUrl : enUrl;
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Marcos Rodas',
+  alternateName: 'Mao Das',
+  jobTitle: 'Project Coordinator — Digital Platforms & AI Automation',
+  url: 'https://maodas.online',
+  image: 'https://maodas.online/og-image.png',
+  email: 'mailto:maodas00@gmail.com',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Guatemala City',
+    addressCountry: 'GT',
+  },
+  sameAs: [
+    'https://linkedin.com/in/marcos-rodas',
+    'https://github.com/maodas',
+  ],
+};
 ---
 
 <!DOCTYPE html>
@@ -32,23 +58,34 @@ const {
   <title>{title}</title>
   <meta name="description" content={description} />
   <meta name="keywords" content={keywords} />
-  
+
+  <!-- Canonical + hreflang alternates (EN default, ES prefixed) -->
+  <link rel="canonical" href={canonicalUrl} />
+  <link rel="alternate" hreflang="en" href={enUrl} />
+  <link rel="alternate" hreflang="es" href={esUrl} />
+  <link rel="alternate" hreflang="x-default" href={enUrl} />
+
   <!-- Open Graph / Redes sociales -->
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
   <meta property="og:url" content={url} />
   <meta property="og:image" content={image} />
-  
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={image} />
-  
+
   <!-- Favicon (terminal monogram — spec correction #5) -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="alternate icon" href="/favicon.ico" />
+
+  <!-- Structured data for search engines -->
+  <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
 
   <!-- Dark mode: apply class BEFORE paint to prevent flash (#1) -->
   <script is:inline>

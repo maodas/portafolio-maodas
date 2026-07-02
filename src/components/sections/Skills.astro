@@ -141,17 +141,20 @@ const columns = [
   }
 
 
-  /* Right border between columns (all except last) */
+  /* Right border between columns (all except last) — desktop 4-col layout only;
+     tablet/mobile breakpoints define their own gutter rules below. */
   .col-border {
     border-right: 1px solid var(--border);
     padding-right: 1.5rem;
     margin-right: 0;
   }
-  .skill-col:not(.col-border) {
-    padding-left: 1.5rem;
-  }
-  .skill-col.col-border + .skill-col {
-    padding-left: 1.5rem;
+  @media (min-width: 769px) {
+    .skill-col:not(.col-border) {
+      padding-left: 1.5rem;
+    }
+    .skill-col.col-border + .skill-col {
+      padding-left: 1.5rem;
+    }
   }
 
   /* Column header */

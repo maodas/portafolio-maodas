@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import icon from 'astro-icon';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://maodas.online',
@@ -14,7 +15,7 @@ export default defineConfig({
     }
   },
 
-  integrations: [tailwind(), mdx(), icon()],
+  integrations: [tailwind(), mdx(), icon(), sitemap()],
   vite: {
     ssr: {
       external: []
