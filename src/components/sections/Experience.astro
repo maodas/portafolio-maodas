@@ -7,22 +7,40 @@ const t = useTranslations(lang as any);
 
 const roles = [
   {
-    period:   lang === 'es' ? '2023 – presente' : '2023 – present',
+    period:   lang === 'es' ? 'Jul 2024 – presente' : 'Jul 2024 – present',
     title:    lang === 'es'
       ? 'Coordinador de Proyectos — Plataformas Digitales'
       : 'Project Coordinator — Digital Platforms',
-    org:      'IOM (RRP)',
+    org:      'IOM (ROOTS Program)',
     impactBullets: lang === 'es' ? [
-      'Lideré la modernización de servicios digitales públicos de alta demanda, traduciendo requisitos complejos en arquitecturas técnicas escalables.',
-      'Desarrollé herramientas de automatización que eliminaron cuellos de botella operativos e integré flujos impulsados por IA.',
-      'Gestioné el ciclo completo de proyectos en equipos multifuncionales dentro de un entorno internacional de alta responsabilidad.'
+      'Lidero la modernización de servicios digitales para MINTRAB y el IGM, traduciendo requisitos técnicos complejos en hojas de ruta estratégicas aprobadas por USAID y el Departamento de Estado de EE. UU.',
+      'Reduje el scope creep en un 25% en equipos multifuncionales mediante documentación estricta de alcance, WBS y criterios de definición de terminado (DoD), entregando actualizaciones de plataforma hasta 2 semanas antes de lo previsto.',
+      'Desarrollé herramientas de automatización con Node.js, Python e IA que eliminaron cuellos de botella críticos en Finanzas, Adquisiciones y Programática.',
+      'Aseguré 100% de continuidad del proyecto en entornos regulatorios volátiles, arquitectando soluciones cloud costo-eficientes con foco en ciberseguridad.'
     ] : [
-      'Led modernization of high-demand public digital services, translating complex stakeholder requirements into scalable technical architectures.',
-      'Built automation tools that eliminated operational bottlenecks and integrated AI-driven workflows to reduce response times.',
-      'Managed full project lifecycle across cross-functional teams in a high-accountability international environment.'
+      'Lead modernization of digital services for MINTRAB and IGM, translating complex technical requirements into strategic roadmaps approved by USAID and the U.S. Department of State.',
+      'Reduced scope creep by 25% across cross-functional teams through strict scope documentation, WBS, and definition-of-done criteria, delivering platform updates up to 2 weeks ahead of schedule.',
+      'Built automation tools with Node.js, Python, and AI that eliminated critical bottlenecks across Finance, Procurement, and Programmatic departments.',
+      'Ensured 100% project continuity in volatile regulatory environments by architecting cost-efficient cloud solutions with a security-first approach.'
     ],
-    tags:     ['Astro', 'Node.js', 'Python', 'n8n', 'GCP', 'IOM'],
+    tags:     ['Astro', 'Node.js', 'Python', 'n8n', 'GCP', 'USAID'],
     current:  true,
+  },
+  {
+    period:   lang === 'es' ? 'Ago 2023 – Jul 2024' : 'Aug 2023 – Jul 2024',
+    title:    lang === 'es' ? 'Asistente de Proyectos' : 'Project Assistant',
+    org:      'IOM (ROOTS Program)',
+    impactBullets: lang === 'es' ? [
+      'Promovido a Coordinador de Proyectos tras un año, por el impacto en la digitalización de flujos manuales y la mejora de la coordinación interdepartamental.',
+      'Diseñé e implementé nuevos protocolos de manejo de datos que redujeron significativamente los tiempos de procesamiento de solicitudes.',
+      'Creé reportes técnicos y dashboards que permitieron a las unidades de programa visualizar hitos y KPIs en tiempo real.'
+    ] : [
+      'Promoted to Project Coordinator after one year based on impact digitizing manual workflows and improving inter-departmental coordination.',
+      'Designed and implemented new data-handling protocols that significantly reduced application processing times.',
+      'Created technical reports and dashboards enabling program units to visualize milestones and KPIs in real time.'
+    ],
+    tags:     ['Jira', 'Reporting', 'Data Handling', 'Process Design'],
+    current:  false,
   },
   {
     period:   lang === 'es' ? 'Feb 2013 – Ago 2023' : 'Feb 2013 – Aug 2023',
@@ -64,6 +82,11 @@ const eduItems = [
   { period: t('exp.edu.1.period'), title: t('exp.edu.1.title') },
   { period: t('exp.edu.2.period'), title: t('exp.edu.2.title') },
   { period: '',                    title: t('exp.edu.3.title') },
+  { period: t('exp.edu.4.period'), title: t('exp.edu.4.title'), url: 'https://verify.skilljar.com/c/sbq28n9apie4' },
+  { period: t('exp.edu.5.period'), title: t('exp.edu.5.title'), url: 'https://verify.skilljar.com/c/9cphgsbef75y' },
+  { period: t('exp.edu.6.period'), title: t('exp.edu.6.title'), url: 'https://verify.skilljar.com/c/p337vcc4a7ob' },
+  { period: t('exp.edu.7.period'), title: t('exp.edu.7.title'), url: 'https://verify.skilljar.com/c/sskn3fixvm78' },
+  { period: t('exp.edu.8.period'), title: t('exp.edu.8.title'), url: 'https://verify.skilljar.com/c/j6srfv3asu5g' },
 ];
 ---
 
@@ -116,7 +139,11 @@ const eduItems = [
     {eduItems.map(item => (
       <div class="edu-row">
         <div class="edu-period font-mono">{item.period}</div>
-        <div class="edu-title font-mono">{item.title}</div>
+        <div class="edu-title font-mono">
+          {item.url
+            ? <a href={item.url} target="_blank" rel="noopener noreferrer" class="edu-link">{item.title} ↗</a>
+            : item.title}
+        </div>
       </div>
     ))}
   </div>
@@ -285,6 +312,14 @@ const eduItems = [
   .edu-title {
     font-size: 0.85rem;
     color: var(--muted);
+  }
+  .edu-link {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .edu-link:hover {
+    color: var(--accent);
   }
 
   /* Mobile — stack columns */
