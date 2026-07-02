@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const lang = Astro.currentLocale || 'en';
+const isEs = lang === 'es';
+---
+
+<BaseLayout
+  title={isEs ? '404 — Página no encontrada | maodas.online' : '404 — Page not found | maodas.online'}
+  description={isEs ? 'Esta página no existe.' : 'This page does not exist.'}
+>
+  <section class="not-found max-w-content mx-auto px-12">
+    <div class="nf-inner font-mono">
+      <div class="nf-code">404</div>
+      <div class="nf-label">{isEs ? '// página no encontrada' : '// page not found'}</div>
+      <p class="nf-msg">
+        {isEs
+          ? 'Esta ruta no existe o fue movida.'
+          : 'This route does not exist or was moved.'}
+      </p>
+      <a href={isEs ? '/es/' : '/'} class="nf-link">
+        {isEs ? '← volver al inicio' : '← back to home'}
+      </a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    min-height: calc(100vh - 120px);
+    display: flex;
+    align-items: center;
+  }
+  .nf-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .nf-code {
+    font-size: clamp(4rem, 12vw, 7rem);
+    font-weight: 300;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -2px;
+  }
+  .nf-label {
+    font-size: 0.85rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+  .nf-msg {
+    font-size: 0.9rem;
+    color: var(--text);
+    margin-top: 0.5rem;
+  }
+  .nf-link {
+    font-size: 0.8rem;
+    color: var(--accent);
+    text-decoration: none;
+    margin-top: 0.5rem;
+    transition: opacity 0.15s ease;
+  }
+  .nf-link:hover {
+    opacity: 0.7;
+  }
+</style>

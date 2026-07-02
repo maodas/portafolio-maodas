@@ -11,15 +11,6 @@ const projects = [
     active:   true,
     name:     t('proj.1.name'),
     problem:  t('proj.1.problem'),
-    stack:    ['n8n', 'GCP', 'Firebase', 'Stripe', 'Tiledesk', 'Node.js'],
-    codeUrl:  'https://github.com/maodas',
-    demoUrl:  null,
-  },
-  {
-    status:   t('proj.status.active'),
-    active:   true,
-    name:     t('proj.2.name'),
-    problem:  t('proj.2.problem'),
     stack:    ['Twilio', 'Node.js', 'Render', 'GitHub'],
     codeUrl:  'https://github.com/maodas/verificador-n-meros-render',
     demoUrl:  'https://youtu.be/_K9cwxWZPL4',
@@ -27,8 +18,8 @@ const projects = [
   {
     status:   t('proj.status.done'),
     active:   false,
-    name:     t('proj.3.name'),
-    problem:  t('proj.3.problem'),
+    name:     t('proj.2.name'),
+    problem:  t('proj.2.problem'),
     stack:    ['OpenAI', 'Python', 'Docker', 'PostgreSQL', 'Celery'],
     codeUrl:  'https://github.com/maodas/asistente-inteligente-multicanal',
     demoUrl:  'https://youtu.be/0ofnavIl1nE',
@@ -36,8 +27,8 @@ const projects = [
   {
     status:   t('proj.status.done'),
     active:   false,
-    name:     t('proj.4.name'),
-    problem:  t('proj.4.problem'),
+    name:     t('proj.3.name'),
+    problem:  t('proj.3.problem'),
     stack:    ['MongoDB', 'Express', 'Node.js', 'Render'],
     codeUrl:  'https://github.com/maodas/portal-wifi-captive',
     demoUrl:  'https://portal-wifi-captive-site.onrender.com/',
@@ -45,7 +36,7 @@ const projects = [
 ];
 
 const codeLabel  = lang === 'es' ? 'código' : 'code';
-const demoLabel  = 'demo';
+const tryLabel   = lang === 'es' ? 'probar' : 'try it';
 ---
 
 <section id="projects" class="proj-section max-w-content mx-auto px-12 py-16">
@@ -59,7 +50,7 @@ const demoLabel  = 'demo';
   <!-- 2×2 project grid -->
   <div class="proj-grid">
     {projects.map((proj, i) => (
-      <article class={`proj-card ${i % 2 === 0 ? 'card-left' : 'card-right'} ${i < 2 ? 'card-top' : 'card-bottom'}`}>
+      <article class={`proj-card ${i % 2 === 0 ? 'card-left' : 'card-right'} ${i < 2 ? 'card-top' : ''} ${i === projects.length - 1 && projects.length % 2 !== 0 ? 'card-full' : ''}`}>
 
         <!-- Top row: status + arrow link -->
         <div class="card-header">
@@ -68,8 +59,8 @@ const demoLabel  = 'demo';
           </span>
           <div class="card-links font-mono">
             {proj.demoUrl && (
-              <a href={proj.demoUrl} target="_blank" rel="noopener noreferrer" class="card-link" aria-label="Demo">
-                {demoLabel} ↗
+              <a href={proj.demoUrl} target="_blank" rel="noopener noreferrer" class="card-link" aria-label={proj.demoUrl.includes('youtu') ? 'Demo video' : 'Live demo'}>
+                {proj.demoUrl.includes('youtu') ? 'demo' : tryLabel} ↗
               </a>
             )}
             <a href={proj.codeUrl} target="_blank" rel="noopener noreferrer" class="card-link" aria-label="Code">
@@ -133,6 +124,8 @@ const demoLabel  = 'demo';
   .card-left  { border-right: 1px solid var(--border); }
   /* Internal borders — bottom edge of top row */
   .card-top   { border-bottom: 1px solid var(--border); }
+  /* Lone card spanning full bottom row */
+  .card-full  { grid-column: span 2; border-right: none; }
 
   /* ── Card header ──────────────────────────────────────────── */
   .card-header {
@@ -210,12 +203,10 @@ const demoLabel  = 'demo';
     }
     /* Reset column borders; keep row borders */
     .card-left  { border-right: none; }
-    .card-top   { border-bottom: 1px solid var(--border); }
+    .card-full  { grid-column: span 1; }
     /* All cards except last get a bottom border */
     .proj-card:not(:last-child) {
       border-bottom: 1px solid var(--border);
     }
-    /* Remove double border from card-top on mobile */
-    .card-bottom { border-bottom: none; }
   }
 </style>
