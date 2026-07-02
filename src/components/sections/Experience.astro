@@ -81,7 +81,7 @@ const roles = [
 const eduItems = [
   { period: t('exp.edu.1.period'), title: t('exp.edu.1.title') },
   { period: t('exp.edu.2.period'), title: t('exp.edu.2.title') },
-  { period: '',                    title: t('exp.edu.3.title') },
+  { period: t('exp.edu.3.period'), title: t('exp.edu.3.title'), groupStart: true },
   { period: t('exp.edu.4.period'), title: t('exp.edu.4.title'), url: 'https://verify.skilljar.com/c/sbq28n9apie4' },
   { period: t('exp.edu.5.period'), title: t('exp.edu.5.title'), url: 'https://verify.skilljar.com/c/9cphgsbef75y' },
   { period: t('exp.edu.6.period'), title: t('exp.edu.6.title'), url: 'https://verify.skilljar.com/c/p337vcc4a7ob' },
@@ -137,7 +137,7 @@ const eduItems = [
   <div class="edu-block">
     <div class="edu-label font-mono">{t('exp.edu.label')}</div>
     {eduItems.map(item => (
-      <div class="edu-row">
+      <div class={`edu-row ${item.groupStart ? 'edu-group-start' : ''}`}>
         <div class="edu-period font-mono">{item.period}</div>
         <div class="edu-title font-mono">
           {item.url
@@ -151,7 +151,7 @@ const eduItems = [
 </section>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('astro:page-load', () => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     
     if (prefersReducedMotion) {
@@ -262,7 +262,7 @@ const eduItems = [
     color: var(--text);
     line-height: 1.75;
     margin: 0 0 0.75rem 0;
-    max-width: 540px;
+    max-width: 680px;
   }
 
   /* Stack tags */
@@ -301,6 +301,11 @@ const eduItems = [
     grid-template-columns: 110px 1fr;
     gap: 0 2rem;
     padding: 0.35rem 0;
+  }
+  .edu-group-start {
+    margin-top: 0.75rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--border);
   }
 
   .edu-period {
