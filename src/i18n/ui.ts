@@ -59,7 +59,7 @@ export const ui = {
     'cv.modal.title': 'Seleccionar CV / Select CV', 'cv.modal.desc': 'Elige el idioma para descargar / Choose language to download:', 'cv.modal.close': 'Cerrar / Close',
 
     /* ── Hero redesign (spec §3.2) ── */
-    'hero.eyebrow': '// Project Coordinator · AI Automation · Guatemala',
+    'hero.eyebrow': '// PM · Builder · AI Automation · Guatemala',
     'hero.tagline': 'conecta estrategia con ejecución.',
     'hero.voice': '15 años no me enseñaron a escribir código. Me enseñaron cómo falla un proceso, cómo motiva una persona, y cuándo el problema real no es el que te piden resolver. El código llegó después — como herramienta, no como fin. Hoy construyo puentes entre lo que el negocio necesita y lo que la tecnología puede hacer.',
     'hero.cta.portfolio': 'ver portafolio',
@@ -122,7 +122,7 @@ export const ui = {
     'cv.modal.title': 'Select CV / Seleccionar CV', 'cv.modal.desc': 'Choose language to download / Elige el idioma para descargar:', 'cv.modal.close': 'Close / Cerrar',
 
     /* ── Hero redesign (spec §3.2) ── */
-    'hero.eyebrow': '// Project Coordinator · AI Automation · Guatemala',
+    'hero.eyebrow': '// PM · Builder · AI Automation · Guatemala',
     'hero.tagline': 'bridges strategy and execution.',
     'hero.voice': '15 years didn\'t teach me to write code. They taught me how a process fails, how people are motivated, and when the real problem isn\'t the one you\'re asked to solve. Code came later — as a tool, not an end. Today I build bridges between what a business needs and what technology can deliver.',
     'hero.cta.portfolio': 'view portfolio',
