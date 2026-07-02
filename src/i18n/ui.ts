@@ -67,8 +67,8 @@ export const ui = {
 
     /* ── Metrics strip (spec §3.3) ── */
     'metrics.1.label': 'años de trayectoria',
-    'metrics.2.label': 'equipos coordinados',
-    'metrics.3.label': 'mejora operativa',
+    'metrics.2.label': 'menos scope creep (IOM)',
+    'metrics.3.label': 'menos errores de envío (IDC)',
 
     /* ── Experience redesign (spec §3.4) ── */
     'exp.section.num': '01',
@@ -143,8 +143,8 @@ export const ui = {
 
     /* ── Metrics strip (spec §3.3) ── */
     'metrics.1.label': 'years of experience',
-    'metrics.2.label': 'teams coordinated',
-    'metrics.3.label': 'operational improvement',
+    'metrics.2.label': 'less scope creep (IOM)',
+    'metrics.3.label': 'fewer shipping errors (IDC)',
 
     /* ── Experience redesign (spec §3.4) ── */
     'exp.section.num': '01',
