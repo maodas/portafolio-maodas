@@ -35,7 +35,7 @@ const personSchema = {
   jobTitle: 'Project Coordinator — Digital Platforms & AI Automation',
   url: 'https://maodas.online',
   image: 'https://maodas.online/og-image.png',
-  email: 'mailto:maodas00@gmail.com',
+  email: 'maodas00@gmail.com',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Guatemala City',
@@ -100,11 +100,13 @@ const personSchema = {
     })();
   </script>
   
-  <!-- Fuentes de Google -->
+  <!-- Fuentes de Google — preloaded then swapped in non-blocking to avoid delaying first paint -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
+
   <ViewTransitions />
 
   <!-- ========== GOOGLE ANALYTICS (Firebase) ========== -->

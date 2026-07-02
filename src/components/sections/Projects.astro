@@ -51,10 +51,10 @@ const tryLabel   = lang === 'es' ? 'probar' : 'try it';
 <section id="projects" class="proj-section max-w-content mx-auto px-12 py-16">
 
   <!-- Section label -->
-  <div class="section-label font-mono mb-8">
+  <h2 class="section-label font-mono mb-8">
     <span class="section-num">{t('proj.section.num')}</span>
     <span class="section-title">/ {t('proj.section.label')}</span>
-  </div>
+  </h2>
 
   <!-- 2×2 project grid -->
   <div class="proj-grid">
@@ -68,11 +68,11 @@ const tryLabel   = lang === 'es' ? 'probar' : 'try it';
           </span>
           <div class="card-links font-mono">
             {proj.demoUrl && (
-              <a href={proj.demoUrl} target="_blank" rel="noopener noreferrer" class="card-link" aria-label={proj.demoUrl.includes('youtu') ? 'Demo video' : 'Live demo'}>
+              <a href={proj.demoUrl} target="_blank" rel="noopener noreferrer" class="card-link" aria-label={`${proj.demoUrl.includes('youtu') ? 'demo' : tryLabel} — ${proj.name}`}>
                 {proj.demoUrl.includes('youtu') ? 'demo' : tryLabel} ↗
               </a>
             )}
-            <a href={proj.codeUrl} target="_blank" rel="noopener noreferrer" class="card-link" aria-label="Code">
+            <a href={proj.codeUrl} target="_blank" rel="noopener noreferrer" class="card-link" aria-label={`${codeLabel} — ${proj.name}`}>
               {codeLabel} ↗
             </a>
           </div>
@@ -149,7 +149,7 @@ const tryLabel   = lang === 'es' ? 'probar' : 'try it';
     letter-spacing: 0.04em;
   }
   .status-active { color: var(--accent); }
-  .status-done   { color: var(--dim); }
+  .status-done   { color: var(--muted); }
 
   /* Links — hidden until hover for cleaner look */
   .card-links {

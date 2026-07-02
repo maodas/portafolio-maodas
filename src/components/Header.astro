@@ -74,7 +74,7 @@ const availableLabel = lang === 'es' ? 'disponible' : 'available';
           data-lang={toggleLang}
           class="btn-lang-toggle font-mono text-xs transition-colors"
           style="color: var(--muted);"
-          aria-label="Switch language"
+          aria-label={`Switch language to ${lang === 'es' ? 'EN' : 'ES'}`}
         >
           {lang === 'es' ? 'EN' : 'ES'}
         </a>
